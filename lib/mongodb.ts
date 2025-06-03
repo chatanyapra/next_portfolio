@@ -1,19 +1,35 @@
+// lib/mongodb.ts
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = process.env.CONNECTION_STRING as string;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+  throw new Error('Please define the CONNECTION_STRING environment variable');
 }
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+// Add a custom type for global cache
+interface MongooseGlobal {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
+
+// Use global to store the cached connection
+const globalWithMongoose = global as typeof globalThis & {
+  mongoose: MongooseGlobal;
+};
+
+let cached = globalWithMongoose.mongoose;
+
+if (!cached) {
+  cached = globalWithMongoose.mongoose = { conn: null, promise: null };
+}
 
 export async function connectToDB() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
-      dbName: 'nextauthDB',
+      dbName: 'test',
       bufferCommands: false,
     });
   }

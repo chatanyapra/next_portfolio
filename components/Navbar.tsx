@@ -5,7 +5,7 @@ import { FaHouse, FaCircleInfo, FaBriefcase, FaBookOpenReader } from "react-icon
 import './Navbar.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// import ProfileDropdown from './ProfileDropdown';
+import ProfileDropdown from './ProfileDropdown';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +45,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='px-3 py-2 rounded-md text-base font-medium mt-1'>
-                            {/* <ProfileDropdown /> */}
+                            <ProfileDropdown />
                         </div>
                     </div>
                 </div>

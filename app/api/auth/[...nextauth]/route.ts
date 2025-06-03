@@ -9,26 +9,54 @@ const handler = NextAuth({
         CredentialsProvider({
             name: 'credentials',
             credentials: {
-                email: { label: 'Email', type: 'email' },
+                username: { label: 'Username', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
-            async authorize(credentials: Record<"email" | "password", string> | undefined) {
+            async authorize(credentials: Record<'username' | 'password', string> | undefined) {
                 if (!credentials) return null;
-
                 await connectToDB();
+                console.log("username:", credentials.username, "password", credentials.password);
 
-                const user = await User.findOne({ email: credentials.email });
+                const user = await User.findOne({ username: "chatanya" });
+                console.log('User found:', user);
 
                 if (!user) throw new Error('No user found');
 
-                if (!credentials.password || !user.password) throw new Error('Invalid password');
-                const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+                if (!user.password) throw new Error('User has no password set');
+
+                const isPasswordCorrect = await bcrypt.compare(
+                    credentials.password,
+                    user.password as string
+                );
+
                 if (!isPasswordCorrect) throw new Error('Invalid password');
 
-                return { id: user._id.toString(), email: user.get('email'), name: user.get('name') };
+                return {
+                    id: user._id.toString(),
+                    name: user.username,
+                    image: user.image || null,
+                    isAdmin: (user as any).isAdmin || false,
+                };
             },
         }),
     ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id;
+                token.name = user.name;
+                token.image = user.image;
+                token.isAdmin = (user as any).isAdmin || false;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.id = String(token.id);
+            session.user.isAdmin = Boolean(token.isAdmin);
+            // Extend session.user here too
+            return session;
+        },
+    },
     pages: {
         signIn: '/login',
     },
