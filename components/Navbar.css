@@ -1,0 +1,37 @@
+:root {
+    --primary-color: #070a29;
+    --secondary-color: #070a29;
+    --shape-circle: radial-gradient(34.98% 34.98% at 50% 50%, #725bda 0, rgba(6, 19, 45, 0) 100%);
+}
+
+.main-color {
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: saturate(200%) blur(30.5px);
+}
+.icon-shadow {
+    filter: drop-shadow(0 0 0.75rem #070a29);
+    cursor: pointer;
+}
+.navbar-animation {
+    transition: all;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(30.5px);
+    animation-name: navbar-anim;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+@keyframes navbar-anim {
+    from {
+        opacity: 0;
+        /* background-color: transparent; */
+    }
+    to {
+        opacity: 1;
+    }
+}
