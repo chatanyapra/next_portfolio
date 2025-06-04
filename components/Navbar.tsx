@@ -6,6 +6,7 @@ import './Navbar.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ProfileDropdown from './ProfileDropdown';
+import { SessionProvider } from 'next-auth/react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -45,14 +46,16 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div className='px-3 py-2 rounded-md text-base font-medium mt-1'>
-                            <ProfileDropdown />
+                            <SessionProvider>
+                                <ProfileDropdown />
+                            </SessionProvider>
                         </div>
                     </div>
                 </div>
             </nav>
 
             {/* Mobile Menu */}
-            <nav className='tab-menu w-full fixed bottom-3 z-20 md:hidden flex flex-wrap justify-between items-center mx-auto transition-opacity duration-300 px-2'>
+            <nav className=' w-full fixed bottom-3 z-20 md:hidden flex flex-wrap justify-between items-center mx-auto transition-opacity duration-300 px-2'>
                 <div className='container flex flex-wrap justify-around items-center mx-auto main-color rounded-full py-3 text-3xl text-white dark:text-gray-900'>
                     <Link href="/">
                         <FaHouse className={`icon-shadow ${pathname === '/' ? 'text-blue-500' : ''}`} />

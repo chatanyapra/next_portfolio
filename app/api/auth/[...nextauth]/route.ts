@@ -53,6 +53,7 @@ const handler = NextAuth({
         async session({ session, token }) {
             session.user.id = String(token.id);
             session.user.isAdmin = Boolean(token.isAdmin);
+            console.log('Session user:', session.user);
             // Extend session.user here too
             return session;
         },

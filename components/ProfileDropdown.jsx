@@ -14,8 +14,9 @@ function ProfileDropdown() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     const { data: session, status } = useSession();
-    if (status === 'loading') return <p>Loading...</p>;
-    if (!session) return <p>You are not logged in</p>;
+    console.log(session);
+    // if (status === 'loading') return <p>Loading...</p>;
+    // if (!session) return <p>You are not logged in</p>;
 
 
     const toggleDropdown = () => setIsOpen(!isOpen);
@@ -49,17 +50,17 @@ function ProfileDropdown() {
                 <div className="absolute right-0 w-48 h-fit mt-7 origin-top-right bg-[#070a29] dark:bg-gray-200 border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg overflow-hidden">
                     <div className="h-fit">
                         {!session ? (
-                            <Link to={"/sign"}>
+                            <Link href="/login">
                                 <button className="w-full px-4 py-2 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500">Login</button>
                             </Link>
                         ) : (
                             <>
-                                {session.isAdmin && (
+                                {session?.user.isAdmin && (
                                     <>
-                                        <Link to={'/projectedit'}>
+                                        <Link href={'/projectedit'}>
                                             <button className="w-full px-4 py-2 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500">Project Edit</button>
                                         </Link>
-                                        <Link to={'/blogedit'}>
+                                        <Link href={'/blogedit'}>
                                             <button className="w-full px-4 py-2 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500">Blog Edit</button>
                                         </Link>
                                     </>
