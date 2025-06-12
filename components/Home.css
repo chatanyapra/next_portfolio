@@ -1,8 +1,4 @@
-@import "tailwindcss";
 
-body {
-    background-color: var(--primary-color);  
-}
 .glass-effect {
   background: rgba(255, 255, 255, 0);
   backdrop-filter: saturate(200%) blur(30.5px);
