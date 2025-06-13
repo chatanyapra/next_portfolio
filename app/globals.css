@@ -8,3 +8,37 @@ body {
   backdrop-filter: saturate(200%) blur(30.5px);
   -webkit-backdrop-filter: blur(30.5px);
 }
+.app-main::after{
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -20%;
+  width: 1000px;
+  height: 1000px;
+  background: var(--shape-circle)
+}
+.app-main::before{
+  content: "";
+  position: absolute;
+  top: 650px;
+  left: -27%;
+  width: 900px;
+  height: 1000px;
+  background: var(--shape-circle)
+}
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}

@@ -1,6 +1,30 @@
-
+:root {
+  --primary-color: #070a29;
+  --secondary-color: #a050aa;
+  --shape-circle: radial-gradient(
+    34.98% 34.98% at 50% 50%,
+    #725bda 0,
+    rgba(6, 19, 45, 0) 100%
+  );
+}
 .glass-effect {
   background: rgba(255, 255, 255, 0);
   backdrop-filter: saturate(200%) blur(30.5px);
   -webkit-backdrop-filter: blur(30.5px);
+}
+.text-gradient {
+  background: #a050aa;
+  background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn-gradient {
+  height: 2px;
+  background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+}
+.dark .home-image::before {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+.dark .home-image {
+  background: hsla(0, 0%, 0%, 0.1);
 }
