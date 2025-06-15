@@ -3,6 +3,10 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import About from "../components/About";
 import ProjectsSection from "../components/ProjectsSection";
+import Skills from "@/components/Skills";
+import BlogSection from "@/components/BlogSection";
+import IconsImage from "@/components/ui/IconsImage";
+import MovingBand from "@/components/ui/MovingBand";
 // import ProjectsSection from "@/components/ProjectsSection";
 
 export default function HomePage() {
@@ -14,6 +18,9 @@ export default function HomePage() {
       <div className="w-full z-10 mt-32 max-md:mt-0 mb-10 flex flex-col items-center">
         <About />
         <ProjectsSection />
+        <Skills />
+        <MovingBand />
+        <BlogSection />
       </div>
     </div>
   );

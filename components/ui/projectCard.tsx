@@ -1,10 +1,9 @@
 // components/ProjectCard.tsx
 'use client';
 
-import { motion, useMotionTemplate, useMotionValue, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { useEffect } from 'react';
 
 interface TechTag {
   name: string;
@@ -32,63 +31,28 @@ const ProjectCard = ({
   featured = false,
   index,
 }: ProjectCardProps) => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const background = useMotionTemplate`radial-gradient(180px circle at ${mouseX}px ${mouseY}px, rgba(99, 102, 241, 0.15), transparent 80%)`;
-
-  useEffect(() => {
-    animate(rotateX, 0, { duration: 0.5 });
-    animate(rotateY, 0, { duration: 0.5 });
-  }, [rotateX, rotateY]);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover="hover"
-      onPointerMove={(e) => {
-        const bounds = e.currentTarget.getBoundingClientRect();
-        mouseX.set(e.clientX - bounds.left);
-        mouseY.set(e.clientY - bounds.top);
-        
-        const xCenter = e.clientX - bounds.left - bounds.width / 2;
-        const yCenter = e.clientY - bounds.top - bounds.height / 2;
-        rotateX.set(yCenter / 10);
-        rotateY.set(-xCenter / 10);
-      }}
-      onPointerLeave={() => {
-        rotateX.set(0);
-        rotateY.set(0);
-      }}
-      className="relative rounded-xl overflow-hidden h-full flex flex-col group"
-      style={{
-        perspective: '1000px',
-        transformStyle: 'preserve-3d',
-      }}
+      whileHover={{ y: -8 }}
+      className="relative rounded-[40px] overflow-hidden h-full flex flex-col group"
     >
+      {/* Blurry overlay that appears on hover */}
       <motion.div
-        style={{ background }}
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        className="absolute inset-0 bg-white/30 backdrop-blur-sm z-10 pointer-events-none transition-opacity duration-300"
       />
       
       <motion.div
-        variants={{
-          hover: {
-            y: -10,
-            scale: 1.02,
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          }
-        }}
-        style={{
-          rotateX,
-          rotateY,
-        }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden h-full flex flex-col border border-gray-100 dark:border-gray-700"
+        whileHover={{
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
+        }}
+        transition={{ type: 'spring', stiffness: 300 }}
       >
         <div className="relative h-48 overflow-hidden">
           <motion.img
@@ -96,9 +60,7 @@ const ProjectCard = ({
             alt={title}
             className="w-full h-full object-cover"
             initial={{ scale: 1 }}
-            variants={{
-              hover: { scale: 1.1 }
-            }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
@@ -150,8 +112,7 @@ const ProjectCard = ({
             {tags.map((tag, i) => (
               <motion.span
                 key={i}
-                initial={{ scale: 1 }}
-                whileHover={{ y: -2, scale: 1.05 }}
+                whileHover={{ y: -2 }}
                 transition={{ type: 'spring', stiffness: 500 }}
                 className={`text-xs px-3 py-1 rounded-full bg-${tag.color}-100 dark:bg-${tag.color}-900 text-${tag.color}-800 dark:text-${tag.color}-200`}
               >
