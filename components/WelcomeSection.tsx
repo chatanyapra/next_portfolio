@@ -1,3 +1,5 @@
+
+// import HomeImage from "../assets/personsImages/my-photo.jpg";
 import HomeImage from "../assets/images/frontlook boy.png";
 import commaimage from "../assets/images/comma.png";
 import Iconimage from "../assets/images/bubbleball.gif";

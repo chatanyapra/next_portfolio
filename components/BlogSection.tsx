@@ -61,9 +61,9 @@ const BlogSection = () => {
     };
 
     return (
-        <div className='w-full mx-auto sm:px-6 px-4 lg:px-8 flex flex-col relative blogsection-bg-design mb-16'>
+        <div className='w-full mx-auto sm:px-6 px-4 lg:px-8 flex flex-col relative blogsection-bg-design mb-10'>
             <motion.h2
-                className="text-4xl font-bold text-gray-900 dark:text-white mb-4 ml-8"
+                className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
                 whileInView={{
                     scale: [1, 1.05, 1],
                     transition: { duration: 1 },
@@ -97,7 +97,7 @@ const BlogSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-16 sm:text-end text-center"
+                className="mt-6 sm:text-end text-center"
             >
                 <motion.button
                     whileHover={{ scale: 1.05 }}
