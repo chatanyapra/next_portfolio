@@ -1,32 +1,38 @@
 @import "tailwindcss";
 
 body {
-    background-color: var(--primary-color);  
+  background-color: var(--primary-color);
 }
+
 .transparent-color {
-    background: hsla(0, 0%, 100%, 0.222);
-    border: 1px solid hsla(0, 0%, 100%, .1);
+  background: hsla(0, 0%, 100%, 0.222);
+  border: 1px solid hsla(0, 0%, 100%, .1);
 }
+
 .transparent-colorwhite {
-    background: hsla(0, 0%, 50%, 0.335);
-    border: 1px solid hsla(0, 0%, 47%, 0.195);
+  background: hsla(0, 0%, 50%, 0.335);
+  border: 1px solid hsla(0, 0%, 47%, 0.195);
 }
+
 .transparent-colorblack {
-    background: hsla(0, 0%, 0%, 0.887);
-    border: 1px solid hsla(0, 0%, 0%, 0.958);
+  background: hsla(0, 0%, 0%, 0.887);
+  border: 1px solid hsla(0, 0%, 0%, 0.958);
 }
+
 .text-gradient {
   background: #a050aa;
   background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .glass-effect {
   background: rgba(255, 255, 255, 0);
   backdrop-filter: saturate(200%) blur(30.5px);
   -webkit-backdrop-filter: blur(30.5px);
 }
-.app-main::after{
+
+.app-main::after {
   content: "";
   position: absolute;
   top: -120px;
@@ -35,7 +41,8 @@ body {
   height: 1000px;
   background: var(--shape-circle)
 }
-.app-main::before{
+
+.app-main::before {
   content: "";
   position: absolute;
   top: 650px;
@@ -44,23 +51,46 @@ body {
   height: 1000px;
   background: var(--shape-circle)
 }
-.dark .light-dark-shadow{
+
+.dark .light-dark-shadow {
   box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
 }
+
+@keyframes swing {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+.swing {
+  animation: swing 2.5s infinite ease-in-out;
+  transform-origin: top center;
+}
+
 @media only screen and (min-width: 600px) {
-  .big-screen-light-dark-shadow{
+  .big-screen-light-dark-shadow {
     box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
   }
 }
 
 @theme inline {
   --animate-aurora: aurora 60s linear infinite;
+
   @keyframes aurora {
     from {
       background-position:
         50% 50%,
         50% 50%;
     }
+
     to {
       background-position:
         350% 50%,
