@@ -2,7 +2,11 @@
 import Navbar from "@/components/Navbar";
 import image2 from "../../assets/images/imageface2.png";
 import curveline from "../../assets/images/comma.png";
+import curveline2 from "../../assets/images/background-line.png";
 import { motion } from 'framer-motion';
+import Skills from "@/components/Skills";
+import TechStack from "@/components/TechStack";
+import Footer from "@/components/Footer";
 
 
 const page = () => {
@@ -16,6 +20,9 @@ const page = () => {
                     <h1 className="text-4xl sm:text-5xl pt-4 font-bold">I&apos;m Chatanya</h1>
                     <p className="pt-4 text-gray-300 dark:text-gray-800">
                         I am a full stack developer with a passion for creating beautiful and functional web applications. I chose this as a career because I love to create nice stuff. Creativity is the key. Now I target building some awesome stuff that can help people in their daily life.
+                    </p>
+                    <p className="pt-4 text-gray-300 dark:text-gray-800">
+                        I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
                     </p>
                     <p className="pt-4 text-gray-300 dark:text-gray-800">
                         I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
@@ -43,6 +50,14 @@ const page = () => {
                     />
                 </motion.div>
 
+            </div>
+            <div className="w-full z-10 sm:mt-28 mt-10 px-0">
+                <Skills />
+                <div className="w-full mx-auto relative">
+                    <img src={curveline2.src} className="w-full h-[500px] absolute -top-16" alt="" />
+                    <TechStack />
+                </div>
+                <Footer />
             </div>
         </div>
     )
