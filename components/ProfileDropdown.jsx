@@ -2,15 +2,15 @@
 import { useState, useRef, useEffect } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { signOut } from 'next-auth/react';
-// import ToggleButton from './ToggleButton';
 // import axios from 'axios';
 // import toast from 'react-hot-toast';
-// import { useThemeContext } from '../context/ThemeContext';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import ToggleButton from './ui/ToggleButton';
+import { useThemeContext } from '@/context/ThemeContext';
 
 function ProfileDropdown() {
-    // const { toggleDarkMode } = useThemeContext();
+    const { toggleDarkMode } = useThemeContext();
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
     const { data: session, status } = useSession();
@@ -69,12 +69,12 @@ function ProfileDropdown() {
                             </>
                         )
                         }
-                        {/* <button onClick={toggleDarkMode} className="w-full px-4 pb-1.5 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500 flex justify-between items-center">
+                        <button onClick={toggleDarkMode} className="w-full px-4 pb-1.5 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500 flex justify-between items-center">
                             <div className='pt-1.5'>Mode</div>
                             <div>
                                 <ToggleButton />
                             </div>
-                        </button> */}
+                        </button>
                     </div>
                 </div>
             )}

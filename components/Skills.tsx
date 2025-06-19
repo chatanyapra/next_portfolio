@@ -24,7 +24,7 @@ const Skills = () => {
             }
         };
 
-        fetchLanguages();
+        // fetchLanguages();
     }, []);
 
     return (
