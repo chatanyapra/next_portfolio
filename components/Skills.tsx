@@ -28,10 +28,10 @@ const Skills = () => {
     }, []);
 
     return (
-        <section className="text-white dark:text-black w-full mx-auto">
+        <section className=" w-full mx-auto">
             <div className="w-full mx-auto px-5">
                 <motion.h2
-                    className="text-4xl font-bold text-gray-900 dark:text-white mb-4 ml-3"
+                    className="text-4xl font-bold mb-4 ml-3"
                     whileInView={{
                         scale: [1, 1.05, 1],
                         transition: { duration: 1 },
@@ -46,7 +46,7 @@ const Skills = () => {
                 </motion.h2>
 
                 <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3">I Develop Skills Regularly</h3>
-                <p className="text-white dark:text-black mb-8 ml-3">
+                <p className=" mb-8 ml-3">
                     I continuously refine my skills to build modern, efficient, and high-performing web applications.
                 </p>
 

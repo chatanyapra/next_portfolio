@@ -73,7 +73,7 @@ const BlogCard = ({ blog, src, count }: BlogCardProps) => {
         </div>
 
         {/* Blog Meta */}
-        <div className="w-[18%] h-[52%] absolute right-0 top-0 rounded-3xl transparent-colorwhite text-white dark:text-black flex flex-col justify-around text-center py-2">
+        <div className="w-[18%] h-[52%] absolute right-0 top-0 rounded-3xl transparent-colorwhite flex flex-col justify-around text-center py-2">
           <Link href={`/${src}/${blog._id}`}>
             <FaArrowUpRightFromSquare className="text-3xl max-sm:text-2xl cursor-pointer mx-auto" />
           </Link>

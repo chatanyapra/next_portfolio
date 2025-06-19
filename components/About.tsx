@@ -43,9 +43,9 @@ const About = () => {
                         style={{ borderRadius: "100px" }}
                     ></div>
                 </motion.div>
-                <div className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4 text-white dark:text-black group">
+                <div className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4 group">
                     <motion.h2
-                        className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+                        className="text-4xl font-bold text-white dark:text-gray-900 mb-4"
                         whileInView={{
                             scale: [1, 1.05, 1],
                             transition: { duration: 1 },
@@ -58,7 +58,7 @@ const About = () => {
                             <i className="mb-2">About</i>
                         </div>
                     </motion.h2>
-                    <p className="text-xl">
+                    <p className="text-[18px] max-md:text-[16px] ">
                         I’m Chatanya, a Full Stack Developer passionate about crafting modern,
                         scalable, and high-performing web applications. I chose this career
                         because I love turning ideas into functional and visually appealing

@@ -9,26 +9,23 @@
   --secondary-color: #070a29;
   --shape-circle: radial-gradient(34.98% 34.98% at 50% 50%, #725bda 0, rgba(6, 19, 45, 0) 100%);
 }
-/* @font-face {
+@font-face {
   font-family: 'CustomFont';
-  src: url('./assets/SF-Pro.ttf') format('truetype');
-  src: url('./assets/conthrax-sb.ttf') format('truetype');
+  src: url('../assets/SF-Pro.ttf') format('truetype');
+  src: url('../assets/conthrax-sb.ttf') format('truetype');
   font-weight: bolder;
   font-style: normal;
-} */
+}
 
 body{
   margin: 0;
   padding: 0;
-  background-color: var(--primary-color);  
   /* font-family: 'Varela', sans-serif; */
   /* font-family:'Varela Round', sans-serif; */
   /* font-family: 'Mona Sans', sans-serif */
   /* font-family: 'Shippori Antique B1', sans-serif; */
   font-family: 'CustomFont' monospace;
-
-
-
+  /* color: #000; */
 }
 p {
   font-family: 'Metrophobic', sans-serif;
@@ -39,13 +36,9 @@ p {
 .custom-para-font{
   font-family: 'Metrophobic', sans-serif;
 }
-.dark body{
-  background-color: white;  
-}
 .navbar-color{
   background-color: var(--primary-color);
 }
-
 .app-main::after{
   content: "";
   position: absolute;
@@ -99,7 +92,7 @@ p {
 }
 
 /* Dark mode styles */
-.dark .swal-popup-dark {
+html.dark .swal-popup-dark {
   background-color: #2d3748; /* bg-gray-800 */
   border-color: #4a5568; /* border-gray-700 */
   color: white;
@@ -126,14 +119,11 @@ p {
     transform: translateX(-400%);
   }
 }
-.dark .light-dark-shadow{
-  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
-}
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   .big-screen-light-dark-shadow{
     box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
   }
-}
+} */
 .marquee2 {
   animation: marquee2 25s linear infinite;
 }
@@ -211,8 +201,11 @@ p {
   background: var(--shape-circle)
 }
 
-.dark .light-dark-shadow {
+.light-dark-shadow {
   box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
+}
+html.dark .light-dark-shadow {
+  box-shadow: rgba(255, 255, 255, 0.14) 0px 2px 10px;
 }
 
 @keyframes swing {
@@ -234,11 +227,11 @@ p {
   transform-origin: top center;
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
   .big-screen-light-dark-shadow {
     box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
   }
-}
+} */
 
 @theme inline {
   --animate-aurora: aurora 60s linear infinite;

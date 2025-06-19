@@ -1,9 +1,10 @@
+'use client';
 // components/ToggleButton.tsx
-import { useThemeContext } from "@/context/ThemeContext";
 import "./ToggleButton.css";
+import { useTheme } from "next-themes";
 
 const ToggleButton: React.FC = () => {
-  const { isDarkMode /*, toggleDarkMode */ } = useThemeContext();
+  const { theme } = useTheme();
 
   return (
     <div className="container">
@@ -15,9 +16,7 @@ const ToggleButton: React.FC = () => {
           type="checkbox"
           className="input-toggle"
           id="switch"
-          checked={isDarkMode}
-          // Uncomment this if you want to enable toggle
-          // onChange={toggleDarkMode}
+          checked={theme === "dark"}
         />
 
         <div className="icon-toggle icon--moon">

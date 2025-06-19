@@ -22,9 +22,9 @@
   height: 2px;
   background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
 }
-.dark .home-image::before {
+html.dark .home-image::before {
   background: hsla(0, 0%, 100%, 0.1);
 }
-.dark .home-image {
+html.dark .home-image {
   background: hsla(0, 0%, 0%, 0.1);
 }

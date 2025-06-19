@@ -4,7 +4,7 @@ import gmailImage from "../assets/IconsImage/gmail.png"
 import "./Footer.css"
 const Footer = () => {
     return (
-        <div className='w-full min-h-60 relative flex max-md:flex-col justify-between items-center px-10 max-sm:px-5 max-md:mt-16 max-md:pb-14 text-white dark:text-black mb-20'>
+        <div className='w-full min-h-60 relative flex max-md:flex-col justify-between items-center px-10 max-sm:px-5 max-md:mt-16 max-md:pb-14 mb-20'>
             <img src={footerImage2.src} alt="" className='absolute top-0 -left-20 -right-6 h-5/6 w-full -z-20 brightness-50' />
             <img src={footerImage3.src} alt="" className='absolute top-0 right-0 w-36 -z-10' />
             <div className=' max-sm:w-full max-sm:text-center  '>
