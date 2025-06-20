@@ -1,9 +1,23 @@
-// models/Blog.js
-import mongoose from 'mongoose';
+// models/BlogModel.ts
+import mongoose, { Schema, models, model, Document } from 'mongoose';
 
-const { Schema, model } = mongoose;
+interface Image {
+  url: string;
+  alt?: string;
+}
 
-const blogSchema = new Schema(
+export interface IBlog extends Document {
+  userId: mongoose.Types.ObjectId;
+  title: string;
+  shortDescription: string;
+  longDescription: string;
+  images: Image[];
+  isDeleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const blogSchema = new Schema<IBlog>(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -35,10 +49,6 @@ const blogSchema = new Schema(
         },
       },
     ],
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
     isDeleted: {
       type: Boolean,
       default: false,
@@ -49,6 +59,6 @@ const blogSchema = new Schema(
   }
 );
 
-const Blog = model('Blog', blogSchema);
+const Blog = models.Blog || model<IBlog>('Blog', blogSchema);
 
 export default Blog;
