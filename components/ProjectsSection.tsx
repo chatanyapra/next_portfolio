@@ -4,66 +4,69 @@
 import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import ProjectCard from "./ui/projectCard";
+import { useDataContext } from "@/context/DataContext";
+import { title } from "process";
 
 const ProjectsSection = () => {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-      tags: [
-        { name: "React", color: "blue" },
-        { name: "Node.js", color: "purple" },
-        { name: "MongoDB", color: "green" },
-      ],
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-      tags: [
-        { name: "React", color: "blue" },
-        { name: "Node.js", color: "purple" },
-        { name: "MongoDB", color: "green" },
-      ],
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-      tags: [
-        { name: "React", color: "blue" },
-        { name: "Node.js", color: "purple" },
-        { name: "MongoDB", color: "green" },
-      ],
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-      tags: [
-        { name: "React", color: "blue" },
-        { name: "Node.js", color: "purple" },
-        { name: "MongoDB", color: "green" },
-      ],
-      githubUrl: "#",
-      liveUrl: "#",
-      featured: true,
-    },
-  ];
+  const { projects } = useDataContext();
+  // const projects = [
+  //   {
+  //     title: "E-Commerce Platform",
+  //     description:
+  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
+  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+  //     tags: [
+  //       { name: "React", color: "blue" },
+  //       { name: "Node.js", color: "purple" },
+  //       { name: "MongoDB", color: "green" },
+  //     ],
+  //     githubUrl: "#",
+  //     liveUrl: "#",
+  //     featured: true,
+  //   },
+  //   {
+  //     title: "E-Commerce Platform",
+  //     description:
+  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
+  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+  //     tags: [
+  //       { name: "React", color: "blue" },
+  //       { name: "Node.js", color: "purple" },
+  //       { name: "MongoDB", color: "green" },
+  //     ],
+  //     githubUrl: "#",
+  //     liveUrl: "#",
+  //     featured: true,
+  //   },
+  //   {
+  //     title: "E-Commerce Platform",
+  //     description:
+  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
+  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+  //     tags: [
+  //       { name: "React", color: "blue" },
+  //       { name: "Node.js", color: "purple" },
+  //       { name: "MongoDB", color: "green" },
+  //     ],
+  //     githubUrl: "#",
+  //     liveUrl: "#",
+  //     featured: true,
+  //   },
+  //   {
+  //     title: "E-Commerce Platform",
+  //     description:
+  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
+  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+  //     tags: [
+  //       { name: "React", color: "blue" },
+  //       { name: "Node.js", color: "purple" },
+  //       { name: "MongoDB", color: "green" },
+  //     ],
+  //     githubUrl: "#",
+  //     liveUrl: "#",
+  //     featured: true,
+  //   },
+  // ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -113,11 +116,25 @@ const ProjectsSection = () => {
         viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        {projects.map((project, index) => (
+        {projects.slice(0, 3).map((project, index) => (
+          <motion.div key={index} variants={item}>
+            <ProjectCard
+              index={index}
+              _id={project._id}
+              title={project.title}
+              description={project.shortDescription}
+              images={project.images}
+              techStack={project.techStack}
+              link={project.link}
+            />
+          </motion.div>
+        ))}
+
+        {/* {projects.map((project, index) => (
           <motion.div key={index} variants={item}>
             <ProjectCard {...project} index={index} />
           </motion.div>
-        ))}
+        ))} */}
       </motion.div>
 
       <motion.div

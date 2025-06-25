@@ -5,31 +5,54 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-interface TechTag {
-  name: string;
-  color: string;
+type Image = {
+  url: string,
+  alt: string,
+  _id: string
 }
+type TailwindColor =
+  | 'red'
+  | 'blue'
+  | 'green'
+  | 'yellow'
+  | 'purple'
+  | 'indigo'
+  | 'rose'
+  | 'gray'
+  | 'orange'
+  | 'teal'
+  | 'cyan'
+  | 'emerald'
+  | 'fuchsia'
+  | 'sky';
+const colorClassMap: Record<string, string> = {
+  html: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+  css: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+  bootstrap: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+  javascript: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+  php: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
+  mysql: 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200',
+  jquery: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
+  laravel: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+};
 
-interface ProjectCardProps {
+type ProjectCardProps = {
+  _id: string;
   title: string;
-  description: string;
-  imageUrl: string;
-  tags: TechTag[];
-  githubUrl?: string;
-  liveUrl?: string;
-  featured?: boolean;
-  index: number;
-}
-
+  description: string,
+  images: Image[],
+  techStack: { name: string; _id: string, color?: TailwindColor; }[],
+  link: string,
+  index: number
+};
 const ProjectCard = ({
   title,
   description,
-  imageUrl,
-  tags,
-  githubUrl,
-  liveUrl,
-  featured = false,
+  images,
+  techStack,
   index,
+  link,
+  _id
 }: ProjectCardProps) => {
   return (
     <motion.div
@@ -56,21 +79,21 @@ const ProjectCard = ({
       >
         <div className="relative h-48 overflow-hidden">
           <motion.img
-            src={imageUrl}
-            alt={title}
+            src={images[0]?.url}
+            alt={images[0]?.alt || title}
             className="w-full h-full object-cover"
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-          {featured && (
+          {/* {featured && (
             <div className="absolute bottom-4 left-4">
               <span className="bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded-full">
                 Featured
               </span>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="p-6 flex flex-col flex-grow">
@@ -79,8 +102,8 @@ const ProjectCard = ({
               {title}
             </h3>
             <div className="flex space-x-2">
-              {githubUrl && (
-                <Link href={githubUrl} target="_blank" aria-label="GitHub">
+              {link && (
+                <Link href={link} target="_blank" aria-label="GitHub">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -90,7 +113,7 @@ const ProjectCard = ({
                   </motion.div>
                 </Link>
               )}
-              {liveUrl && (
+              {/* {liveUrl && (
                 <Link href={liveUrl} target="_blank" aria-label="Live Demo">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
@@ -100,25 +123,31 @@ const ProjectCard = ({
                     <FaExternalLinkAlt size={16} />
                   </motion.div>
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow max-sm:text-sm">
             {description}
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {tags.map((tag, i) => (
-              <motion.span
-                key={i}
-                whileHover={{ y: -2 }}
-                transition={{ type: 'spring', stiffness: 500 }}
-                className={`text-xs px-3 py-1 rounded-full bg-${tag.color}-100 dark:bg-${tag.color}-900 text-${tag.color}-800 dark:text-${tag.color}-200`}
-              >
-                {tag.name}
-              </motion.span>
-            ))}
+            {techStack.slice(0,6).map((tag, i) => {
+              const key = tag.name.toLowerCase().replace(/\s+/g, '');
+              const className = colorClassMap[key] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
+
+              return (
+                <motion.span
+                  key={i}
+                  whileHover={{ y: -2 }}
+                  transition={{ type: 'spring', stiffness: 500 }}
+                  className={`text-xs px-3 py-1 rounded-full ${className}`}
+                >
+                  {tag.name}
+                </motion.span>
+              );
+            })}
+
           </div>
         </div>
       </motion.div>

@@ -14,12 +14,20 @@ type Blog = {
   title: string;
   [key: string]: any;
 };
-
+type Image= {
+  url: string,
+  alt: string,
+  _id: string
+}
 type Project = {
-  // Define your project structure
   _id: string;
   title: string;
-  [key: string]: any;
+  shortDescription: string,
+  images: Image[],
+  techStack: {name: string; _id: string}[],
+  link: string,
+  isDeleted: boolean,
+
 };
 
 type DataContextType = {
