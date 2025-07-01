@@ -127,7 +127,7 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow max-sm:text-sm">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm">
             {description}
           </p>
 
