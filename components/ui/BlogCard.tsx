@@ -61,11 +61,11 @@ const BlogCard = ({ blog, src, count }: BlogCardProps) => {
                 onClick={() => toggleImage(index)}
                 className="w-10 h-10 cursor-pointer bg-gray-100 rounded-full outline-gray-500 outline-dashed outline-2 outline-offset-2 overflow-hidden"
               >
-                <img 
-                  src={image} 
-                  className="toggleImage w-full h-full object-fill" 
-                  alt={`Thumbnail ${index + 1}`} 
-                  loading="lazy" 
+                <img
+                  src={image}
+                  className="toggleImage w-full h-full object-fill"
+                  alt={`Thumbnail ${index + 1}`}
+                  loading="lazy"
                 />
               </div>
             )

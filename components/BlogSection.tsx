@@ -5,59 +5,65 @@ import Link from 'next/link';
 import BlogCard from './ui/BlogCard';
 import "./About.css";
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { useDataContext } from '@/context/DataContext';
+import Loader from './ui/Loader';
 
 const BlogSection = () => {
+    const { blogs, loading } = useDataContext();
     // Raw data instead of context API
-    const blogs = [
-        {
-            _id: '1',
-            title: 'Getting Started with Next.js',
-            shortDescription: 'Learn how to build modern web applications with Next.js',
-            images: [
-                { url: '/images/blog1.jpg' },
-                { url: '/images/blog2.jpg' },
-                { url: '/images/blog3.jpg' }
-            ]
+    // const blogs = [
+    //     {
+    //         _id: '1',
+    //         title: 'Getting Started with Next.js',
+    //         shortDescription: 'Learn how to build modern web applications with Next.js',
+    //         images: [
+    //             { url: '/images/blog1.jpg' },
+    //             { url: '/images/blog2.jpg' },
+    //             { url: '/images/blog3.jpg' }
+    //         ]
+    //     },
+    //     {
+    //         _id: '2',
+    //         title: 'TypeScript Best Practices',
+    //         shortDescription: 'Essential TypeScript patterns for better code',
+    //         images: [
+    //             { url: '/images/blog2.jpg' },
+    //             { url: '/images/blog1.jpg' }
+    //         ]
+    //     },
+    //     {
+    //         _id: '3',
+    //         title: 'Framer Motion Animations',
+    //         shortDescription: 'Create beautiful animations in React with Framer Motion',
+    //         images: [
+    //             { url: '/images/blog3.jpg' },
+    //             { url: '/images/blog1.jpg' }
+    //         ]
+    //     },
+    //     {
+    //         _id: '4',
+    //         title: 'Responsive Design Techniques',
+    //         shortDescription: 'Modern approaches to responsive web design',
+    //         images: [
+    //             { url: '/images/blog4.jpg' },
+    //             { url: '/images/blog2.jpg' }
+    //         ]
+    //     }
+    // ];
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3,
+            },
         },
-        {
-            _id: '2',
-            title: 'TypeScript Best Practices',
-            shortDescription: 'Essential TypeScript patterns for better code',
-            images: [
-                { url: '/images/blog2.jpg' },
-                { url: '/images/blog1.jpg' }
-            ]
-        },
-        {
-            _id: '3',
-            title: 'Framer Motion Animations',
-            shortDescription: 'Create beautiful animations in React with Framer Motion',
-            images: [
-                { url: '/images/blog3.jpg' },
-                { url: '/images/blog1.jpg' }
-            ]
-        },
-        {
-            _id: '4',
-            title: 'Responsive Design Techniques',
-            shortDescription: 'Modern approaches to responsive web design',
-            images: [
-                { url: '/images/blog4.jpg' },
-                { url: '/images/blog2.jpg' }
-            ]
-        }
-    ];
+    };
 
     const cardVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
+        show: { opacity: 1, y: 0 }
     };
 
     return (
@@ -76,21 +82,29 @@ const BlogSection = () => {
                     <i className="mb-2">Blogs</i>
                 </div>
             </motion.h2>
+            {loading ? (
+                <div>
+                    <Loader />
+                </div>
+            ) : (
+                <motion.div
+                    variants={container}
+                    initial={"hidden"}
+                    whileInView={"show"}
+                    viewport={{ once: true, margin: "-50px" }}
+                    className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1'>
+                    {blogs.slice(0, 2).map((blog, index) => (
+                        <motion.div
+                            key={blog._id}
+                            variants={cardVariants}
+                            className='blogCard'
+                        >
+                            <BlogCard blog={blog} src={"blogs"} count={index + 1} />
+                        </motion.div>
+                    ))}
 
-            <div className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1'>
-                {blogs.slice(0, 4).map((blog, index) => (
-                    <motion.div
-                        key={blog._id}
-                        variants={{ cardVariants }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-                        className='blogCard'
-                    >
-                        <BlogCard blog={blog} src={"blogs"} count={index + 1} />
-                    </motion.div>
-                ))}
-            </div>
+                </motion.div>
+            )}
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

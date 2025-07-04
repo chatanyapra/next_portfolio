@@ -6,9 +6,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import ProjectCard from "./ui/projectCard";
 import { useDataContext } from "@/context/DataContext";
 import { title } from "process";
+import Loader from "./ui/Loader";
 
 const ProjectsSection = () => {
-  const { projects } = useDataContext();
+  const { projects, loading } = useDataContext();
   // const projects = [
   //   {
   //     title: "E-Commerce Platform",
@@ -109,33 +110,33 @@ const ProjectsSection = () => {
         </motion.h2>
       </motion.div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        {projects.slice(0, 3).map((project, index) => (
-          <motion.div key={index} variants={item}>
-            <ProjectCard
-              index={index}
-              _id={project._id}
-              title={project.title}
-              description={project.shortDescription}
-              images={project.images}
-              techStack={project.techStack}
-              link={project.link}
-            />
-          </motion.div>
-        ))}
-
-        {/* {projects.map((project, index) => (
-          <motion.div key={index} variants={item}>
-            <ProjectCard {...project} index={index} />
-          </motion.div>
-        ))} */}
-      </motion.div>
+      {loading ? (
+        <div className="w-full m-auto">
+          <Loader />
+        </div>
+      ) : (
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.slice(0, 3).map((project, index) => (
+            <motion.div key={index} variants={item}>
+              <ProjectCard
+                index={index}
+                _id={project._id}
+                title={project.title}
+                description={project.shortDescription}
+                images={project.images}
+                techStack={project.techStack}
+                link={project.link}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

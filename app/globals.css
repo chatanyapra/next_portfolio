@@ -9,6 +9,7 @@
   --secondary-color: #070a29;
   --shape-circle: radial-gradient(34.98% 34.98% at 50% 50%, #725bda 0, rgba(6, 19, 45, 0) 100%);
 }
+
 @font-face {
   font-family: 'CustomFont';
   src: url('../assets/SF-Pro.ttf') format('truetype');
@@ -17,7 +18,7 @@
   font-style: normal;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
   /* font-family: 'Varela', sans-serif; */
@@ -27,19 +28,24 @@ body{
   font-family: 'CustomFont' monospace;
   /* color: #000; */
 }
+
 p {
   font-family: 'Metrophobic', sans-serif;
 }
-.custom-head-font{
+
+.custom-head-font {
   font-family: 'Solway', serif
 }
-.custom-para-font{
+
+.custom-para-font {
   font-family: 'Metrophobic', sans-serif;
 }
-.navbar-color{
+
+.navbar-color {
   background-color: var(--primary-color);
 }
-.app-main::after{
+
+.app-main::after {
   content: "";
   position: absolute;
   top: -120px;
@@ -48,7 +54,8 @@ p {
   height: 1000px;
   background: var(--shape-circle)
 }
-.app-main::before{
+
+.app-main::before {
   content: "";
   position: absolute;
   top: 650px;
@@ -57,36 +64,46 @@ p {
   height: 1000px;
   background: var(--shape-circle)
 }
+
 .custom-scrollbar {
   /* Applying custom scrollbar styles */
-  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-y: scroll;
+  /* Enable vertical scrolling */
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px; /* Slimmer scrollbar */
+  width: 6px;
+  /* Slimmer scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1); /* Light blur effect for track */
+  background: rgba(0, 0, 0, 0.1);
+  /* Light blur effect for track */
   border-radius: 8px;
-  backdrop-filter: blur(4px); /* Apply blur effect on track */
+  backdrop-filter: blur(4px);
+  /* Apply blur effect on track */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3); /* Darker blur effect for thumb */
+  background: rgba(0, 0, 0, 0.3);
+  /* Darker blur effect for thumb */
   border-radius: 10px;
-  border: 4px solid rgba(0, 0, 0, 0.1); /* Add a border to make thumb stand out */
-  backdrop-filter: blur(6px); /* Apply blur effect on thumb */
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  /* Add a border to make thumb stand out */
+  backdrop-filter: blur(6px);
+  /* Apply blur effect on thumb */
   transition: background 0.3s ease;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.5); /* Change thumb color on hover */
+  background: rgba(0, 0, 0, 0.5);
+  /* Change thumb color on hover */
 }
+
 /* Light mode styles */
 .swal-popup-light {
   background-color: white;
-  border-color: #d1d5db; 
+  border-color: #d1d5db;
   color: #1f2937;
   border-radius: 0.75rem;
 }
@@ -103,6 +120,7 @@ html.dark .swal-popup-dark {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-400%);
   }
@@ -111,14 +129,17 @@ html.dark .swal-popup-dark {
 .marquee {
   animation: marquee 25s linear infinite;
 }
+
 @keyframes marquee2 {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-400%);
   }
 }
+
 /* @media only screen and (min-width: 600px) {
   .big-screen-light-dark-shadow{
     box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 10px;
@@ -130,22 +151,25 @@ html.dark .swal-popup-dark {
 
 @keyframes scroll {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
+
   100% {
-      transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 
 .animate-scroll {
   animation: scroll 20s linear infinite;
 }
+
 @keyframes scroll-2 {
   100% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
+
   0% {
-      transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 

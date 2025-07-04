@@ -17,14 +17,14 @@ const page = () => {
             <div className=" w-full flex justify-evenly max-md:items-center z-10 md:mt-32 max-md:flex-col">
                 <div className="w-[52%] max-md:w-[98%] min-h-[450px] overflow-hidden z-10 max-md:h-auto md:rounded-[50px] rounded-t-[50px] p-6 border-b-0 relative" >
                     <h1 className="text-4xl sm:text-5xl mt-4 font-bold">Hello,</h1>
-                    <h1 className="text-4xl sm:text-5xl pt-4 font-bold">I&apos;m Chatanya</h1>
-                    <p className="pt-4 text-gray-800 dark:text-gray-100">
+                    <h1 className="text-4xl sm:text-5xl pt-4 font-bold">I&apos;m <span className="text-gradient">Chatanya</span></h1>
+                    <p className="pt-4">
                         I am a full stack developer with a passion for creating beautiful and functional web applications. I chose this as a career because I love to create nice stuff. Creativity is the key. Now I target building some awesome stuff that can help people in their daily life.
                     </p>
-                    <p className="pt-4 text-gray-800 dark:text-gray-100">
+                    <p className="pt-4">
                         I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
                     </p>
-                    <p className="pt-4 text-gray-800 dark:text-gray-100">
+                    <p className="pt-4">
                         I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
                     </p>
                 </div>
