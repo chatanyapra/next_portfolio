@@ -12,9 +12,12 @@
   border-radius: 50%;
   position: absolute;
   background: radial-gradient(circle at 50% 120%, rgba(129, 232, 246, 0.6), rgba(118, 222, 239, 0.4) 10%, rgba(5, 81, 148, 0.3) 80%, rgba(6, 39, 69, 0.3) 100%);
-  backdrop-filter: blur(10px); /* Blur effect for the glass look */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for glass edges */
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft light shadow */
+  backdrop-filter: blur(10px);
+  /* Blur effect for the glass look */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Light border for glass edges */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2);
+  /* Soft light shadow */
 }
 
 .ball-moving:before {
@@ -26,7 +29,8 @@
   height: 90%;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 0px, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 58%);
-  filter: blur(20px); /* Enhanced blur for more glass-like reflection */
+  filter: blur(20px);
+  /* Enhanced blur for more glass-like reflection */
   z-index: 2;
 }
 
@@ -38,6 +42,7 @@
   transform: rotateX(90deg) translateZ(-150px);
   z-index: -1;
 }
+
 .ball-1 {
   background: radial-gradient(circle at 30% 30%, rgb(4, 247, 255), rgba(14, 255, 235, 0.452));
 }
@@ -64,17 +69,11 @@
   -webkit-backdrop-filter: blur(30.5px);
 }
 
-.text-gradient {
-  background: #A050AA;
-  background: linear-gradient(to bottom, #a34bae 12%, #3DB7DC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .text-main-card {
   background-color: var(--bg-color);
   border-radius: 1.25rem;
 }
+
 .loader-text-home {
   font-weight: 500;
   font-size: 24px;
@@ -91,6 +90,7 @@
   overflow: hidden;
   position: relative;
 }
+
 .words::after {
   content: "";
   position: absolute;
@@ -106,12 +106,6 @@
   animation: spin_4991 7s 5s infinite;
 }
 
-.text-gradient {
-  background: #a050aa;
-  background: linear-gradient(to bottom, #a34bae 12%, #3db7dc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 @keyframes spin_4991 {
   12.5% {
     -webkit-transform: translateY(-104%);

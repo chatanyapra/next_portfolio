@@ -5,69 +5,10 @@ import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import ProjectCard from "./ui/projectCard";
 import { useDataContext } from "@/context/DataContext";
-import { title } from "process";
 import Loader from "./ui/Loader";
 
 const ProjectsSection = () => {
   const { projects, loading } = useDataContext();
-  // const projects = [
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-  //     tags: [
-  //       { name: "React", color: "blue" },
-  //       { name: "Node.js", color: "purple" },
-  //       { name: "MongoDB", color: "green" },
-  //     ],
-  //     githubUrl: "#",
-  //     liveUrl: "#",
-  //     featured: true,
-  //   },
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-  //     tags: [
-  //       { name: "React", color: "blue" },
-  //       { name: "Node.js", color: "purple" },
-  //       { name: "MongoDB", color: "green" },
-  //     ],
-  //     githubUrl: "#",
-  //     liveUrl: "#",
-  //     featured: true,
-  //   },
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-  //     tags: [
-  //       { name: "React", color: "blue" },
-  //       { name: "Node.js", color: "purple" },
-  //       { name: "MongoDB", color: "green" },
-  //     ],
-  //     githubUrl: "#",
-  //     liveUrl: "#",
-  //     featured: true,
-  //   },
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-featured e-commerce platform with payment integration, inventory management, and analytics dashboard.",
-  //     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-  //     tags: [
-  //       { name: "React", color: "blue" },
-  //       { name: "Node.js", color: "purple" },
-  //       { name: "MongoDB", color: "green" },
-  //     ],
-  //     githubUrl: "#",
-  //     liveUrl: "#",
-  //     featured: true,
-  //   },
-  // ];
 
   const container = {
     hidden: { opacity: 0 },

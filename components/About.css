@@ -2,16 +2,26 @@
     background: hsla(0, 0%, 100%, 0.222);
     border: 1px solid hsla(0, 0%, 100%, .1);
 }
+
 .transparent-colorwhite {
     background: hsla(0, 0%, 50%, 0.335);
     border: 1px solid hsla(0, 0%, 47%, 0.195);
 }
+
 .transparent-colorblack {
     background: hsla(0, 0%, 0%, 0.887);
     border: 1px solid hsla(0, 0%, 0%, 0.958);
 }
+
 .bg-gradient-radial {
     background: radial-gradient(circle, #a34bae 20%, #3db7dc 100%);
+}
+
+.text-gradient {
+    background: #a050aa;
+    background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .about-image {
@@ -28,6 +38,7 @@
     background-repeat: no-repeat;
     background-size: 115% 100%;
 }
+
 .about-image::before {
     content: "";
     position: absolute;
@@ -92,6 +103,7 @@
     z-index: 1;
     animation: moving-amin-person 2s linear 2s infinite alternate;
 }
+
 @keyframes moving-amin-fly {
     from {
         bottom: -20px;

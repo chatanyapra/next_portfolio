@@ -192,12 +192,13 @@ html.dark .swal-popup-dark {
   border: 1px solid hsla(0, 0%, 0%, 0.958);
 }
 
+/* 
 .text-gradient {
   background: #a050aa;
   background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} */
 
 .glass-effect {
   background: rgba(255, 255, 255, 0);

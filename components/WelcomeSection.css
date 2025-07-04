@@ -1,12 +1,11 @@
 :root {
   --primary-color: #070a29;
   --secondary-color: #a050aa;
-  --shape-circle: radial-gradient(
-    34.98% 34.98% at 50% 50%,
-    #725bda 0,
-    rgba(6, 19, 45, 0) 100%
-  );
+  --shape-circle: radial-gradient(34.98% 34.98% at 50% 50%,
+      #725bda 0,
+      rgba(6, 19, 45, 0) 100%);
 }
+
 .home-image {
   position: relative;
   /* overflow: hidden; */
@@ -15,17 +14,21 @@
   border-radius: 100px;
   /* animation: example 4s linear 2s infinite alternate; */
 }
+
 .dark .home-image::before {
   background: hsla(0, 0%, 100%, 0.1);
 }
+
 .dark .home-image {
   background: hsla(0, 0%, 0%, 0.1);
 }
+
 .moving-img {
   position: absolute;
   bottom: 20px;
   animation: moving-img 3s ease-in-out 2s infinite alternate;
 }
+
 .moving-img-2 {
   position: absolute;
   right: -135px;
@@ -34,28 +37,27 @@
   height: 50px;
   animation: moving-img-2 3s ease-in-out 2s infinite alternate;
 }
-.text-gradient {
-  background: #a050aa;
-  background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
 .btn-gradient {
   height: 2px;
   background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
 }
+
 @keyframes moving-img {
   from {
     bottom: 20px;
   }
+
   to {
     bottom: 60px;
   }
 }
+
 @keyframes moving-img-2 {
   from {
     top: 30px;
   }
+
   to {
     top: 50px;
   }
