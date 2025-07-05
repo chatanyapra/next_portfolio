@@ -1,10 +1,10 @@
 import WelcomeSection from './WelcomeSection'
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import "./Home.css"
-// import { AuroraBackground } from './ui/aurora-background'
-import BouncingBall from './ui/bouncingBall'
-import TypewriterEffect from './ui/Typewriter'
+import dynamic from 'next/dynamic'
+import TypewriterEffect from './ui/Typewriter';
 
+const BouncingBall = dynamic(() => import("@/components/ui/bouncingBall"));
 const Home = () => {
     return (
         <div>

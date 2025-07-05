@@ -31,15 +31,15 @@ const Skills = () => {
         <section className=" w-full mx-auto">
             <div className="w-full mx-auto px-5">
                 <motion.h2
-                    className="text-4xl font-bold mb-4 ml-3"
+                    className="text-4xl font-bold mb-4 ml-5"
                     whileInView={{
                         scale: [1, 1.05, 1],
                         transition: { duration: 1 },
                     }}
                 >
-                    <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl rounded-2xl w-fit mb-4 text-gradient h-fit flex justify-center items-center ml-6">
+                    <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl font-bold rounded-2xl w-fit mb-4 text-gradient flex justify-center items-center">
                         <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
-                            <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform hover:scale-125 duration-300 ease-in-out"></div>
+                            <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform group-hover:scale-125 duration-300 ease-in-out"></div>
                         </div>
                         <i className="mb-2">Skills</i>
                     </div>

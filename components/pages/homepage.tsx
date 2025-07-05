@@ -1,11 +1,12 @@
 "use client"
-import Home from "@/components/Home";
-import Skills from "@/components/Skills";
-import BlogSection from "@/components/BlogSection";
-import MovingBand from "@/components/ui/MovingBand";
-import ProjectsSection from "../ProjectsSection";
-import About from "../About";
-// import ProjectsSection from "@/components/ProjectsSection";
+import dynamic from "next/dynamic";
+
+const Skills = dynamic(() => import("../skills-stack/Skills"));
+const About = dynamic(() => import("../About"));
+const ProjectsSection = dynamic(() => import("../ProjectsSection"));
+const MovingBand = dynamic(() => import("@/components/ui/MovingBand"));
+const BlogSection = dynamic(() => import("@/components/BlogSection"));
+const Home = dynamic(() => import("@/components/Home"));
 
 export default function HomePage() {
     return (
