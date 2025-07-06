@@ -1,18 +1,19 @@
-import footerImage2 from "../assets/images/mark-header.png"
-import footerImage3 from "../assets/images/violet-ball-blur.png"
-import gmailImage from "../assets/IconsImage/gmail.png"
 import "./Footer.css"
 const Footer = () => {
+    const footerImage3 = "/assets/images/violet-ball-blur.png"
+    const footerImage2 = "/assets/images/mark-header.png"
+    const gmailImage = "/assets/IconsImage/gmail.png"
+
     return (
         <div className='w-full min-h-60 relative flex max-md:flex-col justify-between items-center px-10 max-sm:px-5 max-md:mt-16 max-md:pb-14 mb-20'>
-            <img src={footerImage2.src} alt="" className='absolute top-0 -left-20 -right-6 h-5/6 w-full -z-20 brightness-50' />
-            <img src={footerImage3.src} alt="" className='absolute top-0 right-0 w-36 -z-10' />
+            <img src={footerImage2} alt="" className='absolute top-0 -left-20 -right-6 h-5/6 w-full -z-20 brightness-50' />
+            <img src={footerImage3} alt="" className='absolute top-0 right-0 w-36 -z-10' />
             <div className=' max-sm:w-full max-sm:text-center  '>
                 <div className='text-3xl max-sm:text-2xl'>
                     Thanks for visiting!
                 </div>
                 <div className='text-base font-extralight max-sm:text-sm'>
-                ©2025 Designs by Chatanya Pratap.
+                    ©2025 Designs by Chatanya Pratap.
                 </div>
             </div>
             <div className="text-xl flex flex-col max-md:text-sm max-sm:pb-10   max-md:mb-3">
@@ -20,7 +21,7 @@ const Footer = () => {
                     connect with me via Mail?
                 </span>
                 <a href='https://mail.google.com/' className="text-blue-400 flex cursor-pointer animate-pulse hover:text-blue-700 transition-colors duration-500">
-                    <img src={gmailImage.src} className="w-8 bg-gray-300 rounded-md mr-2" alt="" />
+                    <img src={gmailImage} className="w-8 bg-gray-300 rounded-md mr-2" alt="" />
                     pratapchatanya@gmail.com
                 </a>
             </div>

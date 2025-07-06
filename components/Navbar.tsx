@@ -1,6 +1,5 @@
 "use client"
 import { useState, useRef } from 'react';
-import logo from "../assets/logo_small.png"
 import { FaHouse, FaCircleInfo, FaBriefcase, FaBookOpenReader } from "react-icons/fa6";
 import './Navbar.css';
 import Link from 'next/link';
@@ -13,6 +12,7 @@ const Navbar = () => {
     const navbarRef = useRef(null);
     const logoAnim = useRef(null);
     const pathname = usePathname();
+    const logo = "../assets/logo_small.png";
 
 
     return (
@@ -20,7 +20,7 @@ const Navbar = () => {
             <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-3 main-color transition-opacity duration-300 ease-out z-20 ${isScrolled ? 'navbar-animation' : ''}`}>
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <a ref={logoAnim} href="#" className="flex items-center">
-                        <img src={logo.src} className='h-14' style={{ filter: "drop-shadow(0 0 30px black)" }} alt="" />
+                        <img src={logo} className='h-14' style={{ filter: "drop-shadow(0 0 30px black)" }} alt="" />
                     </a>
                     <div className='flex'>
                         <div className="hidden md:flex space-x-4 mt-2 ">

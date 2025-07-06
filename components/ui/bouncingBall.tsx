@@ -68,10 +68,10 @@ const BouncingBall = () => {
         {Array.from({ length: NUM_BALLS }, (_, index) => (
           <motion.div
             key={index}
-            ref={(el) => {ballsRef.current[index] = el}}
+            ref={(el) => { ballsRef.current[index] = el }}
             className={`ball-moving ball-${index + 1}`}
             animate={controlsArray.current[index]}
-            transition={{ duration: 0.05, ease: 'linear' }}
+            transition={{ duration: 1, ease: 'linear' }}
           />
         ))}
       </div>

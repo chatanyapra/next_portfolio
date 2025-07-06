@@ -132,7 +132,7 @@ const ProjectCard = ({
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {techStack.slice(0,6).map((tag, i) => {
+            {techStack.slice(0, 6).map((tag, i) => {
               const key = tag.name.toLowerCase().replace(/\s+/g, '');
               const className = colorClassMap[key] || 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
 

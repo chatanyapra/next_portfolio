@@ -30,7 +30,7 @@
     position: relative;
     background: hsla(0, 0%, 100%, 0.1);
     border-radius: 100px;
-    background-image: url('../assets/images/boywithhat.png');
+    background-image: url('/assets/images/boywithhat.png');
     height: 500px;
     width: 400px;
     transform: scaleX(-1);
@@ -62,7 +62,7 @@
     height: 80px;
     right: -10px;
     top: 0;
-    background-image: url('../assets/images/project-03.1ce7109df0be2a58a2f3.png');
+    background-image: url('/assets/images/project-03.1ce7109df0be2a58a2f3.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -75,10 +75,9 @@
     position: absolute;
     width: 180px;
     height: 180px;
-    left: 40px;
     bottom: -20px;
     transform: scaleX(-1);
-    background-image: url('../assets/images/violet-ball-blur.png');
+    background-image: url('/assets/images/violet-ball-blur.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -94,7 +93,7 @@
     left: 400px;
     bottom: 50px;
     background: hsla(0, 0%, 100%, 0.1);
-    background-image: url('../assets/images/item-05.a9739045efd748aca967.png');
+    background-image: url('/assets/images/item-05.a9739045efd748aca967.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -161,8 +160,11 @@
 
     .about-image {
         left: 0px;
-        /* transform: scaleX(-1); */
         transform: scale(0.8);
+    }
+
+    .about-image::after {
+        right: 28px;
     }
 
     .about-main {

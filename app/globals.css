@@ -12,8 +12,8 @@
 
 @font-face {
   font-family: 'CustomFont';
-  src: url('../assets/SF-Pro.ttf') format('truetype');
-  src: url('../assets/conthrax-sb.ttf') format('truetype');
+  src: url('/assets/SF-Pro.ttf') format('truetype');
+  src: url('/assets/conthrax-sb.ttf') format('truetype');
   font-weight: bolder;
   font-style: normal;
 }
@@ -52,7 +52,8 @@ p {
   right: -25%;
   width: 1000px;
   height: 1000px;
-  background: var(--shape-circle)
+  background: var(--shape-circle);
+  z-index: -1;
 }
 
 .app-main::before {
@@ -62,7 +63,8 @@ p {
   left: -20%;
   width: 900px;
   height: 1000px;
-  background: var(--shape-circle)
+  background: var(--shape-circle);
+  z-index: -1;
 }
 
 .custom-scrollbar {
