@@ -1,28 +1,40 @@
 "use client"
+import { ScrollViewAnimation } from '@/utils/animations';
 import { motion } from 'framer-motion';
 
 const AboutPage = () => {
+
     return (
         <div className=" w-full flex justify-evenly max-md:items-center z-10 md:mt-32 max-md:flex-col">
             <div className="w-[52%] max-md:w-[98%] min-h-[450px] overflow-hidden z-10 max-md:h-auto md:rounded-[50px] rounded-t-[50px] p-6 border-b-0 relative" >
                 <h1 className="text-4xl sm:text-5xl mt-4 font-bold">Hello,</h1>
-                <h1 className="text-4xl sm:text-5xl pt-4 font-bold">I&apos;m <span className="text-gradient">Chatanya</span></h1>
-                <p className="pt-4">
-                    I am a full stack developer with a passion for creating beautiful and functional web applications. I chose this as a career because I love to create nice stuff. Creativity is the key. Now I target building some awesome stuff that can help people in their daily life.
-                </p>
-                <p className="pt-4">
-                    I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
-                </p>
-                <p className="pt-4">
-                    I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
-                </p>
+                <div className="text-4xl sm:text-5xl pt-4 font-bold pr-2">I&apos;m
+                    <ScrollViewAnimation>
+                        <span className="text-gradient ml-3">Chatanya</span>
+                    </ScrollViewAnimation>
+                </div>
+                <ScrollViewAnimation delay={0.2}>
+                    <p className="pt-4">
+                        I am a full stack developer with a passion for creating beautiful and functional web applications. I chose this as a career because I love to create nice stuff. Creativity is the key. Now I target building some awesome stuff that can help people in their daily life.
+                    </p>
+                </ScrollViewAnimation>
+                <ScrollViewAnimation delay={0.4}>
+                    <p className="pt-4">
+                        I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
+                    </p>
+                </ScrollViewAnimation>
+                <ScrollViewAnimation delay={0.8}>
+                    <p className="pt-4">
+                        I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
+                    </p>
+                </ScrollViewAnimation>
             </div>
             <div className="w-[34%] max-md:w-[98%] max-md:hidden h-auto transparent-color rounded-[50px] overflow-hidden flex justify-center items-center sm:big-screen-light-dark-shadow">
                 <img src={"/assets/images/imageface2.png"} className="m-auto h-full max-h-[450px]" alt="" />
             </div>
             <motion.div
-                initial={{ top: 0 }}
-                animate={{ top: 180 }}
+                initial={{ top: -20 }}
+                animate={{ top: 125 }}
                 transition={{
                     type: "spring",
                     stiffness: 150,

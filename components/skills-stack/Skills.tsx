@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import { ScrollViewAnimation } from "@/utils/animations";
 type LanguageStats = Record<string, string>;
 
 const Skills = () => {
@@ -31,9 +31,9 @@ const Skills = () => {
         <section className=" w-full mx-auto">
             <div className="w-full mx-auto px-5">
                 <motion.h2
-                    className="text-4xl font-bold mb-4 ml-5"
+                    className="text-4xl font-bold mb-8 ml-6"
                     whileInView={{
-                        scale: [1, 1.05, 1],
+                        scale: [1, 1.04, 1],
                         transition: { duration: 1 },
                     }}
                 >
@@ -46,9 +46,11 @@ const Skills = () => {
                 </motion.h2>
 
                 <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3">I Develop Skills Regularly</h3>
-                <p className=" mb-8 ml-3">
-                    I continuously refine my skills to build modern, efficient, and high-performing web applications.
-                </p>
+                <ScrollViewAnimation whileInView once={false}>
+                    <p className=" mb-8 ml-3">
+                        I continuously refine my skills to build modern, efficient, and high-performing web applications.
+                    </p>
+                </ScrollViewAnimation>
 
                 {loading && <p className="ml-3">Loading skills...</p>}
                 {error && <p className="ml-3 text-red-500">Error fetching skills: {error}</p>}

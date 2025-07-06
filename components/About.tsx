@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import './About.css';
 import Image from 'next/image';
+import { ScrollViewAnimation } from '@/utils/animations';
 
 const About = () => {
     return (
@@ -41,62 +42,49 @@ const About = () => {
                 </motion.div>
 
                 {/* Text Motion */}
-                <motion.div
-                    className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4 group"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                        transition: {
-                            duration: 1,
-                            ease: 'easeOut',
-                        },
-                    }}
-                    viewport={{ once: true }}
-                >
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
+                <div className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4 group">
+                    <motion.h2
+                        className="text-4xl font-bold mb-8 ml-6"
+                        whileInView={{
+                            scale: [1, 1.04, 1],
+                            transition: { duration: 1 },
+                        }}
                     >
-                        <motion.h2
-                            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
-                            whileInView={{
-                                scale: [1, 1.05, 1],
-                                transition: { duration: 1 },
-                            }}
-                        >
-                            <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl rounded-2xl w-fit mb-4 text-gradient h-fit flex justify-center items-center ml-6">
-                                <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
-                                    <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform hover:scale-125 duration-300 ease-in-out"></div>
-                                </div>
-                                <i className="mb-2">About</i>
+                        <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl font-bold rounded-2xl w-fit mb-4 text-gradient flex justify-center items-center">
+                            <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
+                                <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform group-hover:scale-125 duration-300 ease-in-out"></div>
                             </div>
-                        </motion.h2>
-                    </motion.div>
-
-                    <p className="text-[18px] max-md:text-[16px] text-justify">
-                        I’m Chatanya, a Full Stack Developer passionate about crafting modern,
-                        scalable, and high-performing web applications. I chose this career
-                        because I love turning ideas into functional and visually appealing
-                        digital experiences. Creativity and problem-solving drive my approach
-                        to development.
-                        <br />
-                        <br />
-                        Currently, I work as a Freelance Developer and a Full Stack Developer
-                        Intern, where I build dynamic web solutions tailored to users' needs.
-                        I am always open to new opportunities and challenges that push me to
-                        grow.
-                        <br />
-                        <br />
-                        With a mindset of continuous learning, I stay updated with the latest
-                        technologies, ensuring that my work aligns with industry best
-                        practices. My goal is to create impactful solutions that enhance user
-                        experiences and solve real-world problems.
-                    </p>
-                </motion.div>
+                            <i className="mb-2">About</i>
+                        </div>
+                    </motion.h2>
+                    <div className="text-[16px] max-md:text-[16px] text-justify">
+                        <ScrollViewAnimation whileInView>
+                            <p className='pb-4'>
+                                I’m Chatanya, a Full Stack Developer passionate about crafting modern,
+                                scalable, and high-performing web applications. I chose this career
+                                because I love turning ideas into functional and visually appealing
+                                digital experiences. Creativity and problem-solving drive my approach
+                                to development.
+                            </p>
+                        </ScrollViewAnimation>
+                        <ScrollViewAnimation whileInView>
+                            <p className='pb-4'>
+                                Currently, I work as a Freelance Developer and a Full Stack Developer
+                                Intern, where I build dynamic web solutions tailored to users' needs.
+                                I am always open to new opportunities and challenges that push me to
+                                grow.
+                            </p>
+                        </ScrollViewAnimation>
+                        <ScrollViewAnimation whileInView>
+                            <p className='pb-4'>
+                                With a mindset of continuous learning, I stay updated with the latest
+                                technologies, ensuring that my work aligns with industry best
+                                practices. My goal is to create impactful solutions that enhance user
+                                experiences and solve real-world problems.
+                            </p>
+                        </ScrollViewAnimation>
+                    </div>
+                </div>
             </div>
         </div>
     );

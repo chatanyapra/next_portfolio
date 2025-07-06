@@ -7,6 +7,7 @@ import "./About.css";
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { useDataContext } from '@/context/DataContext';
 import Loader from './ui/Loader';
+import { ScrollViewAnimation } from '@/utils/animations';
 
 const BlogSection = () => {
     const { blogs, loading } = useDataContext();
@@ -67,11 +68,11 @@ const BlogSection = () => {
     };
 
     return (
-        <div className='w-full mx-auto sm:px-6 px-4 lg:px-8 flex flex-col relative blogsection-bg-design mb-10'>
+        <div className='w-full mx-auto flex flex-col relative blogsection-bg-design'>
             <motion.h2
-                className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+                className="text-4xl font-bold text-gray-900 dark:text-white ml-5"
                 whileInView={{
-                    scale: [1, 1.05, 1],
+                    scale: [1, 1.04, 1],
                     transition: { duration: 1 },
                 }}
             >
@@ -92,7 +93,7 @@ const BlogSection = () => {
                     initial={"hidden"}
                     whileInView={"show"}
                     viewport={{ once: true, margin: "-50px" }}
-                    className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1'>
+                    className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1 sm:px-6 px-4 lg:px-8'>
                     {blogs.slice(0, 2).map((blog, index) => (
                         <motion.div
                             key={blog._id}
@@ -106,36 +107,32 @@ const BlogSection = () => {
                 </motion.div>
             )}
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mt-6 sm:text-end text-center"
-            >
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-3 bg-gradient-to-r from-[#a34bae] to-[#3db7dc] text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all"
-                >
-                    <span className="flex items-center justify-center gap-2 group cursor-pointer">
-                        <span>
-                            View All Projects
+            <div className="mt-6 sm:text-end text-center">
+                <ScrollViewAnimation whileInView>
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-8 py-3 bg-gradient-to-r from-[#a34bae] to-[#3db7dc] text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all"
+                    >
+                        <span className="flex items-center justify-center gap-2 group cursor-pointer">
+                            <span>
+                                View All Projects
+                            </span>
+                            <motion.span
+                                className="inline-block"
+                                initial={{ x: 0 }}
+                                whileHover={{ x: 6 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                                animate={{ x: 0 }}
+                                whileInView={{ x: 0 }}
+                                whileTap={{ x: 2 }}
+                            >
+                                <FaArrowRightLong className="group-hover:translate-x-1 transition-transform duration-300" />
+                            </motion.span>
                         </span>
-                        <motion.span
-                            className="inline-block"
-                            initial={{ x: 0 }}
-                            whileHover={{ x: 6 }}
-                            transition={{ type: "spring", stiffness: 300 }}
-                            animate={{ x: 0 }}
-                            whileInView={{ x: 0 }}
-                            whileTap={{ x: 2 }}
-                        >
-                            <FaArrowRightLong className="group-hover:translate-x-1 transition-transform duration-300" />
-                        </motion.span>
-                    </span>
-                </motion.button>
-            </motion.div>
+                    </motion.button>
+                </ScrollViewAnimation>
+            </div>
         </div>
     );
 }

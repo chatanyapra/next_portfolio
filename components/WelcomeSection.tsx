@@ -7,7 +7,7 @@ const WelcomeSection = () => {
             <div className="w-2/4 max-md:w-full h-full relative max-sm:overflow-hidden ">
                 <div className="w-96 home-image max-sm:scale-75 max-sm:w-[370px]" style={{ borderRadius: "100px", height: "500px" }}></div>
                 <div className="w-96 bg-gray-400 m-auto absolute top-0 overflow-hidden max-sm:scale-75" style={{ borderRadius: "100px", height: "500px" }}>
-                    <img src={"/assets/images/frontlook boy.png"} className="h-full z-10" loading="lazy" alt="" />
+                    <img src={"/assets/images/frontlook boy.png"} className="h-full object-cover z-10" loading="lazy" alt="" />
                 </div>
                 <img src={"/assets/images/comma.png"} className="imageUser moving-img-2 max-md:hidden" loading="lazy" alt="" />
 

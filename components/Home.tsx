@@ -3,6 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import "./Home.css"
 import dynamic from 'next/dynamic'
 import TypewriterEffect from './ui/Typewriter';
+import { ScrollViewAnimation } from '@/utils/animations';
 
 const BouncingBall = dynamic(() => import("@/components/ui/bouncingBall"));
 const Home = () => {
@@ -24,7 +25,9 @@ const Home = () => {
                                     <TypewriterEffect />
                                 </span>
                             </span>
-                            <p className="pt-5">I create seamless, high-performance websites where every line of code serves a purpose combining functionality with user-friendly experiences.</p>
+                            <ScrollViewAnimation>
+                                <p className="pt-5">I create seamless, high-performance websites where every line of code serves a purpose combining functionality with user-friendly experiences.</p>
+                            </ScrollViewAnimation>
                         </div>
                         <div className='my-14 text-3xl flex max-sm:justify-center'>
                             <FaLinkedinIn className='m-1.5' />
