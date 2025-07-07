@@ -1,8 +1,7 @@
 import WelcomeSection from './WelcomeSection'
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
-import "./Home.css"
 import dynamic from 'next/dynamic'
-import TypewriterEffect from './ui/Typewriter';
+import TypewriterEffect from '../ui/Typewriter';
 import { ScrollViewAnimation } from '@/utils/animations';
 
 const BouncingBall = dynamic(() => import("@/components/ui/bouncingBall"));

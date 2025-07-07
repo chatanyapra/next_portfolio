@@ -3,10 +3,10 @@
 
 import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
-import ProjectCard from "./ui/projectCard";
+import ProjectCard from "../ui/projectCard";
 import { useDataContext } from "@/context/DataContext";
-import Loader from "./ui/Loader";
-import { ScrollViewAnimation } from "@/utils/animations";
+import Loader from "../ui/Loader";
+import { ScrollViewAnimation, SectionHeadAnimation } from "@/utils/animations";
 
 const ProjectsSection = () => {
   const { projects, loading } = useDataContext();
@@ -36,20 +36,9 @@ const ProjectsSection = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-8"
       >
-        <motion.h2
-          className="text-4xl font-bold text-gray-900 dark:text-white mb-4 ml-5"
-          whileInView={{
-            scale: [1, 1.04, 1],
-            transition: { duration: 1 },
-          }}
-        >
-          <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl rounded-2xl w-fit mb-4 text-gradient h-fit flex justify-center items-center ml-6">
-            <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
-              <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform hover:scale-125 duration-300 ease-in-out"></div>
-            </div>
-            <i className="mb-2">Projects</i>
-          </div>
-        </motion.h2>
+        <SectionHeadAnimation>
+          <i className="mb-2">Projects</i>
+        </SectionHeadAnimation>
       </motion.div>
 
       {loading ? (

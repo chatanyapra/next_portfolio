@@ -1,4 +1,3 @@
-import "./WelcomeSection.css";
 import { motion } from "framer-motion";
 
 const WelcomeSection = () => {

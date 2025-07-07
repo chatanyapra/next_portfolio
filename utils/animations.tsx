@@ -35,3 +35,21 @@ export const ScrollViewAnimation = ({
         </motion.span>
     );
 };
+export const SectionHeadAnimation = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <motion.h2
+            className="text-4xl font-bold text-gray-900 dark:text-white ml-5"
+            whileInView={{
+                scale: [1, 1.04, 1],
+                transition: { duration: 1 },
+            }}
+        >
+            <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl rounded-2xl w-fit mb-4 text-gradient h-fit flex justify-center items-center ml-6">
+                <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
+                    <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform hover:scale-125 duration-300 ease-in-out"></div>
+                </div>
+                {children}
+            </div>
+        </motion.h2>
+    )
+}

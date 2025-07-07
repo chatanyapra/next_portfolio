@@ -2,11 +2,11 @@
 import dynamic from "next/dynamic";
 
 const Skills = dynamic(() => import("../skills-stack/Skills"));
-const About = dynamic(() => import("../About"));
-const ProjectsSection = dynamic(() => import("../ProjectsSection"));
+const About = dynamic(() => import("../main-sections/AboutSection"));
+const ProjectsSection = dynamic(() => import("../main-sections/ProjectsSection"));
 const MovingBand = dynamic(() => import("@/components/ui/MovingBand"));
-const BlogSection = dynamic(() => import("@/components/BlogSection"));
-const Home = dynamic(() => import("@/components/Home"));
+const BlogSection = dynamic(() => import("@/components/main-sections/BlogSection"));
+const Home = dynamic(() => import("@/components/main-sections/HomeSection"));
 
 export default function HomePage() {
     return (

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Link from 'next/link';
-import "../About.css";
 
 interface BlogImage {
   url: string;

@@ -1,8 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
-import './About.css';
 import Image from 'next/image';
-import { ScrollViewAnimation } from '@/utils/animations';
+import { ScrollViewAnimation, SectionHeadAnimation } from '@/utils/animations';
 
 const About = () => {
     return (
@@ -35,28 +34,16 @@ const About = () => {
                     }}
                     viewport={{ once: true }}
                 >
-                    <div
-                        className="w-80 sm:w-96 m-auto about-image"
-                        style={{ borderRadius: '100px' }}
-                    />
+                    <div className="w-80 sm:w-96 m-auto about-image" style={{ borderRadius: '100px' }}></div>
                 </motion.div>
 
                 {/* Text Motion */}
-                <div className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4 group">
-                    <motion.h2
-                        className="text-4xl font-bold mb-8 ml-6"
-                        whileInView={{
-                            scale: [1, 1.04, 1],
-                            transition: { duration: 1 },
-                        }}
-                    >
-                        <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl font-bold rounded-2xl w-fit mb-4 text-gradient flex justify-center items-center">
-                            <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
-                                <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform group-hover:scale-125 duration-300 ease-in-out"></div>
-                            </div>
+                <div className="md:w-2/4 min-h-96 mt-14 pr-10 max-md:px-4">
+                    <div className='-ml-12'>
+                        <SectionHeadAnimation>
                             <i className="mb-2">About</i>
-                        </div>
-                    </motion.h2>
+                        </SectionHeadAnimation>
+                    </div>
                     <div className="text-[16px] max-md:text-[16px] text-justify">
                         <ScrollViewAnimation whileInView>
                             <p className='pb-4'>

@@ -2,12 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import BlogCard from './ui/BlogCard';
-import "./About.css";
+import BlogCard from '../ui/BlogCard';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { useDataContext } from '@/context/DataContext';
-import Loader from './ui/Loader';
-import { ScrollViewAnimation } from '@/utils/animations';
+import Loader from '../ui/Loader';
+import { ScrollViewAnimation, SectionHeadAnimation } from '@/utils/animations';
 
 const BlogSection = () => {
     const { blogs, loading } = useDataContext();
@@ -69,20 +68,10 @@ const BlogSection = () => {
 
     return (
         <div className='w-full mx-auto flex flex-col relative blogsection-bg-design'>
-            <motion.h2
-                className="text-4xl font-bold text-gray-900 dark:text-white ml-5"
-                whileInView={{
-                    scale: [1, 1.04, 1],
-                    transition: { duration: 1 },
-                }}
-            >
-                <div className="transparent-color light-dark-shadow px-4 py-1 text-4xl rounded-2xl w-fit mb-4 text-gradient h-fit flex justify-center items-center ml-6">
-                    <div className="rounded-full w-7 h-7 flex justify-center items-center mr-2 mt-1">
-                        <div className="bg-gradient-radial w-5 h-5 m-auto rounded-full transition-transform transform hover:scale-125 duration-300 ease-in-out"></div>
-                    </div>
-                    <i className="mb-2">Blogs</i>
-                </div>
-            </motion.h2>
+            <SectionHeadAnimation>
+                <i className="mb-2">Blogs</i>
+            </SectionHeadAnimation>
+
             {loading ? (
                 <div>
                     <Loader />
