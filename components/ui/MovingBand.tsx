@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useMemo } from 'react';
 
 interface TechItem {
   icon: string;
@@ -9,7 +9,7 @@ interface TechItem {
 }
 
 const MovingBand = () => {
-  const techItems: TechItem[] = [
+  const techItems: TechItem[] = useMemo(() => [
     { icon: "/assets/IconsImage/wordpress.png", name: "Wordpress" },
     { icon: "/assets/IconsImage/bootstrap.png", name: "Bootstrap" },
     { icon: "/assets/IconsImage/laravel.png", name: "Laravel" },
@@ -24,26 +24,19 @@ const MovingBand = () => {
     { icon: "/assets/IconsImage/api.png", name: "FastApi" },
     { icon: "/assets/IconsImage/tailwindcss.png", name: "Tailwind" },
     { icon: "/assets/IconsImage/ajax.png", name: "AJAX" }
-  ];
+  ], []);
 
-  const itemWidth = 200; // Width estimation
-  const totalWidth = techItems.length * itemWidth;
+  const renderItems = useMemo(() => [...techItems, ...techItems], [techItems]);
 
   return (
-    <div className="z-10 w-full overflow-hidden mt-6 sm:mb-10">
+    <div className="z-10 w-full overflow-hidden mt-6 sm:mb-10 select-none pointer-events-none">
       {/* Top Band */}
       <div className="w-[110%] overflow-hidden whitespace-nowrap bg-black/30 backdrop-blur-xl -rotate-6 -ml-3 -mb-20 mt-20">
-        <motion.div
-          className="inline-flex whitespace-nowrap py-4"
-          animate={{ x: [0, -totalWidth] }}
-          transition={{
-            ease: 'linear',
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'loop',
-          }}
+        <div
+          className="inline-flex animate-scroll-left whitespace-nowrap py-4 will-change-transform"
+          style={{ transform: 'translate3d(0,0,0)' }}
         >
-          {[...techItems, ...techItems].map((item, index) => (
+          {renderItems.map((item, index) => (
             <div key={`top-${index}`} className="inline-flex items-center px-8">
               <Image
                 src={item.icon}
@@ -51,28 +44,23 @@ const MovingBand = () => {
                 height={48}
                 className="w-12 mr-3 max-md:w-8"
                 alt={item.name}
+                loading="lazy"
               />
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
               </span>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Band */}
       <div className="w-[110%] overflow-hidden whitespace-nowrap bg-black/30 backdrop-blur-xl rotate-6 -ml-3 mt-5 mb-24">
-        <motion.div
-          className="inline-flex whitespace-nowrap py-4"
-          animate={{ x: [-totalWidth, 0] }}
-          transition={{
-            ease: 'linear',
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'loop',
-          }}
+        <div
+          className="inline-flex animate-scroll-right whitespace-nowrap py-4 will-change-transform"
+          style={{ transform: 'translate3d(0,0,0)' }}
         >
-          {[...techItems, ...techItems].map((item, index) => (
+          {renderItems.map((item, index) => (
             <div key={`bottom-${index}`} className="inline-flex items-center px-8">
               <Image
                 src={item.icon}
@@ -80,13 +68,14 @@ const MovingBand = () => {
                 height={48}
                 className="w-12 mr-3 max-md:w-8"
                 alt={item.name}
+                loading="lazy"
               />
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
               </span>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

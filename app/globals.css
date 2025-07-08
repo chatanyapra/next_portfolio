@@ -205,6 +205,10 @@ html.dark .swal-popup-dark {
   -webkit-text-fill-color: transparent;
 }
 
+.text-custom-bold {
+  font-weight: 650;
+}
+
 .glass-effect {
   background: rgba(255, 255, 255, 0);
   backdrop-filter: saturate(200%) blur(30.5px);
@@ -492,4 +496,34 @@ html.dark .home-image {
   .about-main {
     margin-top: 0px;
   }
+}
+
+/* ----------------moving band--------- */
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 20s linear infinite;
 }

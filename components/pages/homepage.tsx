@@ -12,7 +12,7 @@ export default function HomePage() {
     return (
         <div className="min-h-[1200px] w-full relative  overflow-hidden flex flex-col items-center m-auto" style={{ maxWidth: "1600px" }}>
             <Home />
-            <div className="w-full z-10 mt-32 max-md:mt-0 mb-10 flex flex-col items-center">
+            <div className="w-full z-10 mt-32 max-md:mt-0 flex flex-col items-center">
                 <About />
                 <ProjectsSection />
                 <Skills />

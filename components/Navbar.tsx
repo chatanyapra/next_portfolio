@@ -25,22 +25,22 @@ const Navbar = () => {
                     <div className='flex'>
                         <div className="hidden md:flex space-x-4 mt-2 ">
                             <Link href="/"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/' ? 'text-blue-600' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 Home
                             </Link>
                             <Link href="/about"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/about' ? 'text-blue-600' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/about' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 About
                             </Link>
                             <Link href="/work"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/work' ? 'text-blue-600' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/work' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 Work
                             </Link>
                             <Link href="/blogs"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/blogs' ? 'text-blue-600' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/blogs' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 Blogs
                             </Link>
