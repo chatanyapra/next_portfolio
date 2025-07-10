@@ -1,5 +1,5 @@
 "use client"
-import { ScrollViewAnimation } from '@/utils/animations';
+import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import { motion } from 'framer-motion';
 
 const AboutPage = () => {

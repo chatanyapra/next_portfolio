@@ -6,7 +6,7 @@ import BlogCard from '../ui/BlogCard';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { Blog, useDataContext } from '@/context/DataContext';
 import Loader from '../ui/Loader';
-import { ScrollViewAnimation, SectionHeadAnimation } from '@/utils/animations';
+import { ScrollViewAnimation, SectionHeadAnimation } from '@/components/component-animations/animations';
 import { fetcher } from '../pages/workpage';
 import useSWR from 'swr';
 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ScrollViewAnimation, SectionHeadAnimation } from '@/utils/animations';
+import { ScrollViewAnimation, SectionHeadAnimation } from '@/components/component-animations/animations';
 
 const About = () => {
     return (

@@ -1,31 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ScrollViewAnimation, SectionHeadAnimation } from "@/utils/animations";
+import { ScrollViewAnimation, SectionHeadAnimation } from "@/components/component-animations/animations";
+import useSWR from "swr";
+import LanguageSkeleton from "../ui/skeleton/languageSkeleton";
 type LanguageStats = Record<string, string>;
 
+const fetcher = async (url: string) => {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data?.error || "Failed to fetch");
+    return data;
+};
+
+
 const Skills = () => {
-    const [languages, setLanguages] = useState<LanguageStats>({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchLanguages = async () => {
-            try {
-                const res = await fetch("/api/github-languages");
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.error || "Failed to fetch GitHub data");
-                setLanguages(data.languages);
-            } catch (err: any) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        // fetchLanguages();
-    }, []);
+    const { data, error, isLoading } = useSWR<{ languages: LanguageStats }>("/api/github-languages", fetcher);
+    const languages = data?.languages || {};
 
     return (
         <section className=" w-full mx-auto">
@@ -41,10 +32,12 @@ const Skills = () => {
                     </p>
                 </ScrollViewAnimation>
 
-                {loading && <p className="ml-3">Loading skills...</p>}
+                {isLoading &&
+                    <LanguageSkeleton />
+                }
                 {error && <p className="ml-3 text-red-500">Error fetching skills: {error}</p>}
 
-                {!loading && !error && (
+                {!isLoading && !error && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-[95%] m-auto">
                         {Object.entries(languages).map(([name, percentage]) => (
                             <div key={name}>

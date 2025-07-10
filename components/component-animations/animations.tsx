@@ -1,6 +1,25 @@
-import { motion } from "framer-motion";
-const item = {
+import { motion, scale } from "framer-motion";
+const viewItem = {
     hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0 },
+};
+
+export const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3,
+        },
+    },
+};
+export const itempop = {
+    hidden: { opacity: 0, scale: 0.9 },
+    show: { opacity: 1, scale: 1 },
+}
+export const item = {
+    hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
 };
 
@@ -11,7 +30,6 @@ type ScrollViewAnimationProps = {
     whileInView?: boolean; // If true → uses whileInView
     once?: boolean; // For whileInView behavior
 };
-
 export const ScrollViewAnimation = ({
     children,
     delay = 0,
@@ -21,7 +39,7 @@ export const ScrollViewAnimation = ({
 }: ScrollViewAnimationProps) => {
     return (
         <motion.span
-            variants={item}
+            variants={viewItem}
             initial="hidden"
             {...(animate && !whileInView && { animate: 'show' })}
             {...(whileInView && {

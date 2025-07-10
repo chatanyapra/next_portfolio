@@ -162,14 +162,9 @@ const techCategories = [
 const TechStack = () => {
     return (
         <div className="w-full mx-auto px-8 rounded-xl mt-14 mb-6 relative">
-            <motion.h3
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-xl font-semibold mb-4"
-            >
+            <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3">
                 Technologies I Work With
-            </motion.h3>
+            </h3>
 
             {techCategories.map((category, index) => (
                 <motion.div
@@ -180,7 +175,7 @@ const TechStack = () => {
                     viewport={{ once: true }}
                     className="mb-6"
                 >
-                    <h4 className="text-lg font-medium text-gray-300 mb-2">
+                    <h4 className="text-lg font-medium text-[#a34bae] mb-2">
                         {category.title}
                     </h4>
 
