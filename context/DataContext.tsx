@@ -8,7 +8,7 @@ import React, {
   ReactNode,
 } from 'react';
 
-type Blog = {
+export type Blog = {
   _id: string;
   title: string;
   shortDescription: string,
@@ -16,12 +16,12 @@ type Blog = {
   techStack: { name: string; _id: string }[],
   isDeleted: boolean,
 };
-type Image = {
+export type Image = {
   url: string,
   alt: string,
   _id: string
 }
-type Project = {
+export type Project = {
   _id: string;
   title: string;
   shortDescription: string,

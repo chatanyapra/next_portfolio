@@ -5,18 +5,30 @@ import { parseForm } from '@/lib/parseForm';
 import fs from "fs";
 import cloudinary from "@/lib/cloudinary";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
     await connectToDB();
-    const blogs = await Blog.find()
-      .select('-longDescription') // Exclude the longDescription field
+
+    const limitParam = req.nextUrl.searchParams.get('limit');
+    const limit = limitParam ? parseInt(limitParam) : 0;
+
+    const blogsQuery = Blog.find()
+      .select('-longDescription')
       .sort({ createdAt: -1 });
+
+    if (limit > 0) {
+      blogsQuery.limit(limit);
+    }
+
+    const blogs = await blogsQuery;
 
     return NextResponse.json({ success: true, data: blogs }, { status: 200 });
   } catch (e) {
+    console.error("Error fetching blogs:", e);
     return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });
   }
 }
+
 
 export const config = {
   api: {

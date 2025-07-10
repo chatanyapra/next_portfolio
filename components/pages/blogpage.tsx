@@ -1,12 +1,16 @@
 "use client"
 import React from 'react'
-import { useDataContext } from '@/context/DataContext';
+import { Blog, useDataContext } from '@/context/DataContext';
 import { motion } from "framer-motion";
 import Loader from '../ui/Loader';
 import BlogCard from '../ui/BlogCard';
+import { fetcher } from './workpage';
+import useSWR from 'swr';
 
 const Blogpage = () => {
-    const { blogs, loading } = useDataContext();
+    const { data: blogs, error, isLoading } = useSWR('/api/blogs', fetcher);
+
+    // const { blogs, loading } = useDataContext();
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -32,10 +36,10 @@ const Blogpage = () => {
                 initial={"hidden"}
                 whileInView={"show"}
                 transition={{ duration: 0.5 }}
-                className="px-4 pb-4 text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+                className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
                 Blogs
             </motion.div>
-            {loading ? (
+            {isLoading ? (
                 <div className="w-full mx-auto mt-10">
                     <Loader />
                 </div>
@@ -46,7 +50,7 @@ const Blogpage = () => {
                     whileInView={"show"}
                     viewport={{ once: true, margin: "-50px" }}
                     className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1 sm:px-6 px-4 lg:px-8'>
-                    {blogs.map((blog, index) => (
+                    {blogs.map((blog: Blog, index: number) => (
                         <motion.div
                             key={blog._id}
                             variants={item}

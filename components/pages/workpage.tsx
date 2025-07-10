@@ -1,12 +1,15 @@
 "use client"
-import React from 'react'
 import ProjectCard from '../ui/projectCard'
-import { useDataContext } from '@/context/DataContext';
 import { motion } from "framer-motion";
 import Loader from '../ui/Loader';
+import axios from 'axios';
+import useSWR from 'swr';
+import { Project } from '@/context/DataContext';
+
+export const fetcher = (url: string) => axios.get(url).then(res => res.data.data);
 
 const Workpage = () => {
-    const { projects, loading } = useDataContext();
+    const { data: projects, error, isLoading } = useSWR('/api/projects', fetcher);
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -33,11 +36,11 @@ const Workpage = () => {
                 initial={"hidden"}
                 whileInView={"show"}
                 transition={{ duration: 0.5 }}
-                className="px-4 pb-4 text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+                className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
                 Projects
             </motion.div>
 
-            {loading ? (
+            {isLoading ? (
                 <div className="w-full mx-auto mt-10">
                     <Loader />
                 </div>
@@ -49,7 +52,7 @@ const Workpage = () => {
                     viewport={{ once: true, margin: "-50px" }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
-                    {projects.map((project, index) => (
+                    {projects.map((project: Project, index: number) => (
                         <motion.div key={index} variants={item}>
                             <ProjectCard
                                 index={index}

@@ -61,7 +61,7 @@ const ProjectCard = ({
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="relative rounded-[40px] overflow-hidden h-full flex flex-col group shadow-md shadow-gray-200 dark:shadow-none"
+      className="relative rounded-[40px] overflow-hidden h-full flex flex-col group shadow-md shadow-gray-200"
     >
       {/* Blurry overlay that appears on hover */}
       <motion.div
@@ -71,7 +71,7 @@ const ProjectCard = ({
       />
 
       <motion.div
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden h-full flex flex-col border border-gray-100 dark:border-gray-700"
+        className=" rounded-xl shadow-lg overflow-hidden h-full flex flex-col"
         whileHover={{
           boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
         }}
@@ -98,7 +98,7 @@ const ProjectCard = ({
 
         <div className="p-6 flex flex-col flex-grow">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h3 className="text-xl font-bold">
               {title}
             </h3>
             <div className="flex space-x-2">
@@ -127,7 +127,7 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm">
+          <p className="text-gray-500 mb-4 flex-grow text-sm">
             {description}
           </p>
 

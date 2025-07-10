@@ -166,7 +166,7 @@ const TechStack = () => {
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-xl font-semibold text-gray-100 mb-4"
+                className="text-xl font-semibold mb-4"
             >
                 Technologies I Work With
             </motion.h3>

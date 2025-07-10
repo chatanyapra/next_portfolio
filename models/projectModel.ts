@@ -17,6 +17,7 @@ export interface IProject extends Document {
   shortDescription: string;
   longDescription: string;
   images: Image[];
+  featured: Boolean;
   techStack: TechStack[];
   link: string;
   createdAt: Date;
@@ -31,6 +32,10 @@ const projectSchema = new Schema<IProject>(
       type: String,
       required: true,
       trim: true,
+    },
+    featured: {
+      type: Boolean,
+      default: false,
     },
     shortDescription: {
       type: String,

@@ -8,27 +8,37 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
 
 export async function GET(req: NextRequest) {
-    try {
-        await connectToDB();
+  try {
+    await connectToDB();
 
-        // Fetch all non-deleted projects (optional filtering)
-        const projects = await Project.find()
-            .select('-longDescription') // Exclude longDescription field
-            .sort({ createdAt: -1 });
+    // Get limit from query string (e.g., /api/projects?limit=3)
+    const limitParam = req.nextUrl.searchParams.get('limit');
+    const limit = limitParam ? parseInt(limitParam) : 0; // 0 = no limit
 
-        return NextResponse.json({ success: true, data: projects }, { status: 200 });
-    } catch (error: any) {
-        console.error('Error fetching projects:', error.message);
-        return NextResponse.json(
-            {
-                success: false,
-                message: 'Server Error',
-                error: error.message,
-            },
-            { status: 500 }
-        );
+    const projectsQuery = Project.find()
+      .select('-longDescription')
+      .sort({ createdAt: -1 });
+
+    if (limit > 0) {
+      projectsQuery.limit(limit);
     }
+
+    const projects = await projectsQuery;
+
+    return NextResponse.json({ success: true, data: projects }, { status: 200 });
+  } catch (error: any) {
+    console.error('Error fetching projects:', error.message);
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'Server Error',
+        error: error.message,
+      },
+      { status: 500 }
+    );
+  }
 }
+
 
 // Disable Next.js's default body parser
 export const config = {

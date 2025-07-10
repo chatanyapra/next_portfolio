@@ -103,20 +103,20 @@ p {
 }
 
 /* Light mode styles */
-.swal-popup-light {
+/* .swal-popup-light {
   background-color: white;
   border-color: #d1d5db;
   color: #1f2937;
   border-radius: 0.75rem;
-}
+} */
 
 /* Dark mode styles */
-html.dark .swal-popup-dark {
+/* html.dark .swal-popup-dark {
   background-color: #2d3748;
   border-color: #4a5568;
   color: white;
   border-radius: 0.75rem;
-}
+} */
 
 @keyframes marquee {
   0% {
@@ -315,41 +315,43 @@ html.dark .light-dark-shadow {
   }
 }
 
-/* ------------------ */
-html.dark .home-image::before {
-  background: hsla(0, 0%, 100%, 0.1);
+/* hover focus tooltip----------------- */
+.group:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-10px);
 }
 
-html.dark .home-image {
-  background: hsla(0, 0%, 0%, 0.1);
+.tooltip {
+  position: absolute;
+  top: -40px;
+  opacity: 0;
+  left: 10px;
+  background-color: #723bff;
+  background-image: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  z-index: 50;
 }
 
-/* .transparent-color {
-  background: hsla(0, 0%, 100%, 0.222);
-  border: 1px solid hsla(0, 0%, 100%, .1);
-} */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #723bff;
+  background-image: linear-gradient(to top right, #a34bae 5%, #3db7dc 100%);
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
 
-/* .transparent-colorwhite {
-  background: hsla(0, 0%, 50%, 0.335);
-  border: 1px solid hsla(0, 0%, 47%, 0.195);
-} */
-
-/* .transparent-colorblack {
-  background: hsla(0, 0%, 0%, 0.887);
-  border: 1px solid hsla(0, 0%, 0%, 0.958);
-} */
-
-/* .bg-gradient-radial {
-  background: radial-gradient(circle, #a34bae 20%, #3db7dc 100%);
-} */
-
-/* .text-gradient {
-  background: #a050aa;
-  background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-
+/* -------------------------- */
 .about-image {
   top: 30px;
   left: -70px;
@@ -377,9 +379,9 @@ html.dark .home-image {
   border-radius: 100px;
 }
 
-.dark .about-image::before {
+/* .dark .about-image::before {
   background: hsla(0, 0%, 0%, 0.1);
-}
+} */
 
 .about-image::after {
   content: "";

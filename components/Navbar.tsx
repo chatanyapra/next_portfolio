@@ -58,16 +58,16 @@ const Navbar = () => {
             <nav className=' w-full fixed bottom-3 z-20 md:hidden flex flex-wrap justify-between items-center mx-auto transition-opacity duration-300 px-2'>
                 <div className='container flex flex-wrap justify-around items-center mx-auto main-color rounded-full py-3 text-3xl'>
                     <Link href="/">
-                        <FaHouse className={`icon-shadow ${pathname === '/' ? 'text-blue-500' : ''}`} />
+                        <FaHouse className={`cursor-pointer ${pathname === '/' ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/about">
-                        <FaCircleInfo className={`icon-shadow ${pathname === '/about' ? 'text-blue-500' : ''}`} />
+                        <FaCircleInfo className={`cursor-pointer ${pathname === '/about' ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/work">
-                        <FaBriefcase className={`icon-shadow ${pathname === '/work' ? 'text-blue-500' : ''}`} />
+                        <FaBriefcase className={`cursor-pointer ${pathname === '/work' ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/blogs">
-                        <FaBookOpenReader className={`icon-shadow ${pathname === '/blogs' ? 'text-blue-500' : ''}`} />
+                        <FaBookOpenReader className={`cursor-pointer ${pathname === '/blogs' ? 'text-blue-500' : ''}`} />
                     </Link>
                 </div>
             </nav>

@@ -4,13 +4,15 @@
 import { motion } from "framer-motion";
 import { FaArrowRightLong } from "react-icons/fa6";
 import ProjectCard from "../ui/projectCard";
-import { useDataContext } from "@/context/DataContext";
+import { Project } from "@/context/DataContext";
 import Loader from "../ui/Loader";
 import { ScrollViewAnimation, SectionHeadAnimation } from "@/utils/animations";
 import Link from "next/link";
+import { fetcher } from "../pages/workpage";
+import useSWR from "swr";
 
 const ProjectsSection = () => {
-  const { projects, loading } = useDataContext();
+  const { data: projects, error, isLoading } = useSWR('/api/projects?limit=3', fetcher);
 
   const container = {
     hidden: { opacity: 0 },
@@ -30,19 +32,11 @@ const ProjectsSection = () => {
 
   return (
     <section className="py-16 w-full mx-auto">
-      {/* <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-8"
-      > */}
       <SectionHeadAnimation>
         <i className="mb-2">Projects</i>
       </SectionHeadAnimation>
-      {/* </motion.div> */}
 
-      {loading ? (
+      {isLoading ? (
         <div className="w-full m-auto">
           <Loader />
         </div>
@@ -54,7 +48,7 @@ const ProjectsSection = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:px-6 px-4 lg:px-8"
         >
-          {projects.slice(0, 3).map((project, index) => (
+          {projects.map((project: Project, index: number) => (
             <motion.div key={index} variants={item}>
               <ProjectCard
                 index={index}

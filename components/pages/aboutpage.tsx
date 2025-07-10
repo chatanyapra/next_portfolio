@@ -41,7 +41,7 @@ const AboutPage = () => {
                     damping: 10,
                     bounce: 0.5,
                 }}
-                className="w-14 absolute right-16 sm:hidden"
+                className="w-14 absolute right-12 sm:hidden"
             >
                 <motion.img
                     src={"/assets/images/comma.png"}
