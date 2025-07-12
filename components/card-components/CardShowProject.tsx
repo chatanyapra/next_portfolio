@@ -18,8 +18,7 @@ const ProjectCardShow = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:px-6 px-4 lg:px-8">
                     {projects && projects.map((project: Project, index: number) => (
                         <ProjectCard
-                            index={index}
-                            _id={project._id}
+                            key={index}
                             title={project.title}
                             description={project.shortDescription}
                             images={project.images}

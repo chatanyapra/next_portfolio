@@ -322,10 +322,10 @@ html.dark .light-dark-shadow {
 }
 
 .tooltip {
-  position: absolute;
-  top: -40px;
+  position: relative;
+  top: -70px;
   opacity: 0;
-  left: 10px;
+  margin: auto;
   background-color: #723bff;
   background-image: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
   color: white;

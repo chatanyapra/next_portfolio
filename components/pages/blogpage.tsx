@@ -1,16 +1,18 @@
 "use client"
 import React from 'react'
-import { Blog, useDataContext } from '@/context/DataContext';
+import { Blog } from '@/context/DataContext';
 import { motion } from "framer-motion";
 import Loader from '../ui/Loader';
 import BlogCard from '../ui/BlogCard';
 import { fetcher } from './workpage';
 import useSWR from 'swr';
 
-const Blogpage = () => {
-    const { data: blogs, error, isLoading } = useSWR('/api/blogs', fetcher);
+const Blogpage = ({ blogId }: { blogId?: string }) => {
+    let { data: blogs, error, isLoading } = useSWR('/api/blogs', fetcher);
+    if (blogId) {
+        blogs = blogs.filter((b: Blog) => b._id !== blogId);
+    }
 
-    // const { blogs, loading } = useDataContext();
     const container = {
         hidden: { opacity: 0 },
         show: {

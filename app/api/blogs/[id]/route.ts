@@ -10,7 +10,7 @@ import fs from 'fs';
 
 interface Params {
   params: {
-    blogid: string;
+    id: string;
   };
 }
 export const config = {
@@ -19,10 +19,11 @@ export const config = {
   },
 };
 
-export async function GET(req: NextRequest, { params }: Params) {
+export async function GET(req: NextRequest, context: { params: { id: string } }) {
   try {
+    const { params } = context;
+    const blogId = params.id;
     await connectToDB();
-    const blogId = params.blogid;
 
     // Optional: validate ID format
     if (!Types.ObjectId.isValid(blogId)) {

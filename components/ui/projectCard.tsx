@@ -37,22 +37,18 @@ const colorClassMap: Record<string, string> = {
 };
 
 type ProjectCardProps = {
-  _id: string;
   title: string;
   description: string,
   images: Image[],
   techStack: { name: string; _id: string, color?: TailwindColor; }[],
   link: string,
-  index: number
 };
 const ProjectCard = ({
   title,
   description,
   images,
   techStack,
-  index,
   link,
-  _id
 }: ProjectCardProps) => {
   return (
     <motion.div
