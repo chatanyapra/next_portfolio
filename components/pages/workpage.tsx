@@ -55,8 +55,7 @@ const Workpage = () => {
                     {projects.map((project: Project, index: number) => (
                         <motion.div key={index} variants={item}>
                             <ProjectCard
-                                index={index}
-                                _id={project._id}
+                                key={project._id}
                                 title={project.title}
                                 description={project.shortDescription}
                                 images={project.images}

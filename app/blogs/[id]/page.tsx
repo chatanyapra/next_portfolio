@@ -1,44 +1,67 @@
 'use client';
 
-import useSWR from 'swr';
-import Blogpage from '@/components/pages/blogpage';
-import { fetcher } from '@/components/pages/workpage';
 import { useParams } from 'next/navigation';
-
+import { useEffect, useState } from 'react';
+import { Blog } from '@/context/DataContext';
+import { ScrollViewAnimation } from '@/components/component-animations/animations';
+import dynamic from 'next/dynamic';
+interface Blogs extends Blog {
+    longDescription: string;
+}
+const Blogpage = dynamic(() => import('@/components/pages/blogpage'));
 export default function page() {
     const params = useParams();
-    const blogId = params?.id;
-    // const blogId = Array.isArray(rawBlogId) ? rawBlogId[0] : rawBlogId;
-    const { data: blogs, error, isLoading } = useSWR(`/api/blogs/${blogId}`, fetcher);
-    console.log("blogs::::::::::::::::::::::::", blogs);
+    const blogId = Array.isArray(params.id) ? params.id[0] : params.id;
+    const [blogs, setBlogs] = useState<Blogs>();
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (isLoading) {
-        return <div className="pt-32 text-center">Loading blog...</div>;
-    }
+        const fetchByProjectId = async () => {
+            try {
+                const response = await fetch(`/api/blogs/${blogId}`);
+                const result = await response.json();
+                if (result.success) {
+                    setBlogs(result.data);
+                }
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching project:", error);
+            }
+        };
+        console.log("blogId::::", blogId);
 
-    if (error) {
-        return <div className="pt-32 text-center text-red-500">Failed to load blog.</div>;
-    }
 
-    if (!blogs || !blogs.data) {
-        return <div className="pt-32 text-center text-yellow-500">No blog data found.</div>;
-    }
+        if (blogId) fetchByProjectId();
+    }, [blogId]);
 
     return (
-        <div
-            className="z-10 h-full min-h-screen w-full relative dark:text-black overflow-hidden flex flex-col items-center m-auto pt-32 max-md:pt-12"
-            style={{ maxWidth: '1100px' }}
-        >
-            {blogs.longDescription && (
+        <div className='w-full mx-auto flex flex-col relative blogsection-bg-design px-4 pt-32 max-md:pt-12'>
+            {!blogs || !blogs.longDescription ? (
+                <div className="w-[95%] mx-auto min-h-96 animate-pulse rounded-[50px] flex max-md:flex-col justify-between p-10 my-10 shadow-md shadow-gray-400">
+                    <div className="w-full">
+                        <div className="h-10 w-[40%] bg-gray-400 dark:bg-gray-600 rounded mb-8"></div>
+                        <div className="space-y-4">
+                            <div className="h-4 w-full bg-gray-400 dark:bg-gray-600 rounded"></div>
+                            <div className="h-4 w-5/6 bg-gray-400 dark:bg-gray-600 rounded"></div>
+                            <div className="h-4 w-2/3 bg-gray-400 dark:bg-gray-600 rounded"></div>
+                            <div className="h-4 w-3/4 bg-gray-400 dark:bg-gray-600 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+            ) : (
                 <div className="w-[95%] min-h-96 transparent-color rounded-[50px] flex max-md:flex-col justify-between p-10 my-10 light-dark-shadow">
                     <div className="text-white dark:text-black">
-                        <h1 className="text-4xl pb-10">{blogs.projectName}</h1>
+                        <ScrollViewAnimation>
+                            <h1 className="text-4xl pb-8 ">{blogs.title}</h1>
+                        </ScrollViewAnimation>
                         <p dangerouslySetInnerHTML={{ __html: blogs.longDescription }}></p>
                     </div>
                 </div>
             )}
 
-            {/* <Blogpage blogId={blogId} /> */}
+
+            <Blogpage blogId={blogId} />
         </div>
     );
 }

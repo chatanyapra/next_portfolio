@@ -21,8 +21,8 @@ export const config = {
 
 export async function GET(req: NextRequest, context: { params: { id: string } }) {
   try {
-    const { params } = context;
-    const blogId = params.id;
+    const { id } = await context.params;
+    const blogId = id;
     await connectToDB();
 
     // Optional: validate ID format

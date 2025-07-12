@@ -9,9 +9,9 @@ import useSWR from 'swr';
 
 const Blogpage = ({ blogId }: { blogId?: string }) => {
     let { data: blogs, error, isLoading } = useSWR('/api/blogs', fetcher);
-    if (blogId) {
-        blogs = blogs.filter((b: Blog) => b._id !== blogId);
-    }
+    const filteredBlogs = blogId
+        ? blogs?.filter((b: Blog) => b._id.toString() !== blogId)
+        : blogs;
 
     const container = {
         hidden: { opacity: 0 },
@@ -52,7 +52,7 @@ const Blogpage = ({ blogId }: { blogId?: string }) => {
                     whileInView={"show"}
                     viewport={{ once: true, margin: "-50px" }}
                     className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1 sm:px-6 px-4 lg:px-8'>
-                    {blogs.map((blog: Blog, index: number) => (
+                    {filteredBlogs?.map((blog: Blog, index: number) => (
                         <motion.div
                             key={blog._id}
                             variants={item}
