@@ -9,14 +9,14 @@
     backdrop-filter: saturate(200%) blur(30.5px);
 }
 
-.navbar-animation {
+/* .navbar-animation {
     transition: all;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(30.5px);
     animation-name: navbar-anim;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
-}
+} */
 
 .no-scroll {
     overflow: hidden;
@@ -25,13 +25,12 @@
     height: 100%;
 }
 
-@keyframes navbar-anim {
+/* @keyframes navbar-anim {
     from {
         opacity: 0;
-        /* background-color: transparent; */
     }
 
     to {
         opacity: 1;
     }
-}
+} */

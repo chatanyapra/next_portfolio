@@ -1,5 +1,5 @@
 "use client"
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { FaHouse, FaCircleInfo, FaBriefcase, FaBookOpenReader } from "react-icons/fa6";
 import './Navbar.css';
 import Link from 'next/link';
@@ -8,16 +8,14 @@ import ProfileDropdown from './ProfileDropdown';
 import { SessionProvider } from 'next-auth/react';
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
     const navbarRef = useRef(null);
     const logoAnim = useRef(null);
     const pathname = usePathname();
-    const logo = "../assets/logo_small.png";
-
+    const logo = "/assets/logo_small.png";
 
     return (
         <>
-            <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-3 main-color transition-opacity duration-300 ease-out z-20 ${isScrolled ? 'navbar-animation' : ''}`}>
+            <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-3 main-color transition-opacity duration-300 ease-out z-20`}>
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <a ref={logoAnim} href="#" className="flex items-center">
                         <img src={logo} className='h-14' style={{ filter: "drop-shadow(0 0 30px black)" }} alt="" />
@@ -30,17 +28,17 @@ const Navbar = () => {
                                 Home
                             </Link>
                             <Link href="/about"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/about' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname.includes('/about') ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 About
                             </Link>
                             <Link href="/work"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/work' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname.includes('/work') ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 Work
                             </Link>
                             <Link href="/blogs"
-                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname === '/blogs' ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
+                                className={`px-3 py-2 rounded-md text-base font-medium drop-shadow-lg ${pathname.includes('/blogs') ? 'text-gradient text-custom-bold' : ' hover:text-blue-400'}`}
                             >
                                 Blogs
                             </Link>
@@ -61,13 +59,13 @@ const Navbar = () => {
                         <FaHouse className={`cursor-pointer ${pathname === '/' ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/about">
-                        <FaCircleInfo className={`cursor-pointer ${pathname === '/about' ? 'text-blue-500' : ''}`} />
+                        <FaCircleInfo className={`cursor-pointer ${pathname.includes('/about') ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/work">
-                        <FaBriefcase className={`cursor-pointer ${pathname === '/work' ? 'text-blue-500' : ''}`} />
+                        <FaBriefcase className={`cursor-pointer ${pathname.includes('/work') ? 'text-blue-500' : ''}`} />
                     </Link>
                     <Link href="/blogs">
-                        <FaBookOpenReader className={`cursor-pointer ${pathname === '/blogs' ? 'text-blue-500' : ''}`} />
+                        <FaBookOpenReader className={`cursor-pointer ${pathname.includes('/blogs') ? 'text-blue-500' : ''}`} />
                     </Link>
                 </div>
             </nav>

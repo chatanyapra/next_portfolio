@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const WelcomeSection = () => {
     return (
         <div>
             <div className="w-2/4 max-md:w-full h-full relative max-sm:overflow-hidden ">
                 <div className="w-96 home-image max-sm:scale-75 max-sm:w-[370px]" style={{ borderRadius: "100px", height: "500px" }}></div>
-                <div className="w-96 bg-gray-400 m-auto absolute top-0 overflow-hidden max-sm:scale-75" style={{ borderRadius: "100px", height: "500px" }}>
-                    <img src={"/assets/images/frontlook boy.png"} className="h-full object-cover z-10" loading="lazy" alt="" />
+                <div className="w-96 h-[500px] rounded-[100px] m-auto absolute top-0 overflow-hidden max-sm:scale-75" >
+                    <Image
+                        src={"/assets/personsImages/my-image.png"}
+                        fill
+                        sizes="(max-width: 640px) 75vw, 384px"
+                        className="object-cover  z-10"
+                        priority
+                        alt=""
+                    />
                 </div>
-                <img src={"/assets/images/comma.png"} className="imageUser moving-img-2 max-md:hidden" loading="lazy" alt="" />
+
 
                 <motion.div
                     initial={{ x: 300, opacity: 0 }}
@@ -21,10 +29,17 @@ const WelcomeSection = () => {
                         delay: 0.8
                     }}
                     className="imageUser moving-img left-[-120px] bg-gray-200 flex py-3 px-6 rounded-2xl z-10 justify-between items-center max-sm:relative max-sm:left-20">
-                    <div className="relative flex justify-center items-center">
-                        <img src={"/assets/images/bubbleball.gif"} className="w-[76px] h-[76px] rounded-full" loading="lazy" alt="" />
-                        <img src={"/assets/personsImages/profile-pic.png"} className="w-[65px] h-[65px] rounded-full absolute" style={{ boxShadow: "0 16px 36px rgba(0, 0, 0, .25)" }} loading="lazy" alt="" />
+                    <div className="relative flex justify-center items-center w-[60px] h-[60px]">
+                        <Image
+                            src="/assets/personsImages/my-image2.png"
+                            fill
+                            sizes="60px"
+                            className="rounded-full object-cover object-top"
+                            alt="Profile image"
+                            loading="lazy"
+                        />
                     </div>
+
                     <div className="block">
                         <div className="pl-3 pt-2 flex flex-col text-gray-900">
                             <span className="font-bold">Chatanya Pratap</span>

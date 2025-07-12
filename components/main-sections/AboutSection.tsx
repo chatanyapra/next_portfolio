@@ -1,17 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { ScrollViewAnimation, SectionHeadAnimation } from '@/components/component-animations/animations';
+import Image from 'next/image';
 
 const About = () => {
     return (
-        <div className="w-full h-auto relative top-0 z-10 about-main pb-10 sm:pb-16 overflow-hidden">
+        <div className="w-full min-h-[560px] relative top-0 z-10 about-main pb-10 sm:pb-16 overflow-hidden">
             {/* Background Curve */}
             <Image
                 src="/assets/images/linecurve1.png"
                 alt="curve"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 priority={false}
                 className="absolute top-0 left-0 scale-x-[-1] z-0"
             />
@@ -25,7 +26,7 @@ const About = () => {
                 style={{
                     width: "180px",
                     height: "180px",
-                    bottom: "-20px",
+                    bottom: "-10px",
                     left: "-70px",
                 }}
             >
@@ -33,51 +34,10 @@ const About = () => {
                     src="/assets/images/violet-ball-blur.png"
                     alt="violet ball"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
                 />
             </motion.div>
-
-            {/* Decorative Floating Person Icon (Bottom Right) */}
-            {/* <motion.div
-                className="absolute z-10"
-                initial={{ scale: 1 }}
-                animate={{ scale: [1, 0.8, 1] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                style={{
-                    width: "140px",
-                    height: "160px",
-                    left: "400px",
-                    bottom: "50px",
-                }}
-            >
-                <Image
-                    src="/assets/images/item-05.a9739045efd748aca967.png"
-                    alt="person icon"
-                    fill
-                    className="object-contain"
-                />
-            </motion.div> */}
-
-            {/* Decorative Project Box (On top of image) */}
-            {/* <motion.div
-                className="absolute z-20"
-                initial={{ top: 0 }}
-                animate={{ top: [0, 60, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                style={{
-                    width: "80px",
-                    height: "80px",
-                    right: "-10px",
-                    top: "0px",
-                }}
-            >
-                <Image
-                    src="/assets/images/project-03.1ce7109df0be2a58a2f3.png"
-                    alt="project box"
-                    fill
-                    className="object-contain rounded-xl"
-                />
-            </motion.div> */}
 
             {/* Main Flex Section */}
             <div className="w-full flex max-md:flex-col-reverse relative z-10 items-center">
@@ -95,17 +55,8 @@ const About = () => {
                     }}
                     viewport={{ once: true }}
                 >
-                    <div
-                        className="relative w-[370px] max-sm:h-[400px] h-[450px] sm:w-[450px] rounded-r-[100px] overflow-hidden"
-                        style={{ transform: 'scaleX(-1)' }}
-                    >
-                        <Image
-                            src="/assets/images/boywithhat.png"
-                            alt="boy with hat"
-                            fill
-                            quality={85}
-                            loading="lazy"
-                        />
+                    <div className="w-96 bg-gray-400 m-auto absolute -top-7 overflow-hidden max-sm:scale-75" style={{ borderRadius: "100px", height: "500px", transform: 'scaleX(-1)' }}>
+                        <Image src="/assets/personsImages/my-image2.png" fill className="h-full object-cover object-top z-10" loading="lazy" alt="" />
                     </div>
                 </motion.div>
 

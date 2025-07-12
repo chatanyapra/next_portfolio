@@ -1,5 +1,4 @@
 "use client"
-import React from 'react'
 import { Blog } from '@/context/DataContext';
 import { motion } from "framer-motion";
 import Loader from '../ui/Loader';
@@ -32,7 +31,7 @@ const Blogpage = ({ blogId }: { blogId?: string }) => {
         show: { opacity: 1, y: 0 }
     }
     return (
-        <div className={`w-full mx-auto flex flex-col relative blogsection-bg-design px-4`}>
+        <div className={`w-full mx-auto flex flex-col relative blogsection-bg-design`}>
             <motion.div
                 variants={heading}
                 initial={"hidden"}

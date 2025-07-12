@@ -2,38 +2,40 @@
 
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Blog } from '@/context/DataContext';
+import { Blog, Project } from '@/context/DataContext';
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import dynamic from 'next/dynamic';
-interface Blogs extends Blog {
+interface Projects extends Project {
     longDescription: string;
 }
-const Blogpage = dynamic(() => import('@/components/pages/blogpage'));
+const Workpage = dynamic(() => import('@/components/pages/workpage'));
 export default function page() {
     const params = useParams();
-    const blogId = Array.isArray(params.id) ? params.id[0] : params.id;
-    const [blogs, setBlogs] = useState<Blogs>();
+    const projectId = Array.isArray(params.id) ? params.id[0] : params.id;
+    const [projects, setprojects] = useState<Projects>();
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         const fetchByProjectId = async () => {
             try {
-                const response = await fetch(`/api/blogs/${blogId}`);
+                const response = await fetch(`/api/projects/${projectId}`);
                 const result = await response.json();
                 if (result.success) {
-                    setBlogs(result.data);
+                    setprojects(result.data);
                 }
             } catch (error) {
                 console.error("Error fetching project:", error);
             }
         };
+        console.log("blogId::::", projectId);
 
-        if (blogId) fetchByProjectId();
-    }, [blogId]);
+
+        if (projectId) fetchByProjectId();
+    }, [projectId]);
 
     return (
         <div className='w-full mx-auto flex flex-col relative blogsection-bg-design pt-32 max-md:pt-12'>
-            {!blogs || !blogs.longDescription ? (
+            {!projects || !projects.longDescription ? (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 animate-pulse rounded-[50px] flex max-md:flex-col justify-between mb-8  max-sm:px-2">
                     <div className="w-full">
                         <div className="h-10 w-[250px] md:w-[40%] bg-gray-400 dark:bg-gray-600 rounded mb-8"></div>
@@ -47,18 +49,16 @@ export default function page() {
                 </div>
             ) : (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 flex flex-col mb-16 light-dark-shadow max-sm:px-2">
-                    {/* <div> */}
                     <ScrollViewAnimation>
-                        <h1 className="text-4xl pb-8 ">{blogs.title}</h1>
+                        <h1 className="text-4xl pb-8 ">{projects.title}</h1>
                     </ScrollViewAnimation>
                     <ScrollViewAnimation delay={0.5}>
-                        <p dangerouslySetInnerHTML={{ __html: blogs.longDescription }}></p>
+                        <p dangerouslySetInnerHTML={{ __html: projects.longDescription }}></p>
                     </ScrollViewAnimation>
-                    {/* </div> */}
                 </div>
             )}
 
-            <Blogpage blogId={blogId} />
+            <Workpage projectId={projectId} />
         </div>
     );
 }

@@ -42,10 +42,11 @@ const MovingBand = () => {
                 src={item.icon}
                 width={48}
                 height={48}
-                className="w-12 mr-3 max-md:w-8"
                 alt={item.name}
                 loading="lazy"
               />
+
+
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
               </span>
@@ -66,10 +67,11 @@ const MovingBand = () => {
                 src={item.icon}
                 width={48}
                 height={48}
-                className="w-12 mr-3 max-md:w-8"
                 alt={item.name}
                 loading="lazy"
               />
+
+
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
               </span>

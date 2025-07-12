@@ -1,7 +1,7 @@
 
 "use client"
 import { motion } from "framer-motion";
-import { container, item } from '../component-animations/animations';
+import { item } from '../component-animations/animations';
 import ProjectCardSkeleton from '../ui/skeleton/projectCardSkeleton';
 
 const ProjectSkeleton = () => {

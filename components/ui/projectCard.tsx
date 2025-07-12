@@ -4,6 +4,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 
 type Image = {
   url: string,
@@ -40,8 +41,10 @@ type ProjectCardProps = {
   title: string;
   description: string,
   images: Image[],
+  id: string;
   techStack: { name: string; _id: string, color?: TailwindColor; }[],
   link: string,
+  featured?: boolean
 };
 const ProjectCard = ({
   title,
@@ -49,6 +52,8 @@ const ProjectCard = ({
   images,
   techStack,
   link,
+  featured = false,
+  id
 }: ProjectCardProps) => {
   return (
     <motion.div
@@ -83,13 +88,13 @@ const ProjectCard = ({
             transition={{ duration: 0.5 }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-          {/* {featured && (
+          {featured && (
             <div className="absolute bottom-4 left-4">
               <span className="bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded-full">
                 Featured
               </span>
             </div>
-          )} */}
+          )}
         </div>
 
         <div className="p-6 flex flex-col flex-grow">
@@ -103,23 +108,22 @@ const ProjectCard = ({
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="text-gray-400 hover:text-blue-500 transition-colors"
+                    className="text-gray-400 hover:text-blue-600 transition-colors"
                   >
-                    <FaGithub size={18} />
+                    <FaGithub className='text-2xl mr-2' />
                   </motion.div>
                 </Link>
               )}
-              {/* {liveUrl && (
-                <Link href={liveUrl} target="_blank" aria-label="Live Demo">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="text-gray-400 hover:text-blue-500 transition-colors"
-                  >
-                    <FaExternalLinkAlt size={16} />
-                  </motion.div>
+              <div className="relative w-full flex justify-center items-center">
+                <Link
+                  href={`/work/${id}`}
+                  title="click"
+                  className="faq-button"
+                >
+                  <FaArrowUpRightFromSquare className="text-2xl max-sm:text-lg cursor-pointer mx-auto hover:text-blue-600" />
+                  <span className="tooltip-project">View Project</span>
                 </Link>
-              )} */}
+              </div>
             </div>
           </div>
 
@@ -147,7 +151,7 @@ const ProjectCard = ({
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div >
   );
 };
 

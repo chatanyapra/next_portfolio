@@ -19,9 +19,11 @@ const ProjectCardShow = () => {
                     {projects && projects.map((project: Project, index: number) => (
                         <ProjectCard
                             key={index}
+                            id={project._id}
                             title={project.title}
                             description={project.shortDescription}
                             images={project.images}
+                            featured={true}
                             techStack={project.techStack}
                             link={project.link}
                         />

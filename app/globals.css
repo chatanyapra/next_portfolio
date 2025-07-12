@@ -336,7 +336,6 @@ html.dark .light-dark-shadow {
   pointer-events: none;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  z-index: 50;
 }
 
 .tooltip::before {
@@ -348,6 +347,42 @@ html.dark .light-dark-shadow {
   background-image: linear-gradient(to top right, #a34bae 5%, #3db7dc 100%);
   bottom: -5px;
   left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.group:hover .tooltip-project {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+.tooltip-project {
+  position: absolute;
+  top: -30px;
+  left: -70px;
+  opacity: 0;
+  background-color: #723bff;
+  background-image: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.tooltip-project::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #723bff;
+  background-image: linear-gradient(to top left, #3db7dc 5%, #3db7dc 100%);
+  bottom: -4px;
+  right: 0.5px;
+  z-index: -10;
   transform: translateX(-50%) rotate(45deg);
 }
 
