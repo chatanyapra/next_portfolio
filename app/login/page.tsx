@@ -22,7 +22,7 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={handleLogin} className="flex flex-col gap-4 w-80 mx-auto mt-20">
+    <form onSubmit={handleLogin} className="flex flex-col gap-4 w-80 mx-auto mt-20 z-10">
       <input
         placeholder="username"
         className="p-2 border"

@@ -27,7 +27,7 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
-  const images = blog?.images.map(image => image.url) || [];
+  const images = blog.images.map(image => image.url);
   const [mainImageIndex, setMainImageIndex] = useState(0);
 
   const toggleImage = (index: number) => {
@@ -37,13 +37,16 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
   return (
     <div className="flex justify-center items-center my-6 mx-auto">
       <div className="relative w-[550px] max-lg:w-[98%] h-[400px] max-sm:h-[300px] group">
+
         {/* Main Image */}
-        <div className="absolute top-0 left-0 w-4/5 h-5/6 transparent-color light-dark-shadow rounded-[40px] overflow-hidden">
-          <img
+        <div className="top-0 left-0 w-4/5 h-5/6 transparent-color light-dark-shadow rounded-[40px] overflow-hidden relative">
+          <Image
             src={images[mainImageIndex]}
-            className="toggleImage1 w-full h-full object-fill hover:scale-150 hover:opacity-75 transition duration-500 ease-in-out"
+            fill
+            sizes="(max-width: 640px) 100vw, 440px"
+            className="object-cover hover:scale-150 hover:opacity-75 transition duration-500 ease-in-out"
+            alt={`Blog Image ${mainImageIndex + 1}`}
             loading="lazy"
-            alt="Main"
           />
         </div>
 
@@ -54,18 +57,20 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
         </div>
 
         {/* Thumbnails */}
-        <div className="absolute bottom-0.5 left-1 w-[22%] h-[15%] flex justify-between items-center">
+        <div className="absolute bottom-0.5 left-1 w-[22%] h-[15%] flex justify-between items-center gap-1">
           {images.map((image, index) => (
             index !== mainImageIndex && (
               <div
                 key={index}
                 onClick={() => toggleImage(index)}
-                className="w-10 h-10 cursor-pointer bg-gray-100 rounded-full outline-gray-500 outline-dashed outline-2 outline-offset-2 overflow-hidden"
+                className="w-10 h-10 cursor-pointer bg-gray-100 rounded-full outline-gray-500 outline-dashed outline-2 outline-offset-2 overflow-hidden relative"
               >
-                <img
+                <Image
                   src={image}
-                  className="toggleImage w-full h-full object-fill"
                   alt={`Thumbnail ${index + 1}`}
+                  fill
+                  sizes="40px"
+                  className="object-cover"
                   loading="lazy"
                 />
               </div>
@@ -88,11 +93,11 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
 
           {featured ? (
             <Image
-              src={'/assets/projectimage/badgeicon.png'}
-              className='mx-auto my-0'
+              src="/assets/projectimage/badgeicon.png"
+              className="mx-auto my-0"
               width={80}
               height={80}
-              alt=''
+              alt="Featured Badge"
             />
           ) : (
             <div>
@@ -101,6 +106,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
             </div>
           )}
         </div>
+
       </div>
     </div>
   );

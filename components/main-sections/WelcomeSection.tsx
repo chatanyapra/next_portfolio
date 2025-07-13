@@ -33,7 +33,7 @@ const WelcomeSection = () => {
                         <Image
                             src="/assets/personsImages/my-image2.png"
                             fill
-                            sizes="60px"
+                            sizes="(max-width: 768px) 60px, 60px"
                             className="rounded-full object-cover object-top"
                             alt="Profile image"
                             loading="lazy"

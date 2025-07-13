@@ -56,7 +56,12 @@ const About = () => {
                     viewport={{ once: true }}
                 >
                     <div className="w-96 bg-gray-400 m-auto absolute -top-7 overflow-hidden max-sm:scale-75" style={{ borderRadius: "100px", height: "500px", transform: 'scaleX(-1)' }}>
-                        <Image src="/assets/personsImages/my-image2.png" fill className="h-full object-cover object-top z-10" loading="lazy" alt="" />
+                        <Image src="/assets/personsImages/my-image2.png"
+                            sizes="(max-width: 640px) 75vw, 384px"
+                            fill className="h-full object-cover object-top z-10"
+                            loading="lazy"
+                            alt=""
+                        />
                     </div>
                 </motion.div>
 

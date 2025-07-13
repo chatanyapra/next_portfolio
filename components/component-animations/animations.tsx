@@ -1,4 +1,6 @@
-import { motion, scale } from "framer-motion";
+'use client';
+
+import { motion } from "framer-motion";
 const viewItem = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0 },

@@ -54,7 +54,7 @@ const techCategories = [
                 bgColor: "bg-teal-50",
                 borderColor: "border-teal-100",
                 textColor: "text-teal-800",
-                icon: "tailwindcss",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
             },
             {
                 name: "Bootstrap",
@@ -80,7 +80,7 @@ const techCategories = [
                 bgColor: "bg-zinc-100",
                 borderColor: "border-zinc-200",
                 textColor: "text-zinc-800",
-                icon: "expressjs",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
             },
             {
                 name: "PHP",
@@ -94,7 +94,7 @@ const techCategories = [
                 bgColor: "bg-red-50",
                 borderColor: "border-red-100",
                 textColor: "text-red-800",
-                icon: "laravel",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
             },
             {
                 name: "Java",

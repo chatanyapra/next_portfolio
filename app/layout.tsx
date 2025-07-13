@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from "next-themes";
 import { DataProvider } from "@/context/DataContext";
 import Provider from "./provider";
@@ -32,6 +33,16 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <DataProvider>
             <Provider>
+              <NextTopLoader
+                color="#38bdf8"
+                initialPosition={0.08}
+                crawlSpeed={200}
+                height={4}
+                crawl={true}
+                showSpinner={false}
+                easing="ease"
+                speed={200}
+              />
               {children}
             </Provider>
           </DataProvider>

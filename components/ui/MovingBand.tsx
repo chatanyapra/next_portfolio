@@ -12,18 +12,19 @@ const MovingBand = () => {
   const techItems: TechItem[] = useMemo(() => [
     { icon: "/assets/IconsImage/wordpress.png", name: "Wordpress" },
     { icon: "/assets/IconsImage/bootstrap.png", name: "Bootstrap" },
-    { icon: "/assets/IconsImage/laravel.png", name: "Laravel" },
     { icon: "/assets/IconsImage/js.png", name: "JavaScript" },
     { icon: "/assets/IconsImage/react.png", name: "React JS" },
     { icon: "/assets/IconsImage/php.png", name: "Php" },
-    { icon: "/assets/IconsImage/expressjs.png", name: "Express JS" },
+    { icon: "/assets/IconsImage/mysql.png", name: "MySQL" },
     { icon: "/assets/IconsImage/css.png", name: "CSS" },
     { icon: "/assets/IconsImage/html.png", name: "HTML" },
     { icon: "/assets/IconsImage/java.png", name: "Java" },
+    { icon: "/assets/IconsImage/postgresql.png", name: "PostgreSQL" },
     { icon: "/assets/IconsImage/typescript.png", name: "TypeScript" },
+    { icon: "/assets/IconsImage/ajax.png", name: "AJAX" },
     { icon: "/assets/IconsImage/api.png", name: "FastApi" },
-    { icon: "/assets/IconsImage/tailwindcss.png", name: "Tailwind" },
-    { icon: "/assets/IconsImage/ajax.png", name: "AJAX" }
+    { icon: "/assets/IconsImage/docker.png", name: "Docker" },
+    { icon: "/assets/IconsImage/mongodb.png", name: "MongoDB" }
   ], []);
 
   const renderItems = useMemo(() => [...techItems, ...techItems], [techItems]);
@@ -44,9 +45,9 @@ const MovingBand = () => {
                 height={48}
                 alt={item.name}
                 loading="lazy"
+                className="h-12 w-auto"
+                style={{ height: "auto", width: "auto" }}
               />
-
-
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
               </span>
@@ -69,8 +70,9 @@ const MovingBand = () => {
                 height={48}
                 alt={item.name}
                 loading="lazy"
+                className="h-12 w-auto"
+                style={{ height: "auto", width: "auto" }}
               />
-
 
               <span className="text-white text-5xl max-md:text-2xl font-bold">
                 {item.name}
