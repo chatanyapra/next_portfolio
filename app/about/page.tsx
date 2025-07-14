@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import dynamic from "next/dynamic"
+
+export const metadata: Metadata = {
+    title: "About"
+}
 
 const AboutPage = dynamic(() => import("@/components/pages/aboutpage"));
 const Skills = dynamic(() => import("@/components/skills-stack/Skills"));

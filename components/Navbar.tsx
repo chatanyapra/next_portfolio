@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ProfileDropdown from './ProfileDropdown';
 import { SessionProvider } from 'next-auth/react';
+import Image from 'next/image';
 
 const Navbar = () => {
     const navbarRef = useRef(null);
@@ -17,8 +18,15 @@ const Navbar = () => {
         <>
             <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-3 main-color transition-opacity duration-300 ease-out z-20`}>
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
-                    <a ref={logoAnim} href="#" className="flex items-center">
-                        <img src={logo} className='h-14' style={{ filter: "drop-shadow(0 0 30px black)" }} alt="" />
+                    <a ref={logoAnim} href="#" className="flex items-center relative">
+                        <Image
+                            src={logo}
+                            alt="Chatanya Logo"
+                            width={220}
+                            height={60}
+                            className="drop-shadow-[0_0_30px_black]"
+                            priority
+                        />
                     </a>
                     <div className='flex'>
                         <div className="hidden md:flex space-x-4 mt-2 ">
