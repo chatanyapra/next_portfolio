@@ -40,7 +40,7 @@ export const ScrollViewAnimation = ({
     once = true,
 }: ScrollViewAnimationProps) => {
     return (
-        <motion.span
+        <motion.div
             variants={viewItem}
             initial="hidden"
             {...(animate && !whileInView && { animate: 'show' })}
@@ -52,7 +52,7 @@ export const ScrollViewAnimation = ({
             className="inline-block"
         >
             {children}
-        </motion.span>
+        </motion.div>
     );
 };
 export const SectionHeadAnimation = ({ children }: { children: React.ReactNode }) => {

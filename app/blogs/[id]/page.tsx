@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(
     { params }: { params: Params }
 ): Promise<Metadata> {
-    const id = params.id;
+    const id = await params.id;
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
         next: { revalidate: 60 }
     });
@@ -49,7 +49,7 @@ export async function generateMetadata(
 
 
 export default async function Page({ params }: { params: Params }) {
-    const id = params.id;
+    const id = await params.id;
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
         next: { revalidate: 60 } // ISR enabled
     });

@@ -1,42 +1,59 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { Blog, Project } from '@/context/DataContext';
+import type { Metadata } from 'next';
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import dynamic from 'next/dynamic';
-interface Projects extends Project {
-    longDescription: string;
-}
+
 const Workpage = dynamic(() => import('@/components/pages/workpage'));
-export default function page() {
-    const params = useParams();
-    const projectId = Array.isArray(params.id) ? params.id[0] : params.id;
-    const [projects, setprojects] = useState<Projects>();
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        const fetchByProjectId = async () => {
-            try {
-                const response = await fetch(`/api/projects/${projectId}`);
-                const result = await response.json();
-                if (result.success) {
-                    setprojects(result.data);
-                }
-            } catch (error) {
-                console.error("Error fetching project:", error);
-            }
-        };
-        console.log("blogId::::", projectId);
+type Params = {
+    id: string;
+};
 
+// Static params for SSG
+export async function generateStaticParams() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`, {
+        next: { revalidate: 60 },
+    });
+    const { data } = await res.json();
+    return data.map((project: { _id: string }) => ({ id: project._id }));
+}
 
-        if (projectId) fetchByProjectId();
-    }, [projectId]);
+// Metadata for SEO
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${params.id}`, {
+        next: { revalidate: 60 },
+    });
+    const { data } = await res.json();
+
+    return {
+        title: data?.title || 'Project | My Website',
+        description: data?.shortDescription || 'Explore a featured project from my portfolio.',
+        openGraph: {
+            title: data?.title,
+            description: data?.shortDescription,
+            images: data?.images?.length
+                ? [{ url: data.images[0].url, alt: data.images[0].alt || 'project image' }]
+                : [],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: data?.title,
+            description: data?.shortDescription,
+            images: data?.images?.[0]?.url,
+        },
+    };
+}
+
+export default async function Page({ params }: { params: Params }) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${params.id}`, {
+        next: { revalidate: 60 },
+    });
+    const { data: project } = await res.json();
 
     return (
-        <div className='w-full mx-auto flex flex-col relative blogsection-bg-design pt-32 max-md:pt-12'>
-            {!projects || !projects.longDescription ? (
-                <div className="md:w-[90%] w-full mx-auto min-h-96 animate-pulse rounded-[50px] flex max-md:flex-col justify-between mb-8  max-sm:px-2">
+        <div className="w-full mx-auto flex flex-col relative blogsection-bg-design pt-32 max-md:pt-12">
+            {!project || !project.longDescription ? (
+                <div className="md:w-[90%] w-full mx-auto min-h-96 animate-pulse rounded-[50px] flex max-md:flex-col justify-between mb-8 max-sm:px-2">
                     <div className="w-full">
                         <div className="h-10 w-[250px] md:w-[40%] bg-gray-400 dark:bg-gray-600 rounded mb-8"></div>
                         <div className="space-y-4">
@@ -50,15 +67,14 @@ export default function page() {
             ) : (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 flex flex-col mb-16 light-dark-shadow max-sm:px-2">
                     <ScrollViewAnimation>
-                        <h1 className="text-4xl pb-8 ">{projects.title}</h1>
+                        <h1 className="text-4xl pb-8">{project.title}</h1>
                     </ScrollViewAnimation>
                     <ScrollViewAnimation delay={0.5}>
-                        <p dangerouslySetInnerHTML={{ __html: projects.longDescription }}></p>
+                        <div dangerouslySetInnerHTML={{ __html: project.longDescription }}></div>
                     </ScrollViewAnimation>
                 </div>
             )}
-
-            <Workpage projectId={projectId} />
+            <Workpage projectId={params.id} />
         </div>
     );
 }
