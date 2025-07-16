@@ -49,7 +49,7 @@ export async function generateMetadata(
 
 
 export default async function Page({ params }: { params: Params }) {
-    const id = await params.id;
+    const id = params.id;
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
         next: { revalidate: 60 } // ISR enabled
     });
@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: Params }) {
                         <h1 className="text-4xl pb-8">{data.title}</h1>
                     </ScrollViewAnimation>
                     <ScrollViewAnimation delay={0.5}>
-                        <p dangerouslySetInnerHTML={{ __html: data.longDescription }}></p>
+                        <div dangerouslySetInnerHTML={{ __html: data.longDescription }}></div>
                     </ScrollViewAnimation>
                 </div>
             )}

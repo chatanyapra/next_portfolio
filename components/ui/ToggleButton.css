@@ -23,12 +23,12 @@
 
 .icon--moon {
   transition-delay: 200ms;
-  color: rgb(255, 255, 255);
+  color: rgb(238, 238, 35);
 }
 
 .icon--sun {
   transform: scale(0);
-  color: yellow;
+  color: rgb(255, 255, 255);
 }
 
 #switch:checked+.icon--moon {

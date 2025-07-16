@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { signOut } from "next-auth/react";
+// import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+// import Link from "next/link";
 import ToggleButton from "./ui/ToggleButton";
 import { useTheme } from "next-themes";
 
@@ -47,7 +47,7 @@ function ProfileDropdown() {
       {isOpen && (
         <div className="absolute right-0 w-48 h-fit mt-7 origin-top-right bg-[#070a29] dark:bg-gray-200 border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg overflow-hidden">
           <div className="h-fit">
-            {!session ? (
+            {/* {!session ? (
               <Link href="/login">
                 <button className="w-full px-4 py-2 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500">
                   Login
@@ -76,7 +76,7 @@ function ProfileDropdown() {
                   Logout
                 </button>
               </>
-            )}
+            )} */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="w-full px-4 pb-1.5 text-left text-gray-200 dark:text-gray-700 hover:bg-gray-500 flex justify-between items-center"
