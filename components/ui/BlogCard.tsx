@@ -47,6 +47,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
             className="object-cover hover:scale-150 hover:opacity-75 transition duration-500 ease-in-out"
             alt={`Blog Image ${mainImageIndex + 1}`}
             loading="lazy"
+            priority={false}
           />
         </div>
 
@@ -72,6 +73,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
                   sizes="40px"
                   className="object-cover"
                   loading="lazy"
+                  priority={false}
                 />
               </div>
             )
@@ -98,6 +100,8 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
               width={80}
               height={80}
               alt="Featured Badge"
+              loading="lazy"
+              priority={false}
             />
           ) : (
             <div>

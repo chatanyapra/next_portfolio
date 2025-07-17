@@ -1,12 +1,11 @@
 import useSWR from 'swr';
 import BlogCard from '../ui/BlogCard';
 import BlogSkeleton from '../section_skeleton/BlogSkeleton';
-import { container } from '../component-animations/animations';
 import { Blog } from "@/context/DataContext";
 import { fetcher } from '../pages/workpage';
 
 const CardShowBlog = () => {
-    const { data: blogs, error, isLoading } = useSWR('/api/blogs?limit=2', fetcher);
+    const { data: blogs, isLoading } = useSWR('/api/blogs?limit=2', fetcher);
     return (
         <section className="w-full mx-auto">
             {isLoading ? (

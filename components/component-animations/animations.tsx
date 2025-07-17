@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from "framer-motion";
-const viewItem = {
+export const viewItem = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0 },
 };
-
 export const container = {
     hidden: { opacity: 0 },
     show: {
@@ -16,6 +15,10 @@ export const container = {
         },
     },
 };
+export const heading = {
+    hidden: { opacity: 0, y: -30 },
+    show: { opacity: 1, y: 0 }
+}
 export const itempop = {
     hidden: { opacity: 0, scale: 0.9 },
     show: { opacity: 1, scale: 1 },
@@ -72,4 +75,15 @@ export const SectionHeadAnimation = ({ children }: { children: React.ReactNode }
             </div>
         </motion.h2>
     )
+}
+export const BigHeaderAnimation = ({ children }: { children: React.ReactNode }) => {
+    return (<motion.div
+        variants={heading}
+        initial={"hidden"}
+        animate={"show"}
+        transition={{ duration: 0.5 }}
+        className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+        {children}
+    </motion.div>
+    );
 }

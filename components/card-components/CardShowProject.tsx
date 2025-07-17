@@ -7,7 +7,7 @@ import { fetcher } from "../pages/workpage";
 import ProjectSkeleton from "../section_skeleton/ProjectSkeleton";
 
 const ProjectCardShow = () => {
-    const { data: projects = [], error, isLoading } = useSWR('/api/projects?limit=3', fetcher);
+    const { data: projects = [], isLoading } = useSWR('/api/projects?limit=3', fetcher);
     return (
         <section className="w-full mx-auto">
             {isLoading ? (

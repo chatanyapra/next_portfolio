@@ -161,7 +161,7 @@ const techCategories = [
 
 const TechStack = () => {
     return (
-        <div className="w-full mx-auto px-8 rounded-xl mt-14 mb-6 relative">
+        <div className="w-full mx-auto px-8 rounded-xl mt-14 relative">
             <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3">
                 Technologies I Work With
             </h3>
@@ -189,24 +189,18 @@ const TechStack = () => {
                                 transition={{ duration: 0.4, delay: i * 0.05 }}
                                 viewport={{ once: true }}
                             >
-                                {tech.icon.startsWith("http") ? (
-                                    <img
-                                        src={tech.icon}
-                                        alt={tech.name}
-                                        width={16}
-                                        height={16}
-                                        className="mr-2"
-                                        loading="lazy"
-                                    />
-                                ) : (
-                                    <Image
-                                        src={`/assets/IconsImage/${tech.icon}.png`}
-                                        alt={tech.name}
-                                        width={16}
-                                        height={16}
-                                        className="mr-2"
-                                    />
-                                )}
+                                <Image
+                                    // Conditionally set the src for local or remote images
+                                    src={
+                                        tech.icon.startsWith("http")
+                                            ? tech.icon
+                                            : `/assets/IconsImage/${tech.icon}.png`
+                                    }
+                                    alt={`${tech.name} icon`}
+                                    width={16}
+                                    height={16}
+                                    className="mr-2"
+                                />
                                 {tech.name}
                             </motion.div>
                         ))}

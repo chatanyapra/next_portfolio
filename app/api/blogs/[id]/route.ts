@@ -8,11 +8,6 @@ import { parseForm } from '@/lib/parseForm';
 import cloudinary from '@/lib/cloudinary';
 import fs from 'fs';
 
-interface Params {
-  params: {
-    id: string;
-  };
-}
 export const config = {
   api: {
     bodyParser: false,

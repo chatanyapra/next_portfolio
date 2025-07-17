@@ -4,6 +4,12 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectToDB } from '@/lib/mongodb';
 import bcrypt from 'bcrypt';
 import User from '@/models/userModel';
+type ExtendedUser = {
+  id: string;
+  name: string;
+  image?: string | null;
+  isAdmin?: boolean;
+};
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -32,18 +38,19 @@ export const authOptions: AuthOptions = {
           id: user._id.toString(),
           name: user.username,
           image: user.image || null,
-          isAdmin: (user as any).isAdmin || false,
-        };
+          isAdmin: user.isAdmin || false, // ✅ no 'as any'
+        } satisfies ExtendedUser;
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.name = user.name;
-        token.image = user.image;
-        token.isAdmin = (user as any).isAdmin || false;
+        const u = user as ExtendedUser;
+        token.id = u.id;
+        token.name = u.name;
+        token.image = u.image;
+        token.isAdmin = u.isAdmin || false;
       }
       return token;
     },

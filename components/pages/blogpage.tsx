@@ -5,41 +5,19 @@ import Loader from '../ui/Loader';
 import BlogCard from '../ui/BlogCard';
 import { fetcher } from './workpage';
 import useSWR from 'swr';
+import { BigHeaderAnimation, container, item } from '../component-animations/animations';
 
 const Blogpage = ({ blogId }: { blogId?: string }) => {
-    let { data: blogs, error, isLoading } = useSWR('/api/blogs', fetcher);
+    const { data: blogs, isLoading } = useSWR('/api/blogs', fetcher);
     const filteredBlogs = blogId
         ? blogs?.filter((b: Blog) => b._id.toString() !== blogId)
         : blogs;
 
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3,
-            },
-        },
-    };
-    const item = {
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 },
-    };
-    const heading = {
-        hidden: { opacity: 0, y: -30 },
-        show: { opacity: 1, y: 0 }
-    }
     return (
         <div className={`w-full mx-auto flex flex-col relative blogsection-bg-design`}>
-            <motion.div
-                variants={heading}
-                initial={"hidden"}
-                whileInView={"show"}
-                transition={{ duration: 0.5 }}
-                className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+            <BigHeaderAnimation>
                 Blogs
-            </motion.div>
+            </BigHeaderAnimation>
             {isLoading ? (
                 <div className="w-full mx-auto mt-10">
                     <Loader />

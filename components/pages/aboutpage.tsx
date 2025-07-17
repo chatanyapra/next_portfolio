@@ -1,6 +1,7 @@
 "use client"
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const AboutPage = () => {
 
@@ -29,8 +30,16 @@ const AboutPage = () => {
                     </p>
                 </ScrollViewAnimation>
             </div>
+            {/* CORRECTED IMAGE */}
             <div className="w-[34%] max-md:w-[98%] max-md:hidden h-auto transparent-color rounded-[50px] overflow-hidden flex justify-center items-center sm:big-screen-light-dark-shadow">
-                <img src={"/assets/images/imageface2.png"} className="m-auto h-full max-h-[450px]" alt="" />
+                <Image
+                    src={"/assets/images/imageface2.png"}
+                    alt="A portrait of Chatanya"
+                    width={400} // Defines the aspect ratio
+                    height={450} // Defines the aspect ratio
+                    // The className now respects the aspect ratio
+                    className="m-auto w-full h-auto max-h-[450px]"
+                />
             </div>
             <motion.div
                 initial={{ top: -20 }}

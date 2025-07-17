@@ -4,54 +4,72 @@ import dynamic from 'next/dynamic';
 import DetailSkeleton from '@/components/ui/skeleton/DetailSkeleton';
 
 const Blogpage = dynamic(() => import('@/components/pages/blogpage'));
-type Params = {
-    id: string
-}
-export async function generateStaticParams() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`,
-        { next: { revalidate: 60 } }
-    );
-    const { data } = await res.json();
-    return data.map((blog: { _id: string }) => ({ id: blog._id }));
-}
 
+type Params = {
+    id: string;
+};
+
+export async function generateStaticParams() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs`, {
+            next: { revalidate: 60 }
+        });
+        if (!res.ok) return [];
+        const { data } = await res.json();
+        return Array.isArray(data) ? data.map((blog: { _id: string }) => ({ id: blog._id })) : [];
+    } catch (error) {
+        console.error("Failed to fetch blogs for static params:", error);
+        return [];
+    }
+}
 
 // Dynamically generate metadata for each blog
-export async function generateMetadata(
-    { params }: { params: Params }
-): Promise<Metadata> {
-    const id = await params.id;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
-        next: { revalidate: 60 }
-    });
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
 
-    const { data } = await res.json();
+    const id = params.id;
 
-    return {
-        title: data?.title || 'Blog | My Website',
-        description: data?.shortDescription || 'Read an insightful blog post.',
-        openGraph: {
-            title: data?.title,
-            description: data?.shortDescription,
-            images: data?.images?.length
-                ? [{ url: data.images[0].url, alt: data.images[0].alt || 'blog image' }]
-                : [],
-            type: 'article'
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: data?.title,
-            description: data?.shortDescription,
-            images: data?.images?.[0]?.url
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
+            next: { revalidate: 60 }
+        });
+
+        if (!res.ok) {
+            return { title: 'Blog Post Not Found' };
         }
-    };
-}
 
+        const { data } = await res.json();
+
+        return {
+            title: data?.title || 'Blog | My Website',
+            description: data?.shortDescription || 'Read an insightful blog post.',
+            openGraph: {
+                title: data?.title,
+                description: data?.shortDescription,
+                images: data?.images?.length
+                    ? [{ url: data.images[0].url, alt: data.images[0].alt || 'blog image' }]
+                    : [],
+                type: 'article'
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: data?.title,
+                description: data?.shortDescription,
+                images: data?.images?.[0]?.url
+            }
+        };
+    } catch (error) {
+        console.error("Failed to generate metadata:", error);
+        return {
+            title: "Error",
+            description: "Could not load blog post details."
+        };
+    }
+}
 
 export default async function Page({ params }: { params: Params }) {
     const id = params.id;
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
-        next: { revalidate: 60 } // ISR enabled
+        next: { revalidate: 60 }
     });
 
     const { data } = await res.json();
