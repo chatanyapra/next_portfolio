@@ -35,10 +35,10 @@ const AboutPage = () => {
                 <Image
                     src={"/assets/images/imageface2.png"}
                     alt="A portrait of Chatanya"
-                    width={400} // Defines the aspect ratio
-                    height={450} // Defines the aspect ratio
-                    // The className now respects the aspect ratio
+                    width={400}
+                    height={450}
                     className="m-auto w-full h-auto max-h-[450px]"
+                    sizes="(max-width: 640px) 100vw, 440px"
                 />
             </div>
             <motion.div

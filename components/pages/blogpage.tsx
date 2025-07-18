@@ -14,7 +14,7 @@ const Blogpage = ({ blogId }: { blogId?: string }) => {
         : blogs;
 
     return (
-        <div className={`w-full mx-auto flex flex-col relative blogsection-bg-design`}>
+        <div className={`w-full mx-auto flex flex-col relative blogsection-bg-design  sm:p-4 p-2`}>
             <BigHeaderAnimation>
                 Blogs
             </BigHeaderAnimation>
