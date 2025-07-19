@@ -6,8 +6,8 @@ export const siteConfig = {
     name: "Chatanya",
     description: "Welcome to Chatanya's portfolio — explore my full-stack projects, read insightful blogs, and learn more about me and my development journey.",
     url: urlmain,
-    ogImage: `./vercel.svg`,
-    profileImage: `./assets/my-image2.png`,
+    ogImage: `${urlmain}/opengraph-image.png`,
+    profileImage: `${urlmain}/assets/my-image2.png`,
 }
 
 export const metadata: Metadata = {
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: `${siteConfig.name} | Fullstack Developer Portfolio`,
         description: "Explore projects, blogs, and insights into my journey as a developer. Learn more about what drives my work.",
-        url: "https://9p7nj1qr-3000.inc1.devtunnels.ms/",
+        url: "https://9p7nj1qr-3000.inc1.devtunnels.ms",
         siteName: "Chatanya Portfolio",
         images: [
             {
-                url: `./vercel.svg`,
+                url: `${urlmain}/opengraph-image.png`,
                 width: 1200,
                 height: 630,
                 alt: "Chatanya Portfolio Preview",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: `${siteConfig.name} | Fullstack Developer Portfolio`,
         description: "Discover my projects, blog posts, and background as a passionate fullstack web developer.",
-        images: [`./vercel.svg`]
+        images: [`${urlmain}/opengraph-image.png`]
     },
-    metadataBase: new URL("https://9p7nj1qr-3000.inc1.devtunnels.ms/"),
+    metadataBase: new URL("https://9p7nj1qr-3000.inc1.devtunnels.ms"),
 };

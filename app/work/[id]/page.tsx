@@ -27,7 +27,8 @@ export async function generateStaticParams() {
 
 // Metadata for SEO
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${params.id}`, {
+    const id = params.id;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${id}`, {
         next: { revalidate: 60 },
     });
 
@@ -61,12 +62,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function Page({ params }: { params: Params }) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${params.id}`, {
+    const id = params.id;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${id}`, {
         next: { revalidate: 60 },
     });
 
     if (!res.ok) {
-        console.error(`Failed to fetch project ${params.id}: ${res.status}`);
+        console.error(`Failed to fetch project ${id}: ${res.status}`);
         throw new Error(`Failed to load project data`);
     }
 
@@ -96,7 +98,7 @@ export default async function Page({ params }: { params: Params }) {
                     </ScrollViewAnimation>
                 </div>
             )}
-            <Workpage projectId={params.id} />
+            <Workpage projectId={id} />
         </div>
     );
 }
