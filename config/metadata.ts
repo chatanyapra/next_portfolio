@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: `${siteConfig.name} | Fullstack Developer Portfolio`,
         description: "Explore projects, blogs, and insights into my journey as a developer. Learn more about what drives my work.",
-        url: "https://9p7nj1qr-3000.inc1.devtunnels.ms",
+        url: `${urlmain}`,
         siteName: "Chatanya Portfolio",
         images: [
             {
@@ -38,5 +38,5 @@ export const metadata: Metadata = {
         description: "Discover my projects, blog posts, and background as a passionate fullstack web developer.",
         images: [`${urlmain}/opengraph-image.png`]
     },
-    metadataBase: new URL("https://9p7nj1qr-3000.inc1.devtunnels.ms"),
+    metadataBase: new URL(`${urlmain}`),
 };
