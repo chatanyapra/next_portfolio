@@ -6,7 +6,7 @@ export const siteConfig = {
     name: "Chatanya",
     description: "Welcome to Chatanya's portfolio — explore my full-stack projects, read insightful blogs, and learn more about me and my development journey.",
     url: urlmain,
-    ogImage: `/opengraph-image.png`,
+    ogImage: `/opengraph-image.JPG`,
     profileImage: `assets/my-image2.png`,
 }
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         siteName: "Chatanya Portfolio",
         images: [
             {
-                url: `./opengraph-image.png`,
+                url: `${siteConfig.ogImage}`,
                 width: 1200,
                 height: 630,
                 alt: "Chatanya Portfolio Preview",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: `${siteConfig.name} | Fullstack Developer Portfolio`,
         description: "Discover my projects, blog posts, and background as a passionate fullstack web developer.",
-        images: [`./opengraph-image.png`]
+        images: [`${siteConfig.ogImage}`]
     },
     metadataBase: new URL(`${urlmain}`),
 };
