@@ -4,7 +4,7 @@ import Image from "next/image";
 const WelcomeSection = () => {
     return (
         <div>
-            <div className="w-2/4 max-md:w-full h-full relative max-sm:overflow-hidden mb-2">
+            <div className="w-2/4 max-md:w-full h-full relative max-sm:overflow-hidden mb-2 md:mr-4 ">
                 <div className="w-96 home-image max-sm:scale-75 max-sm:w-[370px]" style={{ borderRadius: "100px", height: "500px" }}></div>
                 <div className="w-96 h-[500px] rounded-[100px] m-auto absolute top-0 overflow-hidden max-sm:scale-75" >
                     <Image
