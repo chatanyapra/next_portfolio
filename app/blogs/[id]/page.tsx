@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: Params }) {
     const { data } = await res.json();
 
     return (
-        <div className='w-full mx-auto flex flex-col relative blogsection-bg-design pt-32 max-md:pt-12'>
+        <div className='w-full mx-auto flex flex-col relative pt-32 max-md:pt-12'>
             {!data || !data.longDescription ? (
                 <DetailSkeleton />
             ) : (

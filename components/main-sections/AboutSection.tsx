@@ -66,7 +66,7 @@ const About = () => {
                 </motion.div>
 
                 {/* Right Side Text */}
-                <div className="md:w-[50%] min-h-96 mt-14 pr-10 max-md:px-4">
+                <div className="md:w-[50%] min-h-96 mt-14 pr-10 max-md:px-3">
                     <div className="-ml-12">
                         <SectionHeadAnimation>
                             <i className="mb-2">About</i>

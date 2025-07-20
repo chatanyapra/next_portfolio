@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: Params }) {
     const { data: project } = await res.json();
 
     return (
-        <div className="w-full mx-auto flex flex-col relative blogsection-bg-design pt-32 max-md:pt-12">
+        <div className="w-full mx-auto flex flex-col relative pt-32 max-md:pt-12">
             {!project || !project.longDescription ? (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 animate-pulse rounded-[50px] flex max-md:flex-col justify-between mb-8 max-sm:px-2">
                     <div className="w-full">

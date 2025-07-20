@@ -1,4 +1,11 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/20;
+  }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&family=Metrophobic:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round:wght@400&family=Metrophobic:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@200;300;400;500;600;700;800;900&family=Metrophobic:wght@400&display=swap');

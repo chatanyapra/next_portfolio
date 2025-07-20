@@ -190,7 +190,6 @@ const TechStack = () => {
                                 viewport={{ once: true }}
                             >
                                 <Image
-                                    // Conditionally set the src for local or remote images
                                     src={
                                         tech.icon.startsWith("http")
                                             ? tech.icon

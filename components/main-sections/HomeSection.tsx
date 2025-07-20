@@ -8,10 +8,10 @@ const BouncingBall = dynamic(() => import("@/components/ui/bouncingBall"));
 const Home = () => {
     return (
         <div>
-            <div className='w-full max-sm:pt-10 md:pt-40 flex justify-around items-center max-md:flex-col '>
+            <div className='w-full max-sm:pt-10 md:pt-40 flex items-center max-md:flex-col '>
                 <BouncingBall />
-                <div className='w-full flex max-md:flex-col justify-around items-center overflow-hidden z-10'>
-                    <div className="w-2/4 max-md:w-full h-full">
+                <div className='w-full flex max-md:flex-col justify-between mx-auto items-center overflow-hidden z-10'>
+                    <div className="w-2/4 max-md:w-full h-full max-lg:pl-4 max-sm:p-0">
                         <div className='m-auto text-left max-sm:px-4'>
                             <h5 className='text-xl py-2'>Welcome to my world</h5>
                             <div className='text-4xl font-bold pt-8 leading-10 -mb-3'>Hi,</div>

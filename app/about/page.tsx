@@ -16,7 +16,7 @@ const page = () => {
             <AboutPage />
             <div className="w-full z-10 sm:mt-28 mt-10 px-0">
                 <Skills />
-                <div className="w-full h-[500px] mx-auto relative">
+                <div className="w-full h-auto mx-auto relative">
                     <Image
                         src={"/assets/images/background-line.png"}
                         alt=""

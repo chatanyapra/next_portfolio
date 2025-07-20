@@ -7,7 +7,7 @@ const AboutPage = () => {
 
     return (
         <div className=" w-full flex justify-evenly max-md:items-center z-10 md:mt-32 max-md:flex-col">
-            <div className="w-[52%] max-md:w-[98%] min-h-[450px] overflow-hidden z-10 max-md:h-auto md:rounded-[50px] rounded-t-[50px] p-6 border-b-0 relative" >
+            <div className="w-[52%] max-md:w-[98%] min-h-[450px] overflow-hidden z-10 max-md:h-auto md:rounded-[50px] rounded-t-[50px] p-2 border-b-0 relative" >
                 <h1 className="text-4xl sm:text-5xl mt-4 font-bold">Hello,</h1>
                 <div className="text-4xl sm:text-5xl pt-4 font-bold pr-2">I&apos;m
                     <ScrollViewAnimation>

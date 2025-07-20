@@ -23,7 +23,7 @@ const Skills = () => {
             <SectionHeadAnimation>
                 <i className="mb-2">Skills</i>
             </SectionHeadAnimation>
-            <div className="w-full mx-auto px-8">
+            <div className="w-full mx-auto px-8 max-md:px-2">
 
                 <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3">I Develop Skills Regularly</h3>
                 <ScrollViewAnimation whileInView once={false}>
