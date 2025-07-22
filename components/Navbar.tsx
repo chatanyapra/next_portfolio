@@ -13,20 +13,20 @@ const Navbar = () => {
     const navbarRef = useRef(null);
     const logoAnim = useRef(null);
     const pathname = usePathname();
-    const logo = "/assets/logo_small.png";
+    const logo = "/my-logo.png";
 
     return (
         <>
-            <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-3 main-color transition-opacity duration-300 ease-out z-20`}>
+            <nav ref={navbarRef} className={`relative md:fixed flex flex-col top-0 left-0 w-full p-1 main-color transition-opacity duration-300 ease-out z-20`}>
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
                     <a ref={logoAnim} href="#" className="flex items-center relative">
-                        <div className='w-[220px] h-[60px] relative'>
+                        <div className='w-[80px] h-[70px] relative'>
                             <Image
                                 src={logo}
                                 fill
-                                sizes="(max-width: 640px) 75vw, 384px"
+                                sizes="(max-width: 200px) 75vw, 220px"
                                 alt="Chatanya Logo"
-                                className="w-[220px] drop-shadow-[0_0_30px_black]"
+                                className="w-[100px]"
                                 priority
                             />
                         </div>

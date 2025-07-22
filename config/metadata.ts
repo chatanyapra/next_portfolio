@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         siteName: "Chatanya Portfolio",
         images: [
             {
-                url: `${siteConfig.ogImage}`,
+                url: `${urlmain}/opengraph-image.JPG`,
                 width: 1200,
                 height: 630,
                 alt: "Chatanya Portfolio Preview",
