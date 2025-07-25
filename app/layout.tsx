@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from "next-themes";
 import { DataProvider } from "@/context/DataContext";
 import Provider from "./provider";
@@ -30,17 +29,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <DataProvider>
             <Provider>
-              <NextTopLoader
-                color="#38bdf8"
-                initialPosition={0.08}
-                crawlSpeed={200}
-                height={4}
-                crawl={true}
-                showSpinner={false}
-                easing="ease"
-                speed={200}
-              />
-              {children}
+              <div className="app-main min-h-[1200px] w-full relative  overflow-hidden flex flex-col items-center m-auto" style={{ maxWidth: "1600px" }}>
+                <div className="fixed max-sm:absolute top-0 left-0 bottom-0 right-0 glass-effect text-center"></div>
+                {children}
+              </div>
             </Provider>
           </DataProvider>
         </ThemeProvider>

@@ -57,7 +57,7 @@ const MovingBand = () => {
       </div>
 
       {/* Bottom Band */}
-      <div className="w-[110%] overflow-hidden whitespace-nowrap bg-black/30 backdrop-blur-xl rotate-6 -ml-3 mt-5 mb-24">
+      <div className="w-[110%] overflow-hidden whitespace-nowrap bg-black/30 backdrop-blur-xl rotate-6 -ml-3 mt-3 mb-20">
         <div
           className="inline-flex animate-scroll-right whitespace-nowrap py-4 will-change-transform"
           style={{ transform: 'translate3d(0,0,0)' }}
