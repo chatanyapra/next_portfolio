@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import dynamic from 'next/dynamic';
 import DetailSkeleton from '@/components/ui/skeleton/DetailSkeleton';
-import "./globals.css";
 
 const Blogpage = dynamic(() => import('@/components/pages/blogpage'));
 
