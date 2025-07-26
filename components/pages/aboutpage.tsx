@@ -31,13 +31,13 @@ const AboutPage = () => {
                 </ScrollViewAnimation>
             </div>
             {/* CORRECTED IMAGE */}
-            <div className="w-[34%] max-md:w-[98%] max-md:hidden h-auto transparent-color rounded-[50px] overflow-hidden flex justify-center items-center sm:big-screen-light-dark-shadow">
+            <div className="w-[34%] max-md:w-[98%] max-md:hidden h-auto rounded-[50px] overflow-hidden flex justify-center items-center sm:big-screen-light-dark-shadow">
                 <Image
                     src={"/assets/images/imageface2.png"}
                     alt="A portrait of Chatanya"
                     width={400}
                     height={450}
-                    className="m-auto w-full h-auto max-h-[450px]"
+                    className="m-auto w-full h-auto max-h-[450px] max-w-[450px] "
                     sizes="(max-width: 640px) 100vw, 440px"
                 />
             </div>

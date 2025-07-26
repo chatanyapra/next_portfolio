@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-
+import "./globals.css";
 export const metadata: Metadata = {
     title: "About"
 };

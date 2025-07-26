@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
 import dynamic from 'next/dynamic';
 import DetailSkeleton from '@/components/ui/skeleton/DetailSkeleton';
+import "./globals.css";
 
 const Blogpage = dynamic(() => import('@/components/pages/blogpage'));
 
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     }
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function page({ params }: { params: Params }) {
     const id = params.id;
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogs/${id}`, {
         next: { revalidate: 60 }

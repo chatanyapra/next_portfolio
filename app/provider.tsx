@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
 export default function Provider({ children }: { children: React.ReactNode }) {
