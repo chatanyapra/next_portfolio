@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ScrollViewAnimation, SectionHeadAnimation } from '@/components/component-animations/animations';
 import Image from 'next/image';
+import { PortfolioTimeline } from './PortfolioTimeline';
 
 const About = () => {
     return (
@@ -103,6 +104,9 @@ const About = () => {
                         </ScrollViewAnimation>
                     </div>
                 </div>
+            </div>
+            <div className='m-auto w-full '>
+                <PortfolioTimeline />
             </div>
         </div>
     );

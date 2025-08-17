@@ -576,3 +576,72 @@ html.dark .light-dark-shadow {
 .animate-scroll-right {
   animation: scroll-right 20s linear infinite;
 }
+
+/* ----------------------------- */
+
+@layer components {
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    width: 2px;
+    opacity: 0.2;
+  }
+
+  .timeline-border::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    width: 2px;
+    height: 93%;
+    background-color: rgba(190, 189, 189, 0.749);
+  }
+
+  .timeline-item.active::before {
+    opacity: 1;
+  }
+
+  .timeline-item.active .timeline-dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(216, 217, 251, 0.529);
+  }
+
+  .timeline-dot {
+    transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .content-area {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .sub-item {
+    transition: all 0.3s ease;
+  }
+
+  .sub-item:hover {
+    transform: translateX(5px);
+  }
+
+  .sub-item.active {
+    font-weight: 600;
+    color: #4f46e5;
+  }
+
+  .dark .sub-item.active {
+    color: #a5b4fc;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

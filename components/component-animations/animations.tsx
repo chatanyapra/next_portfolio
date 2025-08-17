@@ -87,3 +87,60 @@ export const BigHeaderAnimation = ({ children }: { children: React.ReactNode }) 
     </motion.div>
     );
 }
+
+interface AnimationProps {
+    children: React.ReactNode;
+    delay?: number;
+    animate?: boolean;
+    whileInView?: boolean;
+    once?: boolean;
+}
+
+const viewItem2 = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0 },
+};
+
+export const ScrollViewAnimationTimeline = ({
+    children,
+    delay = 0,
+    animate = true,
+    whileInView = false,
+    once = true,
+}: AnimationProps) => {
+    return (
+        <motion.div
+            variants={viewItem2}
+            initial="hidden"
+            {...(animate && !whileInView && { animate: 'show' })}
+            {...(whileInView && {
+                whileInView: 'show',
+                viewport: { once },
+            })}
+            transition={{ duration: 0.5, delay }}
+            className="inline-block"
+        >
+            {children}
+        </motion.div>
+    );
+};
+
+export const FadeInAnimation = ({
+    children,
+    delay = 0,
+    duration = 0.5,
+}: {
+    children: React.ReactNode;
+    delay?: number;
+    duration?: number;
+}) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration, delay }}
+        >
+            {children}
+        </motion.div>
+    );
+};
