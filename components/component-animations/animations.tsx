@@ -35,6 +35,7 @@ type ScrollViewAnimationProps = {
     whileInView?: boolean; // If true → uses whileInView
     once?: boolean; // For whileInView behavior
 };
+
 export const ScrollViewAnimation = ({
     children,
     delay = 0,
@@ -77,14 +78,15 @@ export const SectionHeadAnimation = ({ children }: { children: React.ReactNode }
     )
 }
 export const BigHeaderAnimation = ({ children }: { children: React.ReactNode }) => {
-    return (<motion.div
-        variants={heading}
-        initial={"hidden"}
-        animate={"show"}
-        transition={{ duration: 0.5 }}
-        className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
-        {children}
-    </motion.div>
+    return (
+        <motion.div
+            variants={heading}
+            initial={"hidden"}
+            animate={"show"}
+            transition={{ duration: 0.5 }}
+            className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+            {children}
+        </motion.div>
     );
 }
 

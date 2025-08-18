@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FadeInAnimation, ScrollViewAnimationTimeline } from '../component-animations/animations';
+import { ScrollViewAnimation, SectionHeadAnimation } from '../component-animations/animations';
 
 type TimelineItem = {
     id: string;
@@ -17,7 +17,7 @@ type TimelineItem = {
     };
     content?: {
         title: string;
-        description: string;
+        description: string[];
         skills?: string[];
         image?: string;
     };
@@ -30,6 +30,10 @@ type Certificate = {
     year: string;
 };
 
+type ActiveItem = {
+    description: string[];
+};
+
 export const PortfolioTimeline = () => {
     const [activeTab, setActiveTab] = useState('about');
     const [activeSubTab, setActiveSubTab] = useState<string | null>(null);
@@ -40,7 +44,10 @@ export const PortfolioTimeline = () => {
             title: 'About Me',
             content: {
                 title: 'About Me',
-                description: "Hello! I'm a passionate developer with expertise in modern web technologies. I love creating beautiful, functional interfaces that provide great user experiences. With over 5 years of experience in the industry, I've worked on projects ranging from small business websites to large-scale enterprise applications.",
+                description: [`I’m Chatanya, a Full Stack Developer passionate about crafting modern, scalable, and high-performing web applications. I chose this career because I love turning ideas into functional and visually appealing digital experiences. Creativity and problem-solving drive my approach to development.`,
+                    `Currently, I work as a Freelance Developer and a Full Stack Developer Intern, where I build dynamic web solutions tailored to users' needs. I am always open to new opportunities and challenges that push me to grow.`,
+
+                    `With a mindset of continuous learning, I stay updated with the latest technologies, ensuring that my work aligns with industry best practices. My goal is to create impactful solutions that enhance user experiences and solve real-world problems.`],
                 skills: ['JavaScript', 'React', 'Node.js', 'UI/UX'],
                 image: 'https://via.placeholder.com/300x300'
             }
@@ -80,7 +87,7 @@ export const PortfolioTimeline = () => {
             title: 'Certificates',
             content: {
                 title: 'My Certifications',
-                description: ''
+                description: []
             }
         }
     ];
@@ -129,32 +136,20 @@ export const PortfolioTimeline = () => {
 
         if (activeTab === 'about' && activeItem.content) {
             return (
-                <ScrollViewAnimationTimeline whileInView>
+                <ScrollViewAnimation whileInView>
                     <div className="content-area">
-                        <h2 className="text-2xl font-bold mb-4 text-gradient">{activeItem.content.title}</h2>
-                        <div className="flex flex-col md:flex-row gap-6">
-                            <div className="md:w-1/3">
-                                <img
-                                    src={activeItem.content.image}
-                                    alt="Profile"
-                                    className="rounded-lg shadow-md w-full h-auto"
-                                />
-                            </div>
-                            <div className="md:w-2/3">
-                                <p className="mb-4 ">{activeItem.content.description}</p>
-                                <div className="flex flex-wrap gap-2 mt-6">
-                                    {activeItem.content.skills?.map((skill, index) => (
-                                        <ScrollViewAnimationTimeline key={skill} delay={0.1 + (index * 0.1)} whileInView>
-                                            <span className="px-3 py-1 shadow-sm shadow-gray-400 text-gradient rounded-full text-sm">
-                                                {skill}
-                                            </span>
-                                        </ScrollViewAnimationTimeline>
-                                    ))}
-                                </div>
+                        <h2 className="text-3xl font-bold mb-4 text-gradient">{activeItem.content.title}</h2>
+                        <div className="flex">
+                            <div className="w-full">
+                                {activeItem.content.description.map((text: string, index: number) => (
+                                    <ScrollViewAnimation key={index} delay={0.1 + (index * 0.1)} whileInView={index === 0}>
+                                        <p className="mb-4">{text}</p>
+                                    </ScrollViewAnimation>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </ScrollViewAnimationTimeline>
+                </ScrollViewAnimation>
             );
         }
 
@@ -165,17 +160,15 @@ export const PortfolioTimeline = () => {
 
             if (!activeSubTab) {
                 return (
-                    <ScrollViewAnimationTimeline whileInView>
-                        <div className="content-area">
-                            <h2 className="text-2xl font-bold mb-6 text-gradient">{journeyItem.subItems.title}</h2>
-                            <p className=" mb-6">
-                                Select a year from the timeline to explore my career milestones and achievements during that period.
-                            </p>
-                            <div className="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 text-center">
-                                <p className="text-gray-500 dark:text-gray-400">👈 Click on a year to view details</p>
-                            </div>
+                    <div className="content-area">
+                        <h2 className="text-3xl font-bold mb-6 text-gradient">{journeyItem.subItems.title}</h2>
+                        <p className=" mb-6">
+                            Select a year from the timeline to explore my career milestones and achievements during that period.
+                        </p>
+                        <div className="bg-gray-100 rounded-lg p-4 text-center">
+                            <p className="text-gray-500 ">👈 Click on a year to view details</p>
                         </div>
-                    </ScrollViewAnimationTimeline>
+                    </div>
                 );
             }
 
@@ -184,57 +177,55 @@ export const PortfolioTimeline = () => {
             if (!subItemContent) return null;
 
             return (
-                <ScrollViewAnimationTimeline whileInView>
-                    <div className="content-area">
-                        <h2 className="text-2xl font-bold mb-4 text-gradient">{subItemContent.title}</h2>
-                        <div className="space-y-4">
-                            <ScrollViewAnimationTimeline delay={0.1} whileInView>
-                                <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                    <h3 className="font-semibold text-lg">{subItemContent.title.split(' - ')[1]}</h3>
-                                    <p className="text-gray-600 dark:text-gray-400 text-sm">{subItemContent.period}</p>
-                                    <p className="mt-2 ">{subItemContent.description}</p>
-                                </div>
-                            </ScrollViewAnimationTimeline>
-                        </div>
+                // <ScrollViewAnimation whileInView>
+                <div className="content-area">
+                    <h2 className="text-3xl font-bold mb-4 text-gradient">{subItemContent.title}</h2>
+                    <div className="space-y-4">
+                        <ScrollViewAnimation delay={0.1} whileInView>
+                            <div className="p-4  rounded-lg">
+                                <p className="mt-2 ">{subItemContent.description}</p>
+                            </div>
+                        </ScrollViewAnimation>
                     </div>
-                </ScrollViewAnimationTimeline>
+                </div>
+                // </ScrollViewAnimation>
             );
         }
 
         if (activeTab === 'certificates') {
             return (
-                <ScrollViewAnimationTimeline whileInView>
-                    <div className="content-area">
-                        <h2 className="text-2xl font-bold mb-6 text-gradient">My Certifications</h2>
-                        <div className="grid md:grid-cols-2 gap-6">
-                            {certificates.map((cert, index) => (
-                                <ScrollViewAnimationTimeline key={cert.id} delay={0.1 + (index * 0.1)} whileInView>
-                                    <div className=" rounded-lg p-5 hover:shadow-md transition-shadow">
-                                        <div className="flex items-start gap-4">
-                                            <div className="bg-indigo-400 dark:bg-indigo-900 p-3 rounded-lg">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    className="h-6 w-6 text-gradient"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h3 className="font-semibold">{cert.title}</h3>
-                                                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                                                    Issued by {cert.issuer} - {cert.year}
-                                                </p>
-                                            </div>
+                // <ScrollViewAnimation whileInView>
+                <div className="content-area">
+                    <h2 className="text-3xl font-bold mb-6 text-gradient">My Certifications</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {certificates.map((cert, index) => (
+                            <ScrollViewAnimation key={cert.id} delay={0.1 + (index * 0.1)} whileInView>
+                                <div className=" rounded-lg p-5 hover:shadow-md transition-shadow">
+                                    <div className="flex items-start gap-4">
+                                        <div className="bg-indigo-400 p-3 rounded-lg">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="h-6 w-6 text-gradient"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold">{cert.title}</h3>
+                                            <p className="text-sm text-gray-600 mt-1">
+                                                Issued by {cert.issuer} - {cert.year}
+                                            </p>
                                         </div>
                                     </div>
-                                </ScrollViewAnimationTimeline>
-                            ))}
-                        </div>
+                                </div>
+                            </ScrollViewAnimation>
+                        ))}
                     </div>
-                </ScrollViewAnimationTimeline>
+                </div>
+                // </ScrollViewAnimation>
             );
         }
 
@@ -242,16 +233,18 @@ export const PortfolioTimeline = () => {
     };
 
     return (
-        <div className="transition-colors duration-300 min-h-screen m-auto ">
-            <div className="container mx-auto px-4 py-12">
+        <div className="transition-colors duration-300 m-auto md:pl-6 ">
+            <div className='-ml-6'>
+                <SectionHeadAnimation>
+                    <i className="mb-2">My Journey</i>
+                </SectionHeadAnimation>
+            </div>
+
+            <div className="container mx-auto md:px-4 px-2 pt-12">
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Left Sidebar Timeline Navigation */}
                     <div className="lg:w-1/4">
                         <div className="sticky top-24 space-y-1">
-                            <ScrollViewAnimationTimeline whileInView>
-                                <h2 className="text-2xl font-bold mb-6 text-gradient">My Journey</h2>
-                            </ScrollViewAnimationTimeline>
-
                             {/* Timeline Items */}
                             <div className="space-y-8 relative pl-8 timeline-border">
                                 {timelineData.map((item, index) => (
@@ -260,30 +253,30 @@ export const PortfolioTimeline = () => {
                                         className={`timeline-item relative ${activeTab === item.id ? 'active' : ''}`}
                                         data-target={item.id}
                                     >
-                                        <ScrollViewAnimationTimeline delay={0.1 + (index * 0.1)} whileInView>
+                                        <ScrollViewAnimation delay={0.1 + (index * 0.1)} whileInView>
                                             <div className="flex items-center">
-                                                <div className={`timeline-dot absolute -left-8 w-4 h-4 rounded-full bg-[#725bda] border-2 border-white dark:border-gray-900 ${activeTab === item.id ? 'active' : ''}`} />
+                                                <div className={`timeline-dot absolute -left-8 w-4 h-4 rounded-full bg-[#725bda] border-2 border-white ${activeTab === item.id ? 'active' : ''}`} />
                                                 <button
-                                                    className={`cursor-pointer tab-button text-left font-medium text-lg hover:text-[#725bda] transition-colors ${activeTab === item.id ? 'text-gradient' : ''}`}
+                                                    className={`cursor-pointer tab-button text-left font-medium text-xl hover:text-purple-400 transition-colors ${activeTab === item.id ? 'text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
                                                     onClick={() => handleTabChange(item.id)}
                                                 >
                                                     {item.title}
                                                 </button>
                                             </div>
-                                        </ScrollViewAnimationTimeline>
+                                        </ScrollViewAnimation>
 
                                         {/* Sub-items */}
                                         {item.subItems && (
                                             <div className="ml-6 mt-2 space-y-2 pl-4 flex flex-col">
                                                 {item.subItems.content.map((subItem, index) => (
-                                                    <ScrollViewAnimationTimeline key={subItem.period} delay={0.1 + (index * 0.1)} whileInView>
+                                                    <ScrollViewAnimation key={subItem.period} delay={0.1 + (index * 0.1)} whileInView>
                                                         <button
-                                                            className={`cursor-pointer sub-item tab-button text-sm py-1.5 block transition-colors hover:text-[#725bda] ${activeSubTab === subItem.period ? 'active font-semibold text-gradient' : ''}`}
+                                                            className={`cursor-pointer sub-item tab-button text-lg py-1.5 block transition-colors hover:text-purple-400 ${activeSubTab === subItem.period ? 'active font-semibold text-purple-400 text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
                                                             onClick={() => handleTabChange(subItem.period, true)}
                                                         >
                                                             {subItem.period} - {subItem.title.split(' - ')[1]}
                                                         </button>
-                                                    </ScrollViewAnimationTimeline>
+                                                    </ScrollViewAnimation>
                                                 ))}
                                             </div>
                                         )}
@@ -295,7 +288,7 @@ export const PortfolioTimeline = () => {
 
                     {/* Right Content Area */}
                     <div className="lg:w-3/4">
-                        <div className="rounded-xl p-6 md:p-8 min-h-[400px]">
+                        <div className="rounded-xl p-2 md:p-8 min-h-[400px]">
                             {renderContent()}
                         </div>
                     </div>

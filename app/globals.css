@@ -624,10 +624,11 @@ html.dark .light-dark-shadow {
     transform: translateX(5px);
   }
 
+  /* 
   .sub-item.active {
     font-weight: 600;
     color: #4f46e5;
-  }
+  } */
 
   .dark .sub-item.active {
     color: #a5b4fc;
