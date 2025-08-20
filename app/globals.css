@@ -2,7 +2,7 @@
 
 @layer utilities {
   .glass-effect {
-    @apply backdrop-blur-[30.5px] saturate-[1.1] bg-white/0;
+    @apply bg-white/0 backdrop-blur-[30.5px] saturate-[2];
   }
 }
 
@@ -630,9 +630,9 @@ html.dark .light-dark-shadow {
     color: #4f46e5;
   } */
 
-  .dark .sub-item.active {
+  /* .dark .sub-item.active {
     color: #a5b4fc;
-  }
+  } */
 }
 
 @keyframes fadeIn {
@@ -645,4 +645,15 @@ html.dark .light-dark-shadow {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.journey-text-gradient {
+  background: linear-gradient(to right, #a34bae 12%, #3db7dc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Glass effect */
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.2);
 }

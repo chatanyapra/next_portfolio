@@ -35,7 +35,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
   };
 
   return (
-    <div className="flex justify-center items-center my-6 mx-auto">
+    <div className="flex justify-center items-center mx-auto">
       <div className="relative w-[550px] max-lg:w-[98%] h-[400px] max-sm:h-[300px] group">
 
         {/* Main Image */}
