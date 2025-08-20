@@ -2,7 +2,7 @@
 
 @layer utilities {
   .glass-effect {
-    @apply bg-white/0 backdrop-blur-[30.5px] saturate-[2];
+    @apply bg-white/0 backdrop-blur-[30.5px] saturate-[0.9];
   }
 }
 
