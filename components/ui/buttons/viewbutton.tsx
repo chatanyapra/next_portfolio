@@ -7,7 +7,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { ScrollViewAnimation } from "@/components/component-animations/animations";
 
 const ViewAllButton = ({ text, link }: { text: string, link: string }) => (
-    <div className="mt-16 sm:float-end text-center md:mr-8">
+    <div className="mt-8 sm:float-end text-center md:mr-8">
         <ScrollViewAnimation whileInView>
             <Link href={link}>
                 <motion.button

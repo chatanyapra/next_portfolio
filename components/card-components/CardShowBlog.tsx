@@ -16,7 +16,7 @@ const CardShowBlog = () => {
                 <div
                     className='flex w-full justify-around max-lg:flex-col md:flex-wrap max-md:px-1 sm:px-6 px-4 lg:px-8'>
                     {blogs.map((blog: Blog, index: number) => (
-                        <div className='blogCard' key={index}>
+                        <div className='blogCard mb-10' key={index}>
                             <BlogCard blog={blog} src={"blogs"} count={index + 1} featured={true} />
                         </div>
                     ))}

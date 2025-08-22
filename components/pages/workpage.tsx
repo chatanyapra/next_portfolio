@@ -34,7 +34,7 @@ const Workpage = ({ projectId }: { projectId?: string }) => {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {filteredProjects?.map((project: Project, index: number) => (
-                        <motion.div key={index} variants={item}>
+                        <motion.div key={index} variants={item} className=' mt-8'>
                             <ProjectCard
                                 key={index}
                                 id={project._id}

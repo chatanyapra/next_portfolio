@@ -12,8 +12,9 @@ const BlogSection = () => {
             </SectionHeadAnimation>
 
             <CardShowBlog />
-
-            <ViewAllButton text={"View All Blogs"} link={"/blogs"} />
+            <div className='-mt-8'>
+                <ViewAllButton text={"View All Blogs"} link={"/blogs"} />
+            </div>
         </section>
     );
 }

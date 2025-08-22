@@ -84,7 +84,7 @@ export const BigHeaderAnimation = ({ children }: { children: React.ReactNode }) 
             initial={"hidden"}
             animate={"show"}
             transition={{ duration: 0.5 }}
-            className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit mb-8 text-gradient h-fit flex justify-center items-center mx-auto">
+            className="px-4 pb-4 text-7xl sm:text-8xl font-bold rounded-2xl w-fit text-gradient h-fit flex justify-center items-center mx-auto">
             {children}
         </motion.div>
     );

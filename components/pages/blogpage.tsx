@@ -14,7 +14,7 @@ const Blogpage = ({ blogId }: { blogId?: string }) => {
         : blogs;
 
     return (
-        <div className={`w-full mx-auto flex flex-col relative sm:p-4 p-2`}>
+        <div className={`w-full mx-auto flex flex-col relative sm:p-4 p-2 min-h-screen`}>
             <BigHeaderAnimation>
                 Blogs
             </BigHeaderAnimation>
@@ -33,7 +33,7 @@ const Blogpage = ({ blogId }: { blogId?: string }) => {
                         <motion.div
                             key={blog._id}
                             variants={item}
-                            className='blogCard'
+                            className='blogCard mt-10'
                         >
                             <BlogCard blog={blog} src={"blogs"} count={index + 1} />
                         </motion.div>
