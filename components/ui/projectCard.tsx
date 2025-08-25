@@ -80,7 +80,7 @@ const ProjectCard = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const shareLink = `https://chatanya.vercel.app/work/${link}`;
+    const shareLink = `https://chatanya.vercel.app/work/${id}`;
     try {
       await navigator.clipboard.writeText(shareLink);
       setCopied(true);
@@ -137,38 +137,37 @@ const ProjectCard = ({
               {title}
             </h3>
             <div className="flex space-x-2">
-              {link && (
-                <>
-                  <div className="relative inline-block">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={handleCopy}
-                      className="p-2 rounded-full transition"
-                    >
-                      <FaShareNodes className="text-2xl mr-2 cursor-pointer" />
-                    </motion.button>
 
-                    {/* Tooltip */}
-                    <span
-                      className={`absolute -top-8 left-1/2 -translate-x-1/2 
+              <div className="relative inline-block">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleCopy}
+                  className="py-2 cursor-pointer rounded-full hover:text-blue-600 transition-colors"
+                >
+                  <FaShareNodes className="text-2xl mr-2" />
+                </motion.button>
+
+                {/* Tooltip */}
+                <span
+                  className={`absolute -bottom-8 left-1/2 -translate-x-1/2 
                           px-2 py-1 text-sm rounded-md shadow-md whitespace-nowrap 
                           transition-opacity duration-200
                           ${copied ? "opacity-100 bg-green-600 text-white" : "opacity-0"}`}
-                    >
-                      Copied!
-                    </span>
-                  </div>
-                  <Link href={link} target="_blank" aria-label="Link">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="hover:text-blue-600 transition-colors"
-                    >
-                      <FaLink className='text-2xl mr-2 cursor-pointer' />
-                    </motion.div>
-                  </Link>
-                </>
+                >
+                  Copied!
+                </span>
+              </div>
+              {link && (
+                <Link href={link} target="_blank" aria-label="Link">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    <FaLink className='text-3xl mt-1 mr-2 cursor-pointer' />
+                  </motion.div>
+                </Link>
               )}
               <div className="relative w-full flex justify-center items-center">
                 <Link
