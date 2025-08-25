@@ -43,7 +43,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
           <Image
             src={images[mainImageIndex]}
             fill
-            sizes="(max-width: 640px) 100vw, 440px"
+            sizes="(max-width: 640px) 100vw, 410px"
             className="object-cover hover:scale-150 hover:opacity-75 transition duration-500 ease-in-out"
             alt={`Blog Image ${mainImageIndex + 1}`}
             loading="lazy"

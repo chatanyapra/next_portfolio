@@ -78,7 +78,6 @@ const LanguageSkeleton = () => {
                 </div>
                 <div className="h-2 rounded bg-gray-600 w-full relative"></div>
             </div>
-
         </div>
     )
 }

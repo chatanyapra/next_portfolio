@@ -3,14 +3,15 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
-import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
+import { useState } from 'react';
+import { FaArrowUpRightFromSquare, FaLink, FaShareNodes } from 'react-icons/fa6';
 
 type Image = {
   url: string,
   alt: string,
   _id: string
 }
+
 type TailwindColor =
   | 'red'
   | 'blue'
@@ -25,8 +26,12 @@ type TailwindColor =
   | 'cyan'
   | 'emerald'
   | 'fuchsia'
-  | 'sky';
+  | 'sky'
+  | 'pink'
+  | 'lime';
+
 const colorClassMap: Record<string, string> = {
+  // Existing
   html: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
   css: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
   bootstrap: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
@@ -35,7 +40,24 @@ const colorClassMap: Record<string, string> = {
   mysql: 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200',
   jquery: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
   laravel: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+  reactjs: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200',
+  tailwind: 'bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200',
+  mongodb: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+  expressjs: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200',
+  cloudinary: 'bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200',
+  java: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+  nextjs: 'bg-black text-white dark:bg-white dark:text-black',
+  postgresql: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
+  gemini: 'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-200',
+  docker: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+  kubernetes: 'bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200',
+  jenkins: 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-200',
+  aws: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+  kafka: 'bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100',
+  typescript: 'bg-blue-200 text-blue-900 dark:bg-blue-800 dark:text-blue-100',
+  golang: 'bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200',
 };
+
 
 type ProjectCardProps = {
   title: string;
@@ -55,6 +77,18 @@ const ProjectCard = ({
   featured = false,
   id
 }: ProjectCardProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const shareLink = `https://chatanya.vercel.app/work/${link}`;
+    try {
+      await navigator.clipboard.writeText(shareLink);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -104,15 +138,37 @@ const ProjectCard = ({
             </h3>
             <div className="flex space-x-2">
               {link && (
-                <Link href={link} target="_blank" aria-label="GitHub">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
-                  >
-                    <FaGithub className='text-2xl mr-2' />
-                  </motion.div>
-                </Link>
+                <>
+                  <div className="relative inline-block">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={handleCopy}
+                      className="p-2 rounded-full transition"
+                    >
+                      <FaShareNodes className="text-2xl mr-2 cursor-pointer" />
+                    </motion.button>
+
+                    {/* Tooltip */}
+                    <span
+                      className={`absolute -top-8 left-1/2 -translate-x-1/2 
+                          px-2 py-1 text-sm rounded-md shadow-md whitespace-nowrap 
+                          transition-opacity duration-200
+                          ${copied ? "opacity-100 bg-green-600 text-white" : "opacity-0"}`}
+                    >
+                      Copied!
+                    </span>
+                  </div>
+                  <Link href={link} target="_blank" aria-label="Link">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="hover:text-blue-600 transition-colors"
+                    >
+                      <FaLink className='text-2xl mr-2 cursor-pointer' />
+                    </motion.div>
+                  </Link>
+                </>
               )}
               <div className="relative w-full flex justify-center items-center">
                 <Link
