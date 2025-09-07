@@ -10,7 +10,7 @@ export const siteConfig = {
     profileImage: `assets/my-image2.png`,
     keywords: [
         "Chatanya",
-        "Chatanyapra", 
+        "Chatanyapra",
         "Chatanya Pratap",
         "Full Stack Developer",
         "Web Developer",
@@ -75,4 +75,7 @@ export const metadata: Metadata = {
         canonical: `${urlmain}`,
     },
     metadataBase: new URL(`${urlmain || 'https://chatanya.vercel.app'}`),
+    other: {
+        "google-site-verification": "Oz8EedM8aBkgg0Igm42z88lDklyU1SXpR1oQNWfcFPA",
+    }
 };
