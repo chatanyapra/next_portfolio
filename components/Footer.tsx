@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='w-full min-h-60 relative flex max-md:flex-col justify-between items-center px-10 max-sm:px-5 max-md:mt-16 max-md:pb-14 mb-20'>
             <Image
                 src={footerImage3}
-                alt=""
+                alt="Decorative violet blur effect for Chatanya Pratap's portfolio footer"
                 width={144}
                 height={144}
                 className='absolute -bottom-10 right-10 w-36 -z-10'
@@ -45,8 +45,11 @@ const Footer = () => {
                 <ul className="example-2">
                     <li className="icon-content">
                         <a
-                            href="https://linkedin.com/"
-                            aria-label="LinkedIn"
+                            href="https://www.linkedin.com/in/chatanya-pratap-ab410a277/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Chatanya Pratap LinkedIn Profile"
+                            title="Connect with Chatanya Pratap on LinkedIn"
                             data-social="linkedin"
                         >
                             <div className="filled"></div>
@@ -68,7 +71,7 @@ const Footer = () => {
                         <div className="tooltip">LinkedIn</div>
                     </li>
                     <li className="icon-content">
-                        <a href="https://www.github.com/" aria-label="GitHub" data-social="github">
+                        <a href="https://github.com/chatanyapra" target="_blank" rel="noopener noreferrer" aria-label="Chatanya Pratap GitHub Profile" title="View Chatanya Pratap projects on GitHub" data-social="github">
                             <div className="filled"></div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

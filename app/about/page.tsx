@@ -2,7 +2,9 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 export const metadata: Metadata = {
-    title: "About"
+    title: "About Chatanya Pratap - Full Stack Developer | Chatanyapra",
+    description: "Learn about Chatanya Pratap (Chatanyapra), a passionate full stack developer specializing in React, Next.js, Node.js, and modern web technologies. Discover my journey, skills, and experience in web development.",
+    keywords: ["Chatanya Pratap", "Chatanyapra", "About Chatanya", "Full Stack Developer", "Web Developer Biography", "React Developer", "Next.js Developer"],
 };
 
 const AboutPage = dynamic(() => import("@/components/pages/aboutpage"));
@@ -18,7 +20,7 @@ const page = () => {
                 <div className="w-full h-auto mx-auto relative">
                     <Image
                         src={"/assets/images/background-line.png"}
-                        alt=""
+                        alt="Background decorative lines for Chatanya Pratap's skills section"
                         fill
                         style={{ objectFit: "cover" }}
                     />

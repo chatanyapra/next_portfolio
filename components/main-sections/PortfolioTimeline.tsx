@@ -199,11 +199,6 @@ export const PortfolioTimeline = () => {
                                 This timeline highlights the key milestones that shaped me as a developer and continue to fuel my growth.
                             </p>
                         </ScrollViewAnimation>
-                        <ScrollViewAnimation whileInView delay={0.4}>
-                            <div className="shadow-sm shadow-gray-50 rounded-lg p-4 text-center">
-                                <p className="text-gray-500 ">👈 Click on a year to view details</p>
-                            </div>
-                        </ScrollViewAnimation>
                     </div>
                 );
             }

@@ -6,6 +6,7 @@ import { DataProvider } from "@/context/DataContext";
 import Provider from "./provider";
 import "./globals.css";
 import { metadata as metadataConfig } from "@/config/metadata";
+import StructuredData from "@/components/StructuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <DataProvider>

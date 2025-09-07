@@ -14,7 +14,7 @@ const ProjectsSection = () => {
 
       <CardShowProject />
 
-      <ViewAllButton text={"View All Projects"} link={"/work"} />
+      <ViewAllButton text={"View All Projects"} link={"/projects"} />
     </section>
   );
 };

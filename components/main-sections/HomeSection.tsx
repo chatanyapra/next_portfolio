@@ -1,8 +1,9 @@
 import WelcomeSection from './WelcomeSection'
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
+import { FaGithub, FaXTwitter, FaLinkedinIn } from 'react-icons/fa6'
 import dynamic from 'next/dynamic'
 import TypewriterEffect from '../ui/Typewriter';
 import { ScrollViewAnimation } from '@/components/component-animations/animations';
+import Link from 'next/link';
 
 const BouncingBall = dynamic(() => import("@/components/ui/bouncingBall"));
 const Home = () => {
@@ -29,11 +30,35 @@ const Home = () => {
                             </ScrollViewAnimation>
                         </div>
                         <div className='my-14 text-3xl flex max-sm:justify-center'>
-                            <FaLinkedinIn className='m-1.5' />
+                            <Link 
+                                href='https://www.linkedin.com/in/chatanya-pratap-ab410a277/' 
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                aria-label='Chatanya Pratap LinkedIn Profile'
+                                title='Connect with Chatanya Pratap on LinkedIn'
+                            >
+                                <FaLinkedinIn className='m-1.5 cursor-pointer hover:text-blue-500 transition-colors' />
+                            </Link>
                             <span className='btn-gradient w-14 mt-5 mx-2'></span>
-                            <FaGithub className='m-1.5' />
+                            <Link 
+                                href='https://github.com/chatanyapra' 
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                aria-label='Chatanya Pratap GitHub Profile'
+                                title='View Chatanya Pratap projects on GitHub'
+                            >
+                                <FaGithub className='m-1.5 cursor-pointer hover:text-gray-400 transition-colors' />
+                            </Link>
                             <span className='btn-gradient w-14 mt-5 mx-2'></span>
-                            <FaInstagram className='m-1.5' />
+                            <Link 
+                                href='https://x.com/Chatanyapra' 
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                aria-label='Chatanya Pratap Twitter/X Profile'
+                                title='Follow Chatanya Pratap on X (Twitter)'
+                            >
+                                <FaXTwitter className='m-1.5 cursor-pointer hover:text-blue-400 transition-colors' />
+                            </Link>
                         </div>
                     </div>
                     <WelcomeSection />

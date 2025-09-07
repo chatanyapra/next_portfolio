@@ -13,7 +13,7 @@ const WelcomeSection = () => {
                         sizes="(max-width: 640px) 75vw, 384px"
                         className="object-cover  z-10"
                         priority
-                        alt=""
+                        alt="Chatanya Pratap - Full Stack Developer professional portrait"
                     />
                 </div>
                 <motion.div
