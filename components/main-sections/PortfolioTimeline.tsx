@@ -288,7 +288,7 @@ export const PortfolioTimeline = () => {
                                         className={`timeline-item relative ${activeTab === item.id ? 'active' : ''}`}
                                         data-target={item.id}
                                     >
-                                        <ScrollViewAnimation delay={0.1 + (index * 0.1)} whileInView once={false}>
+                                        <ScrollViewAnimation delay={0.1 + (index * 0.1)} whileInView >
                                             <div className="flex items-center">
                                                 {activeTab === item.id ? (
                                                     <GlowSpinner />
@@ -307,37 +307,39 @@ export const PortfolioTimeline = () => {
 
                                         {/* Sub-items */}
                                         <AnimatePresence>
-                                            {item.subItems && activeTab === item.id && (
-                                                <motion.div
-                                                    initial={{ height: 0, opacity: 0 }}
-                                                    animate={{ height: 'auto', opacity: 1 }}
-                                                    exit={{ height: 0, opacity: 0 }}
-                                                    transition={{
-                                                        duration: 0.3,
-                                                        ease: 'easeInOut'
-                                                    }}
-                                                    className="ml-6 mt-2 space-y-2 pl-4 flex flex-col overflow-hidden"
-                                                >
-                                                    {item.subItems.content.map((subItem, subIndex) => (
-                                                        <motion.div
-                                                            key={`sub-${subItem.period}`}
-                                                            initial={{ opacity: 0, y: -10 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            transition={{
-                                                                delay: subIndex * 0.1,
-                                                                duration: 0.2
-                                                            }}
-                                                        >
-                                                            <button
-                                                                className={`cursor-pointer sub-item tab-button text-lg py-1.5 block transition-colors hover:text-purple-400 ${activeSubTab === subItem.period ? 'active font-semibold text-purple-400 text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
-                                                                onClick={() => handleTabChange(subItem.period, true)}
+                                            {
+                                                item.subItems && activeTab === item.id && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: 'auto', opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{
+                                                            duration: 0.3,
+                                                            ease: 'easeInOut'
+                                                        }}
+                                                        className="ml-6 mt-2 space-y-2 pl-4 flex flex-col overflow-hidden"
+                                                    >
+                                                        {item.subItems.content.map((subItem, subIndex) => (
+                                                            <motion.div
+                                                                key={`sub-${subItem.period}`}
+                                                                initial={{ opacity: 0, y: -10 }}
+                                                                animate={{ opacity: 1, y: 0 }}
+                                                                transition={{
+                                                                    delay: subIndex * 0.1,
+                                                                    duration: 0.2
+                                                                }}
                                                             >
-                                                                {subItem.period} - {subItem.title.split(' - ')[1]}
-                                                            </button>
-                                                        </motion.div>
-                                                    ))}
-                                                </motion.div>
-                                            )}
+                                                                <button
+                                                                    className={`cursor-pointer sub-item tab-button text-lg py-1.5 block transition-colors hover:text-purple-400 ${activeSubTab === subItem.period ? 'active font-semibold text-purple-400 text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
+                                                                    onClick={() => handleTabChange(subItem.period, true)}
+                                                                >
+                                                                    {subItem.period} - {subItem.title.split(' - ')[1]}
+                                                                </button>
+                                                            </motion.div>
+                                                        ))}
+                                                    </motion.div>
+                                                )
+                                            }
                                         </AnimatePresence>
                                     </div>
                                 ))}
@@ -352,7 +354,7 @@ export const PortfolioTimeline = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
