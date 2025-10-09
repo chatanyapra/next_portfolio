@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ScrollViewAnimation, SectionHeadAnimation } from '../component-animations/animations';
 import GlowSpinner from '../ui/GlowSpinner';
 
@@ -149,7 +150,6 @@ export const PortfolioTimeline = () => {
             setActiveSubTab(null);
         }
     };
-
     const renderContent = () => {
         const activeItem = timelineData.find(item => item.id === activeTab);
 
@@ -157,20 +157,20 @@ export const PortfolioTimeline = () => {
 
         if (activeTab === 'about' && activeItem.content) {
             return (
-                <ScrollViewAnimation whileInView>
-                    <div className="content-area">
+                <div className="content-area" key={`about-${activeTab}`}>
+                    <ScrollViewAnimation whileInView once={false}>
                         <h2 className="text-3xl font-bold mb-4 text-gradient">{activeItem.content.title}</h2>
-                        <div className="flex">
-                            <div className="w-full">
-                                {activeItem.content.description.map((text: string, index: number) => (
-                                    <ScrollViewAnimation key={index} delay={0.1 + (index * 0.1)} whileInView={index === 0}>
-                                        <p className="mb-4">{text}</p>
-                                    </ScrollViewAnimation>
-                                ))}
-                            </div>
+                    </ScrollViewAnimation>
+                    <div className="flex">
+                        <div className="w-full">
+                            {activeItem.content.description.map((text: string, index: number) => (
+                                <ScrollViewAnimation key={`about-${index}`} delay={0.1 + (index * 0.1)} whileInView once={false}>
+                                    <p className="mb-4">{text}</p>
+                                </ScrollViewAnimation>
+                            ))}
                         </div>
                     </div>
-                </ScrollViewAnimation>
+                </div>
             );
         }
 
@@ -181,20 +181,22 @@ export const PortfolioTimeline = () => {
 
             if (!activeSubTab) {
                 return (
-                    <div className="content-area">
-                        <h2 className="text-3xl font-bold mb-6 text-gradient">{journeyItem.subItems.title}</h2>
-                        <ScrollViewAnimation whileInView delay={0.1}>
+                    <div className="content-area" key={`journey-default`}>
+                        <ScrollViewAnimation whileInView once={false}>
+                            <h2 className="text-3xl font-bold mb-6 text-gradient">{journeyItem.subItems.title}</h2>
+                        </ScrollViewAnimation>
+                        <ScrollViewAnimation whileInView delay={0.1} once={false}>
                             <p className=" mb-6">
                                 Select a year from the timeline to explore my career milestones and achievements during that period.
                             </p>
                         </ScrollViewAnimation>
-                        <ScrollViewAnimation whileInView delay={0.2}>
+                        <ScrollViewAnimation whileInView delay={0.2} once={false}>
                             <p className=" mb-6">
-                                My journey began with curiosity during my diploma days, starting with C and growing into full-stack development. Over the years, I’ve explored PHP, MERN, Next.js, and now DevOps — always learning by building real projects and taking on new challenges.
+                                My journey began with curiosity during my diploma days, starting with C and growing into full-stack development. Over the years, I've explored PHP, MERN, Next.js, and now DevOps — always learning by building real projects and taking on new challenges.
                             </p>
                         </ScrollViewAnimation>
 
-                        <ScrollViewAnimation whileInView delay={0.3}>
+                        <ScrollViewAnimation whileInView delay={0.3} once={false}>
                             <p className=" mb-6">
                                 This timeline highlights the key milestones that shaped me as a developer and continue to fuel my growth.
                             </p>
@@ -208,55 +210,57 @@ export const PortfolioTimeline = () => {
             if (!subItemContent) return null;
 
             return (
-                // <ScrollViewAnimation whileInView>
-                <div className="content-area">
-                    <h2 className="text-3xl font-bold mb-4 text-gradient">{subItemContent.title}</h2>
+                <div className="content-area" key={`journey-${activeSubTab}`}>
+                    <ScrollViewAnimation whileInView once={false}>
+                        <h2 className="text-3xl font-bold mb-4 text-gradient">{subItemContent.title}</h2>
+                    </ScrollViewAnimation>
                     <div className="space-y-4">
                         {subItemContent.description.map((text: string, index: number) => (
-                            <ScrollViewAnimation key={index} delay={0.1 + (index * 0.1)} whileInView={index === 0} once={false}>
+                            <ScrollViewAnimation key={`journey-${activeSubTab}-${index}`} delay={0.1 + (index * 0.1)} whileInView once={false}>
                                 <p className="mb-4">{text}</p>
                             </ScrollViewAnimation>
                         ))}
                     </div>
                 </div>
-                // </ScrollViewAnimation>
             );
         }
 
         if (activeTab === 'certificates') {
             return (
-                // <ScrollViewAnimation whileInView>
-                <div className="content-area">
-                    <h2 className="text-3xl font-bold mb-6 text-gradient">My Certifications</h2>
-                    <ScrollViewAnimation delay={0.1} whileInView>
+                <div className="content-area" key={`certificates-${activeTab}`}>
+                    <ScrollViewAnimation whileInView once={false}>
+                        <h2 className="text-3xl font-bold mb-6 text-gradient">My Certifications</h2>
+                    </ScrollViewAnimation>
+                    <ScrollViewAnimation delay={0.1} whileInView once={false}>
                         <div className="grid md:grid-cols-2 gap-6 m-auto">
-                            {certificates.map((cert) => (
-                                <div key={cert.id} className=" rounded-lg p-5 hover:shadow-md transition-shadow">
-                                    <div className="flex items-start gap-4">
-                                        <div className="bg-indigo-400 p-3 rounded-lg">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 text-gradient"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-semibold">{cert.title}</h3>
-                                            <p className="text-sm text-gray-600 mt-1">
-                                                Issued by {cert.issuer} - {cert.year}
-                                            </p>
+                            {certificates.map((cert, index) => (
+                                <ScrollViewAnimation key={cert.id} delay={0.1 + (index * 0.1)} whileInView once={false}>
+                                    <div className=" rounded-lg p-5 hover:shadow-md transition-shadow">
+                                        <div className="flex items-start gap-4">
+                                            <div className="bg-indigo-400 p-3 rounded-lg">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    className="h-6 w-6 text-gradient"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 className="font-semibold">{cert.title}</h3>
+                                                <p className="text-sm text-gray-600 mt-1">
+                                                    Issued by {cert.issuer} - {cert.year}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </ScrollViewAnimation>
                             ))}
                         </div>
                     </ScrollViewAnimation>
                 </div>
-                // </ScrollViewAnimation>
             );
         }
 
@@ -284,7 +288,7 @@ export const PortfolioTimeline = () => {
                                         className={`timeline-item relative ${activeTab === item.id ? 'active' : ''}`}
                                         data-target={item.id}
                                     >
-                                        <ScrollViewAnimation delay={0.1 + (index * 0.1)} whileInView>
+                                        <ScrollViewAnimation delay={0.1 + (index * 0.1)} whileInView once={false}>
                                             <div className="flex items-center">
                                                 {activeTab === item.id ? (
                                                     <GlowSpinner />
@@ -302,20 +306,39 @@ export const PortfolioTimeline = () => {
                                         </ScrollViewAnimation>
 
                                         {/* Sub-items */}
-                                        {item.subItems && (
-                                            <div className="ml-6 mt-2 space-y-2 pl-4 flex flex-col">
-                                                {item.subItems.content.map((subItem, index) => (
-                                                    <ScrollViewAnimation key={subItem.period} delay={0.1 + (index * 0.1)} whileInView>
-                                                        <button
-                                                            className={`cursor-pointer sub-item tab-button text-lg py-1.5 block transition-colors hover:text-purple-400 ${activeSubTab === subItem.period ? 'active font-semibold text-purple-400 text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
-                                                            onClick={() => handleTabChange(subItem.period, true)}
+                                        <AnimatePresence>
+                                            {item.subItems && activeTab === item.id && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{
+                                                        duration: 0.3,
+                                                        ease: 'easeInOut'
+                                                    }}
+                                                    className="ml-6 mt-2 space-y-2 pl-4 flex flex-col overflow-hidden"
+                                                >
+                                                    {item.subItems.content.map((subItem, subIndex) => (
+                                                        <motion.div
+                                                            key={`sub-${subItem.period}`}
+                                                            initial={{ opacity: 0, y: -10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            transition={{
+                                                                delay: subIndex * 0.1,
+                                                                duration: 0.2
+                                                            }}
                                                         >
-                                                            {subItem.period} - {subItem.title.split(' - ')[1]}
-                                                        </button>
-                                                    </ScrollViewAnimation>
-                                                ))}
-                                            </div>
-                                        )}
+                                                            <button
+                                                                className={`cursor-pointer sub-item tab-button text-lg py-1.5 block transition-colors hover:text-purple-400 ${activeSubTab === subItem.period ? 'active font-semibold text-purple-400 text-gradient' : 'hover:text-shadow-xs text-shadow-black'}`}
+                                                                onClick={() => handleTabChange(subItem.period, true)}
+                                                            >
+                                                                {subItem.period} - {subItem.title.split(' - ')[1]}
+                                                            </button>
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
                                 ))}
                             </div>

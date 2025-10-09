@@ -60,8 +60,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
                 title: `${data?.title} | Chatanya Pratap Blog`,
                 description: `${data?.shortDescription} - Tech insights by Chatanya Pratap (Chatanyapra)`,
                 images: data?.images?.length
-                    ? [{ 
-                        url: data.images[0].url, 
+                    ? [{
+                        url: data.images[0].url,
                         alt: `${data?.title} - Blog post by Chatanya Pratap`,
                         width: 1200,
                         height: 630
@@ -107,10 +107,10 @@ export default async function page({ params }: { params: Params }) {
             ) : (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 flex flex-col mb-16 light-dark-shadow max-sm:px-2">
                     <ScrollViewAnimation>
-                        <h1 className="text-4xl pb-8">{data.title}</h1>
+                        <h1 className="text-4xl pb-8 font-bold">{data.title}</h1>
                     </ScrollViewAnimation>
                     <ScrollViewAnimation delay={0.5}>
-                        <div dangerouslySetInnerHTML={{ __html: data.longDescription }}></div>
+                        <div className='text-gray-800 medium-gray-text' dangerouslySetInnerHTML={{ __html: data.longDescription }}></div>
                     </ScrollViewAnimation>
                 </div>
             )}

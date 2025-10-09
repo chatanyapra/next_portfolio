@@ -79,6 +79,18 @@ p {
   z-index: -1;
 }
 
+.dark .dark-card-shadow {
+  box-shadow: rgba(255, 255, 255, 0.45) 0px 6px 8px;
+}
+
+.dark .light-gray-text {
+  color: rgba(255, 255, 255, 0.657);
+}
+
+.dark .medium-gray-text {
+  color: rgba(255, 255, 255, 0.847);
+}
+
 .custom-scrollbar {
   /* Applying custom scrollbar styles */
   overflow-y: scroll;
@@ -595,7 +607,7 @@ html.dark .light-dark-shadow {
     left: 7px;
     top: 10px;
     width: 2px;
-    height: 93%;
+    height: 91%;
     background-color: rgba(190, 189, 189, 0.749);
   }
 

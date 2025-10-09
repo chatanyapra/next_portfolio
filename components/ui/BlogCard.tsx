@@ -54,7 +54,7 @@ const BlogCard = ({ blog, src, count, featured = false }: BlogCardProps) => {
         {/* Blog Details */}
         <div className="absolute right-0 bottom-0 w-3/4 h-[45%] rounded-b-[40px] rounded-r-[40px] rounded-tl-[5px] py-1 pl-2 transparent-colorblack overflow-hidden shadow-sm shadow-gray-400">
           <div className="text-xl max-sm:text-base font-bold text-blue-400">{blog.title}</div>
-          <p className="text-gray-200 text-sm pl-3 pr-2 max-sm:text-[10px]">{blog.shortDescription}</p>
+          <p className="text-gray-200 text-sm pl-3 pr-2 max-sm:text-[10px] ">{blog.shortDescription}</p>
         </div>
 
         {/* Thumbnails */}

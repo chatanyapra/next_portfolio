@@ -91,10 +91,10 @@ export default async function page({ params }: { params: Params }) {
             ) : (
                 <div className="md:w-[90%] w-full mx-auto min-h-96 flex flex-col mb-16 light-dark-shadow max-sm:px-2">
                     <ScrollViewAnimation>
-                        <h1 className="text-4xl pb-8">{project.title}</h1>
+                        <h1 className="text-4xl pb-8 font-bold">{project.title}</h1>
                     </ScrollViewAnimation>
                     <ScrollViewAnimation delay={0.5}>
-                        <div dangerouslySetInnerHTML={{ __html: project.longDescription }}></div>
+                        <div className='text-gray-800 medium-gray-text' dangerouslySetInnerHTML={{ __html: project.longDescription }}></div>
                     </ScrollViewAnimation>
                 </div>
             )}

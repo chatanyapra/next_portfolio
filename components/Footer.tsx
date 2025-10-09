@@ -19,7 +19,7 @@ const Footer = () => {
                 <div className='text-3xl max-sm:text-2xl'>
                     Thanks for visiting!
                 </div>
-                <div className='text-base font-extralight max-sm:text-sm'>
+                <div className='text-base font-extralight max-sm:text-sm light-gray-text'>
                     ©2025 Designs by Chatanya Pratap.
                 </div>
             </div>

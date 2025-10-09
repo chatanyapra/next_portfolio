@@ -63,7 +63,7 @@ const BouncingBall = () => {
   }, []);
 
   return (
-    <div className='w-full -z-10 max-sm:mt-24 h-full absolute top-24 left-0'>
+    <div className='w-full -z-10 max-sm:mt-24 h-full absolute top-24 left-0 overflow-hidden'>
       <div className="bouncing-balls-container">
         {Array.from({ length: NUM_BALLS }, (_, index) => (
           <motion.div
