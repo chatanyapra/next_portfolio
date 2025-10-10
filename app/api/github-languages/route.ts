@@ -42,9 +42,34 @@ export async function GET() {
             }
         }
 
-        const percentageStats: Record<string, string> = {};
+        // Define the allowed languages to display
+        const allowedLanguages = [
+            'JavaScript', 
+            'CSS', 
+            'HTML', 
+            'TypeScript', 
+            'Java', 
+            'Go', 
+            'Dockerfile', 
+            'PHP', 
+            'Blade', 
+            'C++'
+        ];
+
+        // Filter and calculate percentages only for allowed languages
+        const filteredLanguageStats: Record<string, number> = {};
+        let filteredTotalBytes = 0;
+
         for (const lang in languageStats) {
-            percentageStats[lang] = ((languageStats[lang] / totalBytes) * 100).toFixed(2) + "%";
+            if (allowedLanguages.includes(lang)) {
+                filteredLanguageStats[lang] = languageStats[lang];
+                filteredTotalBytes += languageStats[lang];
+            }
+        }
+
+        const percentageStats: Record<string, string> = {};
+        for (const lang in filteredLanguageStats) {
+            percentageStats[lang] = ((filteredLanguageStats[lang] / filteredTotalBytes) * 100).toFixed(2) + "%";
         }
 
         return NextResponse.json({ languages: percentageStats });

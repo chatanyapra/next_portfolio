@@ -28,7 +28,7 @@ const Skills = () => {
                 <h3 className="text-2xl sm:text-3xl font-bold my-4 ml-3 ">I Develop Skills Regularly</h3>
                 <ScrollViewAnimation whileInView once={false}>
                     <p className=" mb-8 ml-3 light-gray-text">
-                        I continuously refine my skills to build modern, efficient, and high-performing web applications.
+                        I believe in continuous learning. The skills displayed here are dynamically pulled from my GitHub to showcase the technologies I work with and improve every day.
                     </p>
                 </ScrollViewAnimation>
 
