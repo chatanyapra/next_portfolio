@@ -4,27 +4,85 @@ export const urlmain = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const siteConfig = {
     name: "Chatanya Pratap",
-    description: "Chatanya Pratap (Chatanyapra) - Full Stack Developer Portfolio. Explore innovative web development projects, insightful tech blogs, and learn about my journey in modern web technologies including React, Next.js, Node.js, and more.",
+    description: "Chatanya Pratap (Chatanyapra) - Expert Full Stack Developer & MERN Stack Specialist. Explore cutting-edge web development projects, insightful tech blogs, and discover my journey from PHP/Laravel to modern React, Next.js, Node.js, and DevOps technologies. Available for freelance projects and full-time opportunities.",
     url: urlmain,
     ogImage: `/opengraph-image.JPG`,
     profileImage: `assets/my-image2.png`,
     keywords: [
+        // Primary name variations for brand recognition
         "Chatanya",
-        "Chatanyapra",
+        "Chatanyapra", 
         "Chatanya Pratap",
+        
+        // Core developer roles
         "Full Stack Developer",
-        "Web Developer",
+        "MERN Stack Developer",
         "React Developer",
-        "Next.js Developer",
-        "Portfolio",
+        "Next.js Developer", 
+        "Node.js Developer",
         "JavaScript Developer",
+        "TypeScript Developer",
+        
+        // Specialized skills
         "Frontend Developer",
         "Backend Developer",
-        "Web Development Projects",
-        "Tech Blog",
-        "Software Engineer"
+        "Web Developer",
+        "Software Engineer",
+        "UI/UX Developer",
+        
+        // Technologies & frameworks
+        "React.js Expert",
+        "Next.js Specialist", 
+        "MongoDB Developer",
+        "Express.js Developer",
+        "Laravel Developer",
+        "PHP Developer",
+        "MySQL Developer",
+        
+        // Modern tech stack
+        "Tailwind CSS",
+        "Framer Motion",
+        "Socket.IO",
+        "WebRTC Developer",
+        "RESTful API",
+        "GraphQL",
+        
+        // DevOps & deployment
+        "Docker",
+        "AWS Developer",
+        "CI/CD Pipeline",
+        "Jenkins",
+        "Kubernetes",
+        
+        // Project types
+        "Portfolio Website",
+        "E-commerce Development",
+        "Social Media Platform",
+        "Banking Application",
+        "School Management System",
+        "Real-time Chat Application",
+        
+        // Services & availability
+        "Freelance Developer",
+        "Web Development Services",
+        "Custom Web Applications",
+        "Responsive Web Design",
+        "Progressive Web Apps",
+        "Tech Blog Writer",
+        
+        // Location & availability
+        "India Web Developer",
+        "Remote Developer",
+        "Freelance Web Developer India",
+        "Full Stack Developer for hire"
     ],
     author: "Chatanya Pratap",
+    social: {
+        github: "https://github.com/chatanyapra",
+        linkedin: "https://www.linkedin.com/in/chatanya-pratap-ab410a277/",
+        codepen: "https://codepen.io/chatanyaPratap",
+        twitter: "https://x.com/Chatanyapra"
+    }
 }
 
 export const metadata: Metadata = {

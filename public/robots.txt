@@ -9,6 +9,8 @@ Disallow: /api/
 Disallow: /login/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /*.json$
+Disallow: /private/
 
 # Allow crawling of important pages
 Allow: /
@@ -16,6 +18,21 @@ Allow: /about
 Allow: /blogs
 Allow: /blogs/*
 Allow: /projects
+Allow: /work
+Allow: /manifest.json
+Allow: /opengraph-image.JPG
 
-# Crawl delay (optional, helps with server load)
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
 Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Crawl delay (helps with server load)
+Crawl-delay: 1
+
+# Host directive (helps with canonicalization)
+Host: https://chatanya.vercel.app
