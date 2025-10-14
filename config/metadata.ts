@@ -13,6 +13,13 @@ export const siteConfig = {
         "Chatanya",
         "Chatanyapra", 
         "Chatanya Pratap",
+        "Chaitanya",
+        "Chetanya",
+        "Chaitanya Pratap",
+        "Chetanya Pratap",
+        "Chetan",
+        "Chetanyapra",
+        "Chaitanyapra",
         
         // Core developer roles
         "Full Stack Developer",

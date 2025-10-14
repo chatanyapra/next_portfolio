@@ -5,7 +5,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Chatanya Pratap",
-    "alternateName": ["Chatanya", "Chatanyapra"],
+    "alternateName": ["Chatanya", "Chatanyapra", "Chaitanya", "Chetanya", "Chaitanya Pratap", "Chetanya Pratap", "Chetan", "Chetanyapra", "Chaitanyapra"],
     "jobTitle": ["Full Stack Developer", "MERN Stack Developer", "Freelance Web Developer"],
     "description": "Expert Full Stack Developer specializing in MERN stack, React, Next.js, Node.js, and modern web technologies. Available for freelance projects and full-time opportunities.",
     "url": siteConfig.url || "https://chatanya.vercel.app",
