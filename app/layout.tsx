@@ -7,6 +7,7 @@ import Provider from "./provider";
 import "./globals.css";
 import { metadata as metadataConfig } from "@/config/metadata";
 import StructuredData from "@/components/StructuredData";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
             </Provider>
           </DataProvider>
         </ThemeProvider>
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
       </body>
     </html>
   );
