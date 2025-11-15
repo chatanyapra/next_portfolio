@@ -14,20 +14,21 @@ const AboutPage = () => {
                         <span className="text-gradient ml-3">Chatanya</span>
                     </ScrollViewAnimation>
                 </div>
-                <ScrollViewAnimation delay={0.2}>
+                <ScrollViewAnimation delay={0.3}>
                     <p className="pt-4">
-                        I am a full stack developer with a passion for creating beautiful and functional web applications. I chose this as a career because I love to create nice stuff. Creativity is the key. Now I target building some awesome stuff that can help people in their daily life.
-                    </p>
+                        A developer who loves building scalable products, breaking complex systems into simple pieces, and turning ideas into real, working applications.</p>
                 </ScrollViewAnimation>
-                <ScrollViewAnimation delay={0.4}>
+                <ScrollViewAnimation delay={0.6}>
                     <p className="pt-4">
-                        I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
-                    </p>
+                        I spend most of my time creating high-performance projects — from a distributed online coding platform (with workers, queues, WebSockets, load balancers, and Judge0) to Auramic, my own MERN-based social platform with real-time chat, video calls, stories, and an AI assistant.                    </p>
                 </ScrollViewAnimation>
-                <ScrollViewAnimation delay={0.8}>
+                <ScrollViewAnimation delay={0.9}>
                     <p className="pt-4">
-                        I am currently working as a Freelance Developer and a Full Stack Developer Intern and I am open to new opportunities. I have a healthy obsession of learning new everyday which makes a better developer and a better Athlete. I love playing Football.
-                    </p>
+                        I enjoy diving deep into tech: system design, AWS, databases, scaling architecture, and writing clean, maintainable code. Whether it’s debugging a distributed worker system at 2 AM or designing a microservice flow for fun, I’m always exploring how things work under the hood.                    </p>
+                </ScrollViewAnimation>
+                <ScrollViewAnimation delay={1.2}>
+                    <p className="pt-4">
+                        I’m currently learning, building, and leveling up every day.                   </p>
                 </ScrollViewAnimation>
             </div>
             {/* CORRECTED IMAGE */}
